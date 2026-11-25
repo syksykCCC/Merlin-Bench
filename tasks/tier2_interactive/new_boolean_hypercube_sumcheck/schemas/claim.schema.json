@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "aipbench://t2.new_boolean_hypercube_sumcheck/sumcheck.claim/1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["variable_order", "claimed_sum"],
+  "properties": {
+    "variable_order": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 400,
+      "uniqueItems": true,
+      "items": {"type": "integer", "minimum": 0, "maximum": 399}
+    },
+    "claimed_sum": {"type": "string", "pattern": "^[0-9a-f]{16}$"}
+  }
+}

@@ -1,0 +1,6 @@
+id: c03
+title: Locally matched group-table geometries
+difficulty: H3
+parameters:
+  left_moduli: [16, 2]
+  right_moduli: [8, 4]

@@ -1,0 +1,10 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "aipbench://t3.dafny_verified_programs/program-submission/v1",
+  "type": "object",
+  "required": ["instance_sha256"],
+  "properties": {
+    "instance_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+  },
+  "additionalProperties": false
+}

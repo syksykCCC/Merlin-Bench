@@ -1,0 +1,10 @@
+id: c04
+title: Hidden modular evaluation lattice
+difficulty: H2
+parameters:
+  code_length: 128
+  code_dimension: 20
+  modulus: 257
+  num_errors: 32
+  denominator: 5
+  coefficient_magnitude: 7

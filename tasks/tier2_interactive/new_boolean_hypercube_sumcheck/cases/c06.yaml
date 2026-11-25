@@ -1,0 +1,6 @@
+id: c06
+title: Six-Vertex Torus
+difficulty: H3
+parameters:
+  rows: 6
+  columns: 24

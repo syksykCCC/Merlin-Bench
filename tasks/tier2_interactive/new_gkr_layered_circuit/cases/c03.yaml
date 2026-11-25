@@ -1,0 +1,6 @@
+id: c03
+title: Batched matrix triple product
+difficulty: H2
+parameters:
+  batch_size: 1
+  matrix_order: 8

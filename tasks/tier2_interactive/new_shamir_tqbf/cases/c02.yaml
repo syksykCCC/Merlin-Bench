@@ -1,0 +1,6 @@
+id: c02
+title: Memory-five alternating recurrence game
+difficulty: H2
+parameters:
+  pairs: 12
+  memory: 5

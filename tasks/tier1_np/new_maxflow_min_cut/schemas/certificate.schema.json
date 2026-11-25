@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "aipbench://t1.new_maxflow_min_cut/certificate/1",
+  "type": "object",
+  "required": ["flow_value", "edge_flows", "source_side_cut"],
+  "properties": {
+    "flow_value": {"type": "integer", "minimum": 0},
+    "edge_flows": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["edge_id", "flow"],
+        "properties": {
+          "edge_id": {"type": "integer", "minimum": 0},
+          "flow": {"type": "integer", "minimum": 0}
+        },
+        "additionalProperties": false
+      }
+    },
+    "source_side_cut": {
+      "type": "array",
+      "items": {"type": "integer", "minimum": 0},
+      "uniqueItems": true
+    }
+  },
+  "additionalProperties": false
+}

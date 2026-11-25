@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "aipbench://t2.image_size_lower_bound/image.response/1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["preimages"],
+  "properties": {
+    "preimages": {
+      "type": "array",
+      "minItems": 128,
+      "maxItems": 128,
+      "items": {
+        "oneOf": [
+          {"type": "null"},
+          {"type": "string", "pattern": "^[0-9a-f]+$"}
+        ]
+      }
+    }
+  }
+}

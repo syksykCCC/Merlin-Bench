@@ -1,0 +1,5 @@
+id: c01
+title: Rank-One Expander
+difficulty: H1
+parameters:
+  num_variables: 384

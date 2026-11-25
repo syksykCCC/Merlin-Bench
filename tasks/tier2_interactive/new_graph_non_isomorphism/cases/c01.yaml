@@ -1,0 +1,6 @@
+id: c01
+title: Connected prism--Moebius baseline
+difficulty: H1
+parameters:
+  min_r: 701
+  max_r: 1001

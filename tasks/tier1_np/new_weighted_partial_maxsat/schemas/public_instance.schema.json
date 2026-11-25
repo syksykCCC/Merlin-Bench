@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "aipbench://t1.new_weighted_partial_maxsat/public-instance/1",
+  "type": "object",
+  "required": ["format_version", "num_variables", "hard_clauses", "soft_clauses", "threshold"],
+  "properties": {
+    "format_version": {"const": "aip-weighted-partial-maxsat-instance/1"},
+    "num_variables": {"type": "integer", "minimum": 1},
+    "hard_clauses": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["clause_id", "literals"],
+        "properties": {
+          "clause_id": {"type": "integer", "minimum": 0},
+          "literals": {
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {"type": "integer", "not": {"const": 0}}
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "soft_clauses": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["clause_id", "literals", "weight"],
+        "properties": {
+          "clause_id": {"type": "integer", "minimum": 0},
+          "literals": {
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {"type": "integer", "not": {"const": 0}}
+          },
+          "weight": {"type": "integer", "minimum": 1, "maximum": 9007199254740991}
+        },
+        "additionalProperties": false
+      }
+    },
+    "threshold": {"type": "integer", "minimum": 0, "maximum": 9007199254740991}
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,18 @@
+{
+  "challenge_sha256": "601a3ffc9c8a9c3fec5eed706d56ce55288592e69e7bfc7fca0344836bd96874",
+  "challenge_source": "import AMBenchPrelude\nnamespace Challenge\ninductive Ty where\n  | base\n  | arr (domain codomain : Ty)\ninductive Term where\n  | var (index : Nat)\n  | unit\n  | lam (domain : Ty) (body : Term)\n  | app (function argument : Term)\nabbrev Context := Nat → Option Ty\ndef empty : Context := fun _ => none\ndef extend (Γ : Context) (A : Ty) : Context\n  | 0 => some A\n  | n+1 => Γ n\n\ndef up (r : Nat → Nat) : Nat → Nat\n  | 0 => 0\n  | n+1 => r n + 1\n\ndef rename (r : Nat → Nat) : Term → Term\n  | .var n => .var (r n)\n  | .unit => .unit\n  | .lam A body => .lam A (rename (up r) body)\n  | .app f a => .app (rename r f) (rename r a)\n\ndef lift (σ : Nat → Term) : Nat → Term\n  | 0 => .var 0\n  | n+1 => rename Nat.succ (σ n)\n\ndef subst (σ : Nat → Term) : Term → Term\n  | .var n => σ n\n  | .unit => .unit\n  | .lam A body => .lam A (subst (lift σ) body)\n  | .app f a => .app (subst σ f) (subst σ a)\n\ndef single (v : Term) : Nat → Term\n  | 0 => v\n  | n+1 => .var n\n\ninductive Typing : Context → Term → Ty → Prop where\n  | var {Γ n A} : Γ n = some A → Typing Γ (.var n) A\n  | unit {Γ} : Typing Γ .unit .base\n  | lam {Γ A body B} : Typing (extend Γ A) body B → Typing Γ (.lam A body) (.arr A B)\n  | app {Γ f a A B} : Typing Γ f (.arr A B) → Typing Γ a A → Typing Γ (.app f a) B\n\ninductive Value : Term → Prop where\n  | unit : Value .unit\n  | lam {A body} : Value (.lam A body)\n\ninductive Step : Term → Term → Prop where\n  | beta {A body v} : Value v → Step (.app (.lam A body) v) (subst (single v) body)\n  | appLeft {f f' a} : Step f f' → Step (.app f a) (.app f' a)\n  | appRight {f a a'} : Value f → Step a a' → Step (.app f a) (.app f a')\n\ndef Target : Prop :=\n  (∀ Γ t t' A, Typing Γ t A → Step t t' → Typing Γ t' A) ∧\n  (∀ t A, Typing empty t A → Value t ∨ ∃ t', Step t t')\nend Challenge\n",
+  "format_version": "aip-lean-proof-instance/1",
+  "instance_sha256": "ed31b3f2ee7c11c98b701e527fc409e31504b868cd8937379e42b6bd7b158288",
+  "prelude_sha256": "427dc53408284f1fba1f4b2baeeca933ff16b22a3a22d3e0162dce59d67ac1db",
+  "prelude_source": "import Init\n",
+  "problem": {
+    "family": "stlc_safety",
+    "revision": "v001"
+  },
+  "proof_name": "AMBenchSolution.proof",
+  "public_features": {
+    "proof_task": "stlc_safety"
+  },
+  "target_name": "Challenge.Target",
+  "toolchain": "leanprover/lean4:v4.19.0"
+}

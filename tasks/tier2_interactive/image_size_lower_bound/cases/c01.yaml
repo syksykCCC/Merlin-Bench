@@ -1,0 +1,7 @@
+id: c01
+title: Systematic subcube image
+difficulty: H1
+parameters:
+  dimension: 8
+  num_inputs: 10
+  num_outputs: 12

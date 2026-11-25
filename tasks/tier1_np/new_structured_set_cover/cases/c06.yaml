@@ -1,0 +1,11 @@
+id: c06
+title: Marked width-16 weighted hitting-set tree
+difficulty: H2
+parameters:
+  num_bags: 109
+  bag_width: 16
+  overlap_width: 6
+  clauses_per_bag: 34
+  branching_factor: 3
+  min_weight: 23
+  max_weight: 1597

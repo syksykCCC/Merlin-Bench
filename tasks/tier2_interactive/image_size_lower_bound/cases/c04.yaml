@@ -1,0 +1,6 @@
+id: c04
+title: Separable nonlinear product code
+difficulty: H2
+parameters:
+  num_blocks: 6
+  num_outputs: 24

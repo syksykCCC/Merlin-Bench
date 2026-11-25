@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "aipbench://t2.new_hamiltonicity_bind_open/hamiltonicity.open/1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["openings"],
+  "properties": {
+    "openings": {
+      "type": "array",
+      "minItems": 24,
+      "maxItems": 24,
+      "items": {
+        "oneOf": [
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["kind", "permutation"],
+            "properties": {
+              "kind": {"const": "isomorphism"},
+              "permutation": {
+                "type": "array",
+                "minItems": 3,
+                "maxItems": 4096,
+                "items": {"type": "integer", "minimum": 0, "maximum": 4095}
+              }
+            }
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["kind", "vertices"],
+            "properties": {
+              "kind": {"const": "cycle"},
+              "vertices": {
+                "type": "array",
+                "minItems": 3,
+                "maxItems": 4096,
+                "items": {"type": "integer", "minimum": 0, "maximum": 4095}
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,9 @@
+id: c03
+title: Large-integer sharded serial network
+difficulty: H1
+parameters:
+  num_segments: 256
+  bundle_edges: 72
+  bandwidth: 3000000007
+  return_edges: 512
+  max_return_capacity: 1000000

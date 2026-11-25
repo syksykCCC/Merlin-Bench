@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aip-bench.local/schemas/participant-api/v1/event.schema.json",
+  "title": "Participant API v1 event request",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["api_version", "session_id", "sequence", "kind", "payload", "artifact_refs"],
+  "properties": {
+    "api_version": {"const": "aip/1"},
+    "session_id": {"type": "string", "minLength": 1},
+    "sequence": {"type": "integer", "minimum": 0},
+    "kind": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9_]*(?:\\.[a-z][a-z0-9_]*)+$"
+    },
+    "payload": {"type": "object"},
+    "artifact_refs": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^sha256:[0-9a-f]{64}$"
+      },
+      "uniqueItems": true
+    }
+  }
+}

@@ -1,0 +1,9 @@
+id: c01
+title: Mandatory-cut calibration
+difficulty: STRUCTURE
+parameters:
+  branching_factor: 4
+  depth: 5
+  minimum_tree_weight: 7
+  maximum_tree_weight: 29
+  num_extra_edges: 1600

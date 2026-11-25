@@ -1,0 +1,6 @@
+id: c04
+title: Hidden affine-parity Hamilton lift
+difficulty: H3
+parameters:
+  num_variables: 80
+  num_equations: 80

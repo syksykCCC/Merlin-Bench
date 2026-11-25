@@ -1,0 +1,6 @@
+id: c07
+title: Auxiliary-cloaked affine Hamilton lift
+difficulty: H3
+parameters:
+  num_variables: 23
+  num_equations: 23

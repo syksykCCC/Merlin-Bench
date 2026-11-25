@@ -1,0 +1,11 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "aipbench://t2.new_gkr_layered_circuit/reply/ready/v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["layer", "round"],
+  "properties": {
+    "layer": {"const": 0},
+    "round": {"const": 0}
+  }
+}

@@ -1,0 +1,7 @@
+id: c05
+title: Sparse cluster-interface network
+difficulty: H2
+parameters:
+  num_clusters: 48
+  cluster_width: 128
+  internal_matchings: 3

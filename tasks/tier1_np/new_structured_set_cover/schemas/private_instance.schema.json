@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "aipbench://t1.new_structured_set_cover/private-instance/1",
+  "type": "object",
+  "required": ["reference_set_ids", "reference_weight"],
+  "properties": {
+    "reference_set_ids": {
+      "type": "array", "minItems": 1, "uniqueItems": true,
+      "items": {"type": "integer", "minimum": 1, "maximum": 9007199254740991}
+    },
+    "reference_weight": {"type": "integer", "minimum": 1, "maximum": 9007199254740991}
+  },
+  "additionalProperties": false
+}

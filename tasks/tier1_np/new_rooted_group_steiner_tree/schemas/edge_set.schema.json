@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "aipbench://t1.new_rooted_group_steiner_tree/edge-set/1",
+  "type": "object",
+  "required": ["edge_ids"],
+  "properties": {
+    "edge_ids": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {"type": "integer", "minimum": 1, "maximum": 9007199254740991}
+    }
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,50 @@
+id: t1.new_weighted_partial_maxsat
+version: 0.1.0
+tier: 1
+title: New Weighted Partial MaxSAT Assignment
+
+plugin:
+  entrypoint: aipbench.tasks.new_weighted_partial_maxsat:create_task
+
+protocol:
+  api_version: aip/1
+  mode: one_shot
+  public_coin: false
+  one_shot_eval: true
+  max_events: 1
+  participant_feedback:
+    dev: verbose
+    eval: minimal
+
+randomness:
+  model: committed_prg
+  reveal_on_terminal: true
+  domain_separation: required
+
+instance:
+  public_schema: schemas/public_instance.schema.json
+  private_schema: schemas/private_instance.schema.json
+
+resources:
+  wall_time_seconds: 600
+  cpu_cores: 4
+  memory_mb: 4096
+  disk_mb: 4096
+  max_artifact_bytes: 8388608
+  max_events: 1
+
+audit:
+  replay_mode: strict
+  require_signature: true
+  require_seed_commitment: true
+  require_instance_digest: true
+  require_event_chain: true
+  require_seed_reveal: true
+
+scoring:
+  primary: binary_accept
+  partial_progress: assignment_submitted
+
+soundness:
+  class: deterministic_certificate
+  statement: all hard clauses satisfied and exact soft cost at most threshold

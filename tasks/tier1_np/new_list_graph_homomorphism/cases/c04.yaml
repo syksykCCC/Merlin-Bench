@@ -1,0 +1,5 @@
+id: c04
+title: Double-line blind switched CFI isomorphism
+difficulty: H2
+parameters:
+  lift_factor: 4

@@ -1,0 +1,7 @@
+id: c02
+title: Relabeled cyclic overlap
+difficulty: H1
+parameters:
+  cycle_length: 3072
+  min_vertex_weight: 7
+  max_vertex_weight: 41

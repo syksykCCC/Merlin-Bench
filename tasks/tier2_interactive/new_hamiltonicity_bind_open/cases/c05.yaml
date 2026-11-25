@@ -1,0 +1,6 @@
+id: c05
+title: Weak-signal planted satisfiability lift
+difficulty: H3
+parameters:
+  num_variables: 40
+  num_clauses: 320

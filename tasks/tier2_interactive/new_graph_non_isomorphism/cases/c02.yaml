@@ -1,0 +1,6 @@
+id: c02
+title: Connected Shrikhande--rook amplification
+difficulty: H2
+parameters:
+  min_cycle_length: 89
+  max_cycle_length: 127

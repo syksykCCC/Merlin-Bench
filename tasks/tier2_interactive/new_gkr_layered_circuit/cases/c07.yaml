@@ -1,0 +1,7 @@
+id: c07
+title: Boolean repeated-squaring transitive closure
+difficulty: H3
+parameters:
+  num_vertices: 16
+  squarings: 4
+  expansion_width: 262144

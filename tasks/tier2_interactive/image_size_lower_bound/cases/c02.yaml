@@ -1,0 +1,7 @@
+id: c02
+title: Hidden affine image
+difficulty: H2
+parameters:
+  rank: 8
+  num_inputs: 12
+  num_outputs: 14

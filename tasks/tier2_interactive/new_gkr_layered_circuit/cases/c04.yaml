@@ -1,0 +1,5 @@
+id: c04
+title: Walsh--Hadamard XOR convolution
+difficulty: H2
+parameters:
+  vector_length: 128

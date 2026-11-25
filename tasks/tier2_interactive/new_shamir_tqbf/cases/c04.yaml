@@ -1,0 +1,8 @@
+id: c04
+title: Hidden blocked reversible map, 11 plus 10 bits
+difficulty: H2
+parameters:
+  large_block: 11
+  small_block: 10
+  quadratic_taps: 1
+  row_cloak_rounds: 0

@@ -1,0 +1,607 @@
+{
+  "schema_version": "merlin-bench-tier3-plus/1",
+  "case_count": 24,
+  "status": "provisional",
+  "cases": [
+    {
+      "domain": "lean",
+      "candidate_id": "c09-transactions_first_write-v001",
+      "task_id": "t3.machine_checked_mathematics_long_horizon",
+      "task_version": "0.2.0",
+      "case_slot": "c09",
+      "instance_file_sha256": "ee2df4785f12a23d0a16fd7ff94f5d8820bcb0f8c2465e34d328be6307118369",
+      "canonical_instance_sha256": "6503adb2ac31a515de314017e7f9d17dfed3c597049563fb1f107efe206f9ca1",
+      "protocol_file_sha256": "da262a7a589de38e49a019f5cefa823495f2e383f9c425bd1006ef9303b11e7e",
+      "embedded_instance_sha256": "c5cd12219a404c79f930cdeb02dc284b15e450b8c0eb6a696ff08efce931029e",
+      "id": "lean-01",
+      "instance_path": "lean/lean-01/instance.json",
+      "protocol_path": "lean/lean-01/protocol.json",
+      "title": "Transactional first-write rollback",
+      "assets": {
+        "Challenge.lean": {
+          "field": "challenge_source",
+          "sha256": "8e407445b5090e954b2055a81c96ba26fae306e092a09264efd52f76f7c564b6"
+        },
+        "AMBenchPrelude.lean": {
+          "field": "prelude_source",
+          "sha256": "427dc53408284f1fba1f4b2baeeca933ff16b22a3a22d3e0162dce59d67ac1db"
+        }
+      }
+    },
+    {
+      "domain": "lean",
+      "candidate_id": "c09-lazy_affine_tree-v001",
+      "task_id": "t3.machine_checked_mathematics_long_horizon",
+      "task_version": "0.2.0",
+      "case_slot": "c09",
+      "instance_file_sha256": "2f361897111d9057a8a50a86fea7c2bb3d647f4099dac5367fd2ddb7495e2949",
+      "canonical_instance_sha256": "9da5e6e2987fd6aedf31daec15863312ae7dc0aab25798f44454193382392b54",
+      "protocol_file_sha256": "9616ab53b68d80719b8431dfd33b009b1b29ac075544a99e36a1f0b5d9665405",
+      "embedded_instance_sha256": "4a913ffbd7465e5aacf87706fb60c73f10e50bbd6e7834bbe1a8f0fe21b392d1",
+      "id": "lean-02",
+      "instance_path": "lean/lean-02/instance.json",
+      "protocol_path": "lean/lean-02/protocol.json",
+      "title": "Lazy affine segment tree correctness",
+      "assets": {
+        "Challenge.lean": {
+          "field": "challenge_source",
+          "sha256": "ed23c703d33bd9bf86e57195616cc568e373beb778498589bc0dcdd59f414415"
+        },
+        "AMBenchPrelude.lean": {
+          "field": "prelude_source",
+          "sha256": "427dc53408284f1fba1f4b2baeeca933ff16b22a3a22d3e0162dce59d67ac1db"
+        }
+      }
+    },
+    {
+      "domain": "lean",
+      "candidate_id": "c09-reverse_ad-v002",
+      "task_id": "t3.machine_checked_mathematics_long_horizon",
+      "task_version": "0.2.0",
+      "case_slot": "c09",
+      "instance_file_sha256": "41357631c02e6d9453c026218aaff4a25b192238c865de3aea415c73555bcbd6",
+      "canonical_instance_sha256": "c9efd89b7144ceb388a4700b56aaacb69e0c370a53849036717cf419f57f92ff",
+      "protocol_file_sha256": "6de962376cd95b79adb3e2a30b1854f22e0412bc1b91b6cc9e1a8ddceca7f332",
+      "embedded_instance_sha256": "1752c5e71e9a22d8dd5e7b2b32d16d47655c414386f8269135fa9c1efa1e149c",
+      "id": "lean-03",
+      "instance_path": "lean/lean-03/instance.json",
+      "protocol_path": "lean/lean-03/protocol.json",
+      "title": "Reverse-mode automatic differentiation",
+      "assets": {
+        "Challenge.lean": {
+          "field": "challenge_source",
+          "sha256": "662c90f0c7b4334ce7916d52a60011b5d5fb46a28a30c7f0d4590403a15f382b"
+        },
+        "AMBenchPrelude.lean": {
+          "field": "prelude_source",
+          "sha256": "427dc53408284f1fba1f4b2baeeca933ff16b22a3a22d3e0162dce59d67ac1db"
+        }
+      }
+    },
+    {
+      "domain": "lean",
+      "candidate_id": "c10-stlc_safety-v001",
+      "task_id": "t3.machine_checked_mathematics_long_horizon",
+      "task_version": "0.2.0",
+      "case_slot": "c10",
+      "instance_file_sha256": "2ac2011421fc89886c73b23644009b574154e7f81309fa0e39bee08ab5cdce17",
+      "canonical_instance_sha256": "23cbd340833d5fac72f26f6627d24262d7e66f67c527bd77731de3b5b2df4a06",
+      "protocol_file_sha256": "d9e00ba6007bd35bf3423e1a20db45c874b3f607012eac25eb6d10ca65a77e1b",
+      "embedded_instance_sha256": "ed31b3f2ee7c11c98b701e527fc409e31504b868cd8937379e42b6bd7b158288",
+      "id": "lean-04",
+      "instance_path": "lean/lean-04/instance.json",
+      "protocol_path": "lean/lean-04/protocol.json",
+      "title": "Simply typed lambda calculus safety",
+      "assets": {
+        "Challenge.lean": {
+          "field": "challenge_source",
+          "sha256": "601a3ffc9c8a9c3fec5eed706d56ce55288592e69e7bfc7fca0344836bd96874"
+        },
+        "AMBenchPrelude.lean": {
+          "field": "prelude_source",
+          "sha256": "427dc53408284f1fba1f4b2baeeca933ff16b22a3a22d3e0162dce59d67ac1db"
+        }
+      }
+    },
+    {
+      "domain": "lean",
+      "candidate_id": "c10-exceptions_finally_machine-v001",
+      "task_id": "t3.machine_checked_mathematics_long_horizon",
+      "task_version": "0.2.0",
+      "case_slot": "c10",
+      "instance_file_sha256": "60974a3859072d7ff898a37e95812d652ac215436c8793568df51735fd49d034",
+      "canonical_instance_sha256": "b1efbbb6617af5857a5fd303a98cd3595104ba34e16dc63f8075e37961cfdf2d",
+      "protocol_file_sha256": "58510921e51480bf4c9e39c54a67d5d9ca3601ecf18e44588da707cc01289710",
+      "embedded_instance_sha256": "b5f97124c362d569622ac8f4df246c1efec410fea24ac6111a7b0681bebb383e",
+      "id": "lean-05",
+      "instance_path": "lean/lean-05/instance.json",
+      "protocol_path": "lean/lean-05/protocol.json",
+      "title": "Exceptions and finally machine correctness",
+      "assets": {
+        "Challenge.lean": {
+          "field": "challenge_source",
+          "sha256": "8534b465f141e48d125b4b1ee6e583ac622bf7d8a4ad33dac3e22bfed9c9f45b"
+        },
+        "AMBenchPrelude.lean": {
+          "field": "prelude_source",
+          "sha256": "ad7365ced9cc452bc7e2124a0cd3f974cf2aecd48d056518969380b6c9abe025"
+        }
+      }
+    },
+    {
+      "domain": "lean",
+      "candidate_id": "c09-lambda_parallel_confluence-v001",
+      "task_id": "t3.machine_checked_mathematics_long_horizon",
+      "task_version": "0.2.0",
+      "case_slot": "c09",
+      "instance_file_sha256": "4c3885ab38fd75a9a3455dd5c7fa5f5dbbda19f435f68d5330c5c8999b557c1d",
+      "canonical_instance_sha256": "a21c5e3fc8e2cdbde4cd7ae59104ab5d37699fa4e27af59a8f8fb5bee8b0319d",
+      "protocol_file_sha256": "d88415f95d0aab75fb2f8c4124a26ad3d02606d664eec7b9736146d8191cd8de",
+      "embedded_instance_sha256": "d1bade12ac8f17adb3d8104168ee8ab9864cf68d21fdbd97056356a9a124338e",
+      "id": "lean-06",
+      "instance_path": "lean/lean-06/instance.json",
+      "protocol_path": "lean/lean-06/protocol.json",
+      "title": "Parallel reduction confluence for lambda calculus",
+      "assets": {
+        "Challenge.lean": {
+          "field": "challenge_source",
+          "sha256": "0a593ffc18eac152c0168a1ac08a6a60dab0732a2070ccb7a027941695c0a620"
+        },
+        "AMBenchPrelude.lean": {
+          "field": "prelude_source",
+          "sha256": "ad7365ced9cc452bc7e2124a0cd3f974cf2aecd48d056518969380b6c9abe025"
+        }
+      }
+    },
+    {
+      "domain": "lean",
+      "candidate_id": "c10-typed_closure_machine_safety-v001",
+      "task_id": "t3.machine_checked_mathematics_long_horizon",
+      "task_version": "0.2.0",
+      "case_slot": "c10",
+      "instance_file_sha256": "c05a73ea86bfea259f37ef0dd5219a21ea3a20b83766006f728729cebc24218e",
+      "canonical_instance_sha256": "adf016d6c3ce3eb6e2611db2f5ce197ab61f7a959701e1d2ad724105af15ceb4",
+      "protocol_file_sha256": "78d0b1922f1d8e87dac3a76f0a76c6e172c90665df7ed8f1015058aeffd9e264",
+      "embedded_instance_sha256": "352ba5b56ec37719b5d086100328c347874ce5f8dfc7a7d6e0fda18886cdcd67",
+      "id": "lean-07",
+      "instance_path": "lean/lean-07/instance.json",
+      "protocol_path": "lean/lean-07/protocol.json",
+      "title": "Typed closure machine safety",
+      "assets": {
+        "Challenge.lean": {
+          "field": "challenge_source",
+          "sha256": "527119c858f212f323f84ea6ff1aee3d468b0f70291d8eebfde274b05264de4f"
+        },
+        "AMBenchPrelude.lean": {
+          "field": "prelude_source",
+          "sha256": "ad7365ced9cc452bc7e2124a0cd3f974cf2aecd48d056518969380b6c9abe025"
+        }
+      }
+    },
+    {
+      "domain": "lean",
+      "candidate_id": "c10-fuelled_closure_evaluator-v001",
+      "task_id": "t3.machine_checked_mathematics_long_horizon",
+      "task_version": "0.2.0",
+      "case_slot": "c10",
+      "instance_file_sha256": "47bf50ee95118948a206ed428dddb36436d73beb9ec07f3571a87f236a64c5cc",
+      "canonical_instance_sha256": "d42df92cce565818a19c61cc415255505f2f626397a7aa8e2996dd9b34c23ea1",
+      "protocol_file_sha256": "e28921b991b83423b6ab1634216d55e31b16e5bab36e3adeaaa981ce130042c6",
+      "embedded_instance_sha256": "2c5d6aaead4137f276e90baa7a5a5fd219fb5f0a0d8c1a71a1ef1a53709b9419",
+      "id": "lean-08",
+      "instance_path": "lean/lean-08/instance.json",
+      "protocol_path": "lean/lean-08/protocol.json",
+      "title": "Fuelled closure evaluator correctness",
+      "assets": {
+        "Challenge.lean": {
+          "field": "challenge_source",
+          "sha256": "82a08f2afa6072dceb6aa9b530a49cd03d3a7ffde085b14c364dfe33d0509078"
+        },
+        "AMBenchPrelude.lean": {
+          "field": "prelude_source",
+          "sha256": "ad7365ced9cc452bc7e2124a0cd3f974cf2aecd48d056518969380b6c9abe025"
+        }
+      }
+    },
+    {
+      "domain": "dafny",
+      "candidate_id": "rebuttal-dafny-reserve-affine-cfg-cert-v001",
+      "task_id": "t3.dafny_verified_programs",
+      "task_version": "0.2.0",
+      "case_slot": "c04",
+      "instance_file_sha256": "d2da2a90920287593a210f66d42f0c5d4cb26efeb21cfcaa6c3d36cbd7148210",
+      "canonical_instance_sha256": "6f5fc44617d6703267ab7b1d4b7c337913880b4496c986d47f5ea62f8b36198c",
+      "protocol_file_sha256": "e4b36e44aa7b1c90b932b93a94f0840283d4769d87caf5f9b02692e2f90058b4",
+      "embedded_instance_sha256": "54f60424519c871bb5750851bc72df569cf1b5d92ade39ec0d0530c64141b7a3",
+      "id": "dafny-01",
+      "instance_path": "dafny/dafny-01/instance.json",
+      "protocol_path": "dafny/dafny-01/protocol.json",
+      "title": "Affine loop safety by inductive halfspaces and Farkas certificates, with a faulty execution",
+      "assets": {
+        "Challenge.dfy": {
+          "field": "challenge_source",
+          "sha256": "914fe7fb1c76a2b1944669d16f5b0e79ca53c7d0397bd61f931a98fb95eafe93"
+        },
+        "Harness.dfy": {
+          "field": "harness_source",
+          "sha256": "f0ba27f600313bc329479ccb8dcfd2d410c6da5a29e86fad50e8cfd0d9d6cb95"
+        }
+      }
+    },
+    {
+      "domain": "dafny",
+      "candidate_id": "rebuttal-dafny-reserve-beta-v001",
+      "task_id": "t3.dafny_verified_programs",
+      "task_version": "0.2.0",
+      "case_slot": "c02",
+      "instance_file_sha256": "08ed66814ea0b63826cb672d47d0e847ae5d81359d4691daafbc9e10d663501e",
+      "canonical_instance_sha256": "14bae0bb1988601b903202908c829d409ef2710531b2f80764812c53b6323ec9",
+      "protocol_file_sha256": "9583beae83f930c999c8436fedaaec9ff8d8caae0b1d97a5316c4b1c50b745a6",
+      "embedded_instance_sha256": "48d8eb939119192e5d076bea72f5a22f0c31d4bbf6311bdd1eb03c3e2df8aeba",
+      "id": "dafny-02",
+      "instance_path": "dafny/dafny-02/instance.json",
+      "protocol_path": "dafny/dafny-02/protocol.json",
+      "title": "Capture-avoiding beta reduction with typed traces under arbitrary binders",
+      "assets": {
+        "Challenge.dfy": {
+          "field": "challenge_source",
+          "sha256": "97bfb7e5f0246b432695a872176b214758085ce3c4dd8b25eb4c4e9fbee2b5ab"
+        },
+        "Harness.dfy": {
+          "field": "harness_source",
+          "sha256": "6bd243dadb319891c7d7316ff63fb5452d09b13ac3b4dd19956db88d099602f1"
+        }
+      }
+    },
+    {
+      "domain": "dafny",
+      "candidate_id": "rebuttal-dafny-reserve-buchi-cert-v001",
+      "task_id": "t3.dafny_verified_programs",
+      "task_version": "0.2.0",
+      "case_slot": "c06",
+      "instance_file_sha256": "cdff49c968a413fc9b0e840af666ffc8e6822505ef0c32464e716fb7310d0673",
+      "canonical_instance_sha256": "123e4dd90ba276c2d30ec7400df01389d4cb3b349eca979a73c4d1d4efb4bc8c",
+      "protocol_file_sha256": "58c0f39e381a76f68ae25184907ff88486c0ff696a2731f591cc86543a7bff45",
+      "embedded_instance_sha256": "dc266fbbaaa67dc24d9cd1182a5dc33cd55681f6e677912301bd476528c72f5e",
+      "id": "dafny-03",
+      "instance_path": "dafny/dafny-03/instance.json",
+      "protocol_path": "dafny/dafny-03/protocol.json",
+      "title": "Fixed generalized Büchi intersection witnesses with executable certificate checking",
+      "assets": {
+        "Challenge.dfy": {
+          "field": "challenge_source",
+          "sha256": "08f7b23ae3495ba3834c9e11d657bfa5187e700fcb846d58c67f5d39f218df96"
+        },
+        "Harness.dfy": {
+          "field": "harness_source",
+          "sha256": "d758b50929f7a79958d1182f47580be3628801e4bc64382dc746ab30940d996b"
+        }
+      }
+    },
+    {
+      "domain": "dafny",
+      "candidate_id": "rebuttal-dafny-reserve-dp-project-v001",
+      "task_id": "t3.dafny_verified_programs",
+      "task_version": "0.2.0",
+      "case_slot": "c03",
+      "instance_file_sha256": "f437f820af587016139d4583fc238fa2e093238a98da343126b68e3989f31e5c",
+      "canonical_instance_sha256": "640e0749ea51aee1b94e54cce52781cc076f2a8ba1267939d60c11a2e1312d29",
+      "protocol_file_sha256": "a8767f05ee24ab65c071d43cb086166d8b96d786a8f91cfab69a13823a6634c4",
+      "embedded_instance_sha256": "9cd7e857fb096ffb505138ecc2571519463b1d73abcdde1642f106d211e8defd",
+      "id": "dafny-04",
+      "instance_path": "dafny/dafny-04/instance.json",
+      "protocol_path": "dafny/dafny-04/protocol.json",
+      "title": "Multi-pivot Davis–Putnam projection with constructive model reconstruction",
+      "assets": {
+        "Challenge.dfy": {
+          "field": "challenge_source",
+          "sha256": "a523bf2be62f4c1322e8f2980ccdee19d8ebe98639a38d81c289d80182217c63"
+        },
+        "Harness.dfy": {
+          "field": "harness_source",
+          "sha256": "c8f827945ae9280863df2053b91c8684d00c4acccd06a9416d01b23ec6ca6262"
+        }
+      }
+    },
+    {
+      "domain": "dafny",
+      "candidate_id": "rebuttal-dafny-reserve-oblivious-v001",
+      "task_id": "t3.dafny_verified_programs",
+      "task_version": "0.2.0",
+      "case_slot": "c04",
+      "instance_file_sha256": "94d8c5fe9ddee1dadf932e9e64512f000957f40d2bedc89db0d5dd175c727158",
+      "canonical_instance_sha256": "d565cf0c6278bd2169aa5b6234893dc036ce1ad860fb402b4a94629e678bb8b8",
+      "protocol_file_sha256": "0ad3bf060bc75e1857c0fe3d1c8f75cddb616b9218dc320d9fc9a11e3b40b6a6",
+      "embedded_instance_sha256": "0feea80d375d036bc81530eef412b285565062a39ec74a723fa205c54cb7dc0c",
+      "id": "dafny-05",
+      "instance_path": "dafny/dafny-05/instance.json",
+      "protocol_path": "dafny/dafny-05/protocol.json",
+      "title": "Trace-oblivious compilation of stateful nested choices and indirect memory accesses",
+      "assets": {
+        "Challenge.dfy": {
+          "field": "challenge_source",
+          "sha256": "afd58c04de366b612ed28aa4a3475ceebed71f21034f4f5e81572972e32a9021"
+        },
+        "Harness.dfy": {
+          "field": "harness_source",
+          "sha256": "8951218207073ed9dcd20b0416dea121173368208ad36c9ea29899ae971ef9f6"
+        }
+      }
+    },
+    {
+      "domain": "dafny",
+      "candidate_id": "rebuttal-dafny-reserve-reachgame-v001",
+      "task_id": "t3.dafny_verified_programs",
+      "task_version": "0.2.0",
+      "case_slot": "c08",
+      "instance_file_sha256": "d43838de4f981dfad707021876ab1d1612b66afded6f62644c081cb6d77e55ac",
+      "canonical_instance_sha256": "04e4a0c4e1cd217452cdcf0e8895740e921de5e17319d5122cb3af0049391682",
+      "protocol_file_sha256": "4063cce2d34265f65cf556947ca3986b5f23d9c56b0b3105960abc3158b10e37",
+      "embedded_instance_sha256": "c9f834c52cdcaafb16e99aebc3cfb5647b4e3681ab5347d36c376f892e53351d",
+      "id": "dafny-06",
+      "instance_path": "dafny/dafny-06/instance.json",
+      "protocol_path": "dafny/dafny-06/protocol.json",
+      "title": "Reachability-game synthesis with paired strategies and finite-play certificates",
+      "assets": {
+        "Challenge.dfy": {
+          "field": "challenge_source",
+          "sha256": "07992b88bd2e89574357c7d2366335098027c9267d7b87a0b518f93f33e64433"
+        },
+        "Harness.dfy": {
+          "field": "harness_source",
+          "sha256": "e76b31cd21629c2f28d6e66718575214ab1a6121d033a8e76dead71a24c89ec7"
+        }
+      }
+    },
+    {
+      "domain": "dafny",
+      "candidate_id": "rebuttal-dafny-reserve-smith-cert-v001",
+      "task_id": "t3.dafny_verified_programs",
+      "task_version": "0.2.0",
+      "case_slot": "c05",
+      "instance_file_sha256": "abc736752174b1a1d140895e19fc4c4a0d0a8ae71458670b0370bc26a285cefd",
+      "canonical_instance_sha256": "043ca24e28973a9b980003ba01d35a8036995979bc3bf681c3509df6902d2be8",
+      "protocol_file_sha256": "1ad23ce9b21c08f9b31309dddb8e9adb082f90364de18935da6ef865c4e20ec1",
+      "embedded_instance_sha256": "a5f724eb6a67989938f6ee6d4d50696f406ca9811ae735b3fb02503891a4582a",
+      "id": "dafny-07",
+      "instance_path": "dafny/dafny-07/instance.json",
+      "protocol_path": "dafny/dafny-07/protocol.json",
+      "title": "Smith normal form certificates for two integer presentations",
+      "assets": {
+        "Challenge.dfy": {
+          "field": "challenge_source",
+          "sha256": "dda0662c1ac4d8fde2ba84ac52cd910d5f557bcab767f2fa6a634104b9161b7a"
+        },
+        "Harness.dfy": {
+          "field": "harness_source",
+          "sha256": "a52d4da76eaf67eb841e7220ce8d78d903ea9937b02f5a4efce77e4b8bbb03ab"
+        }
+      }
+    },
+    {
+      "domain": "dafny",
+      "candidate_id": "rebuttal-dafny-v1-c04",
+      "task_id": "t3.dafny_verified_programs",
+      "task_version": "0.2.0",
+      "case_slot": "c04",
+      "instance_file_sha256": "b4a00efe0be336bcc5da81781bd6ba3854c0e69d727f670cf07cb89b7a40a72e",
+      "canonical_instance_sha256": "4923692ff85d37e7df5fe6c8bf7c7b004517e11a86c746ad43c413f4481225bd",
+      "protocol_file_sha256": "019cb1b496860d4ec75dc500e9485a52d392a6a80cee35ea4ca63b2e7a278b31",
+      "embedded_instance_sha256": "e40e2fa7c8dcf69accea22dd23f0301fc41f922e80ac58cf28be0e0d96543f15",
+      "id": "dafny-08",
+      "instance_path": "dafny/dafny-08/instance.json",
+      "protocol_path": "dafny/dafny-08/protocol.json",
+      "title": "Longest strictly rising contiguous telemetry run",
+      "assets": {
+        "Challenge.dfy": {
+          "field": "challenge_source",
+          "sha256": "946171ccf5d9205d6deb3cd49a75b4bc518ad2ba01821f3d92431e401286d223"
+        },
+        "Harness.dfy": {
+          "field": "harness_source",
+          "sha256": "9bc51219d15ab8194de019b5dc28caace0ae1a9813dc624a17f1f98eccc7d8ca"
+        }
+      }
+    },
+    {
+      "domain": "drat",
+      "candidate_id": "drat-c05-v001",
+      "task_id": "t3.drat_bounded_hardware_safety",
+      "task_version": "0.8.0",
+      "case_slot": "c05",
+      "instance_file_sha256": "b47f6d0063e54f7a413db8fdb9f28e803a17542315a77c0404a2cba1e47e439b",
+      "canonical_instance_sha256": "01aaa0f79530c93724cf74ebeb92dadfffb3f22b82703041879efbc1dabd75e7",
+      "protocol_file_sha256": "4a543dce164320404cdd3724c623a959a0c0e2bf42c18dcfa7f63e9bf4596c9a",
+      "embedded_instance_sha256": "79dd960342f35bbc49dfc8b547fecf6fce6ebbb1a04e162f4578ea679f247485",
+      "id": "drat-01",
+      "instance_path": "drat/drat-01/instance.json",
+      "protocol_path": "drat/drat-01/protocol.json",
+      "title": "serial-mod-five",
+      "assets": {
+        "circuit.aag": {
+          "field": "aiger_aag",
+          "sha256": "7d44aee5f7a29e98780ad959981548c7084867e8f70d7504af5988b82a520ebe"
+        },
+        "bound.cnf": {
+          "field": "bound_cnf",
+          "sha256": "b5f234c6a0c0bf3894449c223c070859db326f0b6f5c36d697638a66669ad91b"
+        }
+      }
+    },
+    {
+      "domain": "drat",
+      "candidate_id": "drat-c06-v001",
+      "task_id": "t3.drat_bounded_hardware_safety",
+      "task_version": "0.8.0",
+      "case_slot": "c06",
+      "instance_file_sha256": "fceb95fe4341cce5d89308fa9111a27a000d9e6b79650b32e29264208cb8c0ac",
+      "canonical_instance_sha256": "6622217c3251e9fb55c177b0e53b80f4591c5acefc3d396d2c90d6a8eae5fb19",
+      "protocol_file_sha256": "e1c77bbcdecc14d0afe9ac08b7811c387425c757c1dc4f0b1f7e23731415809e",
+      "embedded_instance_sha256": "b76830fe984c3581381aa9a8fd56b8a75857e125a847c9817857b9c33fbdb693",
+      "id": "drat-02",
+      "instance_path": "drat/drat-02/instance.json",
+      "protocol_path": "drat/drat-02/protocol.json",
+      "title": "mesh-parity-conservation",
+      "assets": {
+        "circuit.aag": {
+          "field": "aiger_aag",
+          "sha256": "4b88eb8ae214f64a2749c2c318c657a1aa5e035dd9ffdf32b518d4011329d06b"
+        },
+        "bound.cnf": {
+          "field": "bound_cnf",
+          "sha256": "448be941a2a93a54519b7714d01d193da2ad33fe26d96a30e2fea79a8619b613"
+        }
+      }
+    },
+    {
+      "domain": "drat",
+      "candidate_id": "drat-c07-v001",
+      "task_id": "t3.drat_bounded_hardware_safety",
+      "task_version": "0.8.0",
+      "case_slot": "c07",
+      "instance_file_sha256": "ea1b184ae82d23dae1ed491408efb031d224ec25e1c609731f7ff1f699c5b0ee",
+      "canonical_instance_sha256": "b1a1cd4d4986a77bfedb1a9e62e4fe28c8e1df75cdce0cdc50b879b54fdc9125",
+      "protocol_file_sha256": "bd30834b2dd07750c1557ed45f49146cd41c08b251e80c2cd4c7778c8836d385",
+      "embedded_instance_sha256": "eb92e4814f7a0f3f63fa1a6d4a3d8cde362191d7debf09159cabba25b54e89f9",
+      "id": "drat-03",
+      "instance_path": "drat/drat-03/instance.json",
+      "protocol_path": "drat/drat-03/protocol.json",
+      "title": "restartable-shift-add-multiplier",
+      "assets": {
+        "circuit.aag": {
+          "field": "aiger_aag",
+          "sha256": "2d1a511bf7d2f4fb1fa095dff4217b0101f2ff90cf1b20646754055c77325427"
+        },
+        "bound.cnf": {
+          "field": "bound_cnf",
+          "sha256": "299dc5616930ab5eed593222b7795c46807ffd25b114dea355eb1208e6e45174"
+        }
+      }
+    },
+    {
+      "domain": "drat",
+      "candidate_id": "drat-c08-v001",
+      "task_id": "t3.drat_bounded_hardware_safety",
+      "task_version": "0.8.0",
+      "case_slot": "c08",
+      "instance_file_sha256": "722afc935fd4677f24f658ce0eeffe659e6113f8b90caa7188847294dae7a1f8",
+      "canonical_instance_sha256": "ed65a0f84be7b7f3b5efb77a5e47dc3a15b308365b95dd8772b51aa637cf8f1a",
+      "protocol_file_sha256": "e7c60ad7a24632722caea18d64164a69962d19d18488d1e1c91956364bef76e3",
+      "embedded_instance_sha256": "87258637179c9c820139dc8a4c322afce57539d6cd4a9a2c2bca2e4633966c7e",
+      "id": "drat-04",
+      "instance_path": "drat/drat-04/instance.json",
+      "protocol_path": "drat/drat-04/protocol.json",
+      "title": "self-routing-switch-fabric",
+      "assets": {
+        "circuit.aag": {
+          "field": "aiger_aag",
+          "sha256": "920b9ee0a82db1078ddf92f5e7cea5c305ccffbde6325057ac7af7cba74eb033"
+        },
+        "bound.cnf": {
+          "field": "bound_cnf",
+          "sha256": "4c0204b7ac4c703cde2013e16988fff729802c5fc669d7b2035b58024f25c114"
+        }
+      }
+    },
+    {
+      "domain": "drat",
+      "candidate_id": "drat-checkpoint-v001",
+      "task_id": "t3.drat_bounded_hardware_safety",
+      "task_version": "0.8.0",
+      "case_slot": "c04",
+      "instance_file_sha256": "de0d1ea1b1ea73f597984550bb3f8812598e73130f6d979ef6c59f1745922bf6",
+      "canonical_instance_sha256": "058425a2138d8937c43db59cff294fffcfb48c08469dff1fc6b7331dc8bba967",
+      "protocol_file_sha256": "4ff794d793cc85ef083230651a4370af7a719e1fb4a916c13ef4decdd04c435d",
+      "embedded_instance_sha256": "ac8a9860538b5790fd4c656550da787f0a368d3bb2c77cc8d99d0ec36c56b3a2",
+      "id": "drat-05",
+      "instance_path": "drat/drat-05/instance.json",
+      "protocol_path": "drat/drat-05/protocol.json",
+      "title": "nested-checkpoint-undo-store",
+      "assets": {
+        "circuit.aag": {
+          "field": "aiger_aag",
+          "sha256": "3405b723e313dad7b2d3a7e870eb3a4acad2c4ec63c1d9f87d18026f012f5065"
+        },
+        "bound.cnf": {
+          "field": "bound_cnf",
+          "sha256": "d74af54c2b92ba71f22c8933f341db0a2cdfcd14e9a511d24358bd58638254b3"
+        }
+      }
+    },
+    {
+      "domain": "drat",
+      "candidate_id": "drat-retimed-crc-v001",
+      "task_id": "t3.drat_bounded_hardware_safety",
+      "task_version": "0.8.0",
+      "case_slot": "c08",
+      "instance_file_sha256": "a243e910792ac5e2d5b631e5bb83b55136d61166ff3ef6fb16f375ec3112fc18",
+      "canonical_instance_sha256": "6b93aea8ab24cc3fcc5b41f10ea56dfe3660f7560275855e0d3cce4d93bf34cc",
+      "protocol_file_sha256": "275462cc24d648a7ee767b43c2b0f18c4735e6607dec172b257729a2dca8d38c",
+      "embedded_instance_sha256": "0405134911d99e46d74e5d406042dd5fad3ea5c4e164ef23a54da632e8e246f6",
+      "id": "drat-06",
+      "instance_path": "drat/drat-06/instance.json",
+      "protocol_path": "drat/drat-06/protocol.json",
+      "title": "dual-polynomial-retimed-crc",
+      "assets": {
+        "circuit.aag": {
+          "field": "aiger_aag",
+          "sha256": "fec323b23ba165567f57c7247a385d8e9eb40f72c0933fe1c6640211155fb717"
+        },
+        "bound.cnf": {
+          "field": "bound_cnf",
+          "sha256": "2308c445f4122889f082ab0eb268b33533da2d8b20a075bf277c37b4f8581107"
+        }
+      }
+    },
+    {
+      "domain": "drat",
+      "candidate_id": "drat-tagged-csa-v001",
+      "task_id": "t3.drat_bounded_hardware_safety",
+      "task_version": "0.8.0",
+      "case_slot": "c07",
+      "instance_file_sha256": "13bf685db55452f731559445e39af52b685e4088252fe966ed9521167b1cad87",
+      "canonical_instance_sha256": "e233441fdb94288baeafc0f46b4c00adcc890cc4437a12812d4452b03d681769",
+      "protocol_file_sha256": "44b515fa026e5cf721574cd3ecbf761ec5deaefd94656707baa39af6fa75c939",
+      "embedded_instance_sha256": "4c8dc30bb17a8660d246fbaea8fa96cfc31ee9f67650914fc9871575d843f25b",
+      "id": "drat-07",
+      "instance_path": "drat/drat-07/instance.json",
+      "protocol_path": "drat/drat-07/protocol.json",
+      "title": "epoch-tagged-carry-save-retirement",
+      "assets": {
+        "circuit.aag": {
+          "field": "aiger_aag",
+          "sha256": "ba0a7cb18d2a3f10e8063d08e93943d1b121665806ab60b5de0e4e67fca8cd8d"
+        },
+        "bound.cnf": {
+          "field": "bound_cnf",
+          "sha256": "95c04ffeda532442890e041b07ff4191d413ab0f0a3343611178d3f3c3ff88f6"
+        }
+      }
+    },
+    {
+      "domain": "drat",
+      "candidate_id": "drat-writeback-v001",
+      "task_id": "t3.drat_bounded_hardware_safety",
+      "task_version": "0.8.0",
+      "case_slot": "c06",
+      "instance_file_sha256": "e0b33a0289e46fb6b6c8cee4db2058727df80d6aea477808d595153b2f88cc9b",
+      "canonical_instance_sha256": "0ad051eec19ee184891377949aa9dc5119a73a5f929bc9cb19bbee23d8481d17",
+      "protocol_file_sha256": "2089c55027e9ce25720cca8c4bc554a58bdc3e3e785d16b4d0019cbd82c5a8f9",
+      "embedded_instance_sha256": "d4d1de1b246464df2e6d0d2a270b5269c2ddb6e69dde2203b3b094ae644a7ef9",
+      "id": "drat-08",
+      "instance_path": "drat/drat-08/instance.json",
+      "protocol_path": "drat/drat-08/protocol.json",
+      "title": "buffered-dirty-eviction-refill",
+      "assets": {
+        "circuit.aag": {
+          "field": "aiger_aag",
+          "sha256": "19ea48b398270d41600f7e11bd17bbe77a0b2636533a1b7fd75dea2c65d6094b"
+        },
+        "bound.cnf": {
+          "field": "bound_cnf",
+          "sha256": "365a116815f229991c9f1dd47df7341dfc4d7ea2d29b57b478bf1178646bfe05"
+        }
+      }
+    }
+  ]
+}

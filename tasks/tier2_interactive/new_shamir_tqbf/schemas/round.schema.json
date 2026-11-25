@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "aipbench://t2.new_shamir_tqbf/round/v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["round"],
+  "properties": {
+    "round": {"$ref": "#/$defs/round_spec"}
+  },
+  "$defs": {
+    "round_spec": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["round_index", "stage", "operator", "variable", "degree_bound", "remaining_barriers"],
+      "properties": {
+        "round_index": {"type": "integer", "minimum": 0},
+        "stage": {"type": "integer", "minimum": 1},
+        "operator": {"enum": ["reduce", "forall", "exists"]},
+        "variable": {"type": "integer", "minimum": 0},
+        "degree_bound": {"type": "integer", "minimum": 0, "maximum": 64},
+        "remaining_barriers": {"type": "integer", "minimum": 1}
+      }
+    }
+  }
+}

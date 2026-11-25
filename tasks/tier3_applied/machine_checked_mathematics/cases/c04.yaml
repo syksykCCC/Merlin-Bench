@@ -1,0 +1,8 @@
+id: c04
+title: Anonymous affine-plane decoding certificate
+difficulty: H3
+parameters:
+  field_modulus: 19
+  polynomial_degree: 8
+  fully_corrupted_rows: 2
+  errors_per_other_row: 2

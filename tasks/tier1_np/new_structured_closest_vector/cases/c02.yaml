@@ -1,0 +1,9 @@
+id: c02
+title: Hidden signed path equations
+difficulty: H1
+parameters:
+  rank: 128
+  minimum_scale: 7
+  maximum_scale: 31
+  coefficient_magnitude: 13
+  residual_magnitude: 5

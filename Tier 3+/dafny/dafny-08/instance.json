@@ -1,0 +1,15 @@
+{
+  "challenge_sha256": "946171ccf5d9205d6deb3cd49a75b4bc518ad2ba01821f3d92431e401286d223",
+  "challenge_source": "module Challenge {\n  predicate Rising(s: seq<int>, l: int, r: int) {\n    0 <= l < r <= |s| &&\n    (forall k :: l < k < r ==> s[k-1] < s[k])\n  }\n\n  trait {:termination false} Candidate {\n    method Longest(s: seq<int>) returns (left: nat, right: nat)\n      requires |s| > 0\n      ensures Rising(s,left,right)\n      ensures forall l,r :: Rising(s,l,r) ==> r-l <= right-left\n  }\n}\n",
+  "format_version": "aip-dafny-program-instance/1",
+  "harness_sha256": "9bc51219d15ab8194de019b5dc28caace0ae1a9813dc624a17f1f98eccc7d8ca",
+  "harness_source": "module ArthurHarness {\n  import S = Solution\n  import C = Challenge\n  method Main() {\n    var impl: C.Candidate := new S.Candidate();\n    var a,b := impl.Longest([7,7,1,3,5,4,6]);\n    expect a == 2 && b == 5;\n    var p,q := impl.Longest([-3]);\n    expect p == 0 && q == 1;\n    var x,y := impl.Longest([4,4,4]);\n    expect y-x == 1;\n    print \"AIPBENCH_DAFNY_OK:c04\\n\";\n  }\n}\n",
+  "instance_sha256": "e40e2fa7c8dcf69accea22dd23f0301fc41f922e80ac58cf28be0e0d96543f15",
+  "public_features": {
+    "api": "Candidate.Longest",
+    "title": "Longest strictly rising contiguous telemetry run"
+  },
+  "solution_module": "Solution",
+  "success_marker": "AIPBENCH_DAFNY_OK:c04",
+  "toolchain": "dafny-lang/dafny:4.11.0+z3"
+}

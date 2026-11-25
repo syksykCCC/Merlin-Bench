@@ -1,0 +1,6 @@
+id: c03
+title: Hamming ball via truncation
+difficulty: H2
+parameters:
+  dimension: 12
+  radius: 3

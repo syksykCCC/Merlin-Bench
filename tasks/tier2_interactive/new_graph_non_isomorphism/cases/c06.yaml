@@ -1,0 +1,5 @@
+id: c06
+title: Line graph of uncolored CFI parity
+difficulty: H3
+parameters:
+  lift_factor: 16

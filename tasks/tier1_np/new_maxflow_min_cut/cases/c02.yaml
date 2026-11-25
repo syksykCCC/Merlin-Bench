@@ -1,0 +1,7 @@
+id: c02
+title: Regular bipartite matching network
+difficulty: H1
+parameters:
+  side_size: 200
+  cyclic_degree: 22
+  redundant_edges: 200

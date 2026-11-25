@@ -1,0 +1,11 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "aipbench://t3.dafny_verified_programs/private-instance/v1",
+  "type": "object",
+  "required": ["reference_solution", "reference_solution_sha256"],
+  "properties": {
+    "reference_solution": {"type": "string", "minLength": 1, "maxLength": 1048576},
+    "reference_solution_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+  },
+  "additionalProperties": false
+}

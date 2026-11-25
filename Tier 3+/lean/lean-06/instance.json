@@ -1,0 +1,18 @@
+{
+  "challenge_sha256": "0a593ffc18eac152c0168a1ac08a6a60dab0732a2070ccb7a027941695c0a620",
+  "challenge_source": "import Init\nnamespace Challenge\ninductive Term where\n  | var (index : Nat)\n  | lam (body : Term)\n  | app (function argument : Term)\ndef up (r : Nat → Nat) : Nat → Nat\n  | 0 => 0\n  | n+1 => r n + 1\ndef rename (r : Nat → Nat) : Term → Term\n  | .var n => .var (r n)\n  | .lam b => .lam (rename (up r) b)\n  | .app f a => .app (rename r f) (rename r a)\ndef lift (σ : Nat → Term) : Nat → Term\n  | 0 => .var 0\n  | n+1 => rename Nat.succ (σ n)\ndef subst (σ : Nat → Term) : Term → Term\n  | .var n => σ n\n  | .lam b => .lam (subst (lift σ) b)\n  | .app f a => .app (subst σ f) (subst σ a)\ndef single (a : Term) : Nat → Term\n  | 0 => a\n  | n+1 => .var n\ninductive Parallel : Term → Term → Prop where\n  | var (n) : Parallel (.var n) (.var n)\n  | lam {b b'} : Parallel b b' → Parallel (.lam b) (.lam b')\n  | app {f f' a a'} : Parallel f f' → Parallel a a' → Parallel (.app f a) (.app f' a')\n  | beta {b b' a a'} : Parallel b b' → Parallel a a' → Parallel (.app (.lam b) a) (subst (single a') b')\ndef Target : Prop := ∀ t u v, Parallel t u → Parallel t v → ∃ w, Parallel u w ∧ Parallel v w\nend Challenge\n",
+  "format_version": "aip-lean-proof-instance/1",
+  "instance_sha256": "d1bade12ac8f17adb3d8104168ee8ab9864cf68d21fdbd97056356a9a124338e",
+  "prelude_sha256": "ad7365ced9cc452bc7e2124a0cd3f974cf2aecd48d056518969380b6c9abe025",
+  "prelude_source": "import Init\n\nnamespace AMBenchPrelude\n\ndef powMod (base exponent modulus : Nat) : Nat :=\n  match exponent with\n  | 0 => 1 % modulus\n  | n + 1 => (powMod base n modulus * (base % modulus)) % modulus\n\ndef evalPolyMod (coefficients : List Nat) (x modulus : Nat) : Nat :=\n  match coefficients with\n  | [] => 0\n  | coefficient :: rest =>\n      (coefficient + x * evalPolyMod rest x modulus) % modulus\n\ndef absDiff (a b : Nat) : Nat :=\n  if a <= b then b - a else a - b\n\nend AMBenchPrelude\n",
+  "problem": {
+    "family": "lambda_parallel_confluence",
+    "revision": "v001"
+  },
+  "proof_name": "AMBenchSolution.proof",
+  "public_features": {
+    "proof_task": "lambda_parallel_confluence"
+  },
+  "target_name": "Challenge.Target",
+  "toolchain": "leanprover/lean4:v4.19.0"
+}

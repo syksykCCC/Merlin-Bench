@@ -1,0 +1,7 @@
+id: c08
+title: Anonymous binary syndrome certificate
+difficulty: H4
+parameters:
+  num_items: 511
+  target_weight: 28
+  word_bits: 32

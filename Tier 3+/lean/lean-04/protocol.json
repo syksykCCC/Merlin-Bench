@@ -1,0 +1,20 @@
+{
+  "api_version": "aip/1",
+  "event_schemas": {
+    "lean.proof": {
+      "schema_ref": "tasks/tier3_applied/machine_checked_mathematics/schemas/proof_submission.schema.json"
+    }
+  },
+  "initial_event_kinds": [
+    "lean.proof"
+  ],
+  "mode": "one_shot",
+  "public_parameters": {
+    "max_solution_bytes": 262144,
+    "one_shot": true,
+    "proof_name": "AMBenchSolution.proof",
+    "proof_task": "stlc_safety",
+    "target_name": "Challenge.Target",
+    "toolchain": "leanprover/lean4:v4.19.0"
+  }
+}

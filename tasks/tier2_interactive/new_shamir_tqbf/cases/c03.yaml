@@ -1,0 +1,6 @@
+id: c03
+title: Rank-five affine-syndrome game
+difficulty: H2
+parameters:
+  half: 12
+  rank: 5

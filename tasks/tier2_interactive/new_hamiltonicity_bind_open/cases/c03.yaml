@@ -1,0 +1,6 @@
+id: c03
+title: Quiet-planted satisfiability lift
+difficulty: H3
+parameters:
+  num_variables: 64
+  num_clauses: 272

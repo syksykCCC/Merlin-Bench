@@ -1,0 +1,10 @@
+id: c02
+title: Weighted implication closure
+difficulty: H1
+parameters:
+  num_layers: 80
+  layer_width: 150
+  adjacent_degree: 8
+  skip_degree: 2
+  min_weight: 1
+  max_weight: 997

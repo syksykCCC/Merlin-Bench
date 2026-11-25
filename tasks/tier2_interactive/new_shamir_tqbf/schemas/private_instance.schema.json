@@ -1,0 +1,11 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "aipbench://t2.new_shamir_tqbf/private-instance/v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["truth", "family"],
+  "properties": {
+    "truth": {"const": 1},
+    "family": {"type": "string", "minLength": 1}
+  }
+}

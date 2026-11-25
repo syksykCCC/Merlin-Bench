@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "aipbench://t3.drat_bounded_hardware_safety/public-instance/v1",
+  "type": "object",
+  "required": [
+    "format_version", "toolchain", "circuit_name", "bound", "property",
+    "aiger_sha256", "cnf_sha256", "aiger_aag", "bound_cnf",
+    "num_cnf_variables", "num_cnf_clauses", "public_features", "instance_sha256"
+  ],
+  "properties": {
+    "format_version": {"const": "aip-bounded-hardware-drat-instance/1"},
+    "toolchain": {"const": "aiger-039ec1a2/bmc-tseitin-v1+drat-trim-2e3b2dc0+cadical-3.0.1-reference"},
+    "circuit_name": {"type": "string", "minLength": 1, "maxLength": 128},
+    "bound": {"type": "integer", "minimum": 1, "maximum": 1000},
+    "property": {"type": "string", "minLength": 1, "maxLength": 256},
+    "aiger_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "cnf_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "aiger_aag": {"type": "string", "minLength": 1, "maxLength": 8388608},
+    "bound_cnf": {"type": "string", "minLength": 1, "maxLength": 8388608},
+    "num_cnf_variables": {"type": "integer", "minimum": 1},
+    "num_cnf_clauses": {"type": "integer", "minimum": 1},
+    "public_features": {
+      "type": "object",
+      "maxProperties": 5,
+      "additionalProperties": {"type": ["integer", "string"]}
+    },
+    "instance_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+  },
+  "additionalProperties": false
+}

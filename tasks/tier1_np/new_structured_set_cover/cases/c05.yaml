@@ -1,0 +1,10 @@
+id: c05
+title: Marked width-18 weighted hitting-set path
+difficulty: H2
+parameters:
+  num_bags: 124
+  bag_width: 18
+  overlap_width: 9
+  clauses_per_bag: 32
+  min_weight: 19
+  max_weight: 1993

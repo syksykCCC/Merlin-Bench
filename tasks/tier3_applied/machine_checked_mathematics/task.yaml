@@ -1,0 +1,52 @@
+id: t3.machine_checked_mathematics
+version: 0.1.0
+tier: 3
+title: Machine-Checked Mathematics
+
+plugin:
+  entrypoint: aipbench.tasks.machine_checked_mathematics:create_task
+
+protocol:
+  api_version: aip/1
+  mode: one_shot
+  public_coin: false
+  one_shot_eval: true
+  max_events: 1
+  participant_feedback:
+    dev: verbose
+    eval: minimal
+
+randomness:
+  model: none
+  reveal_on_terminal: false
+  domain_separation: not_applicable
+
+instance:
+  public_schema: schemas/public_instance.schema.json
+  private_schema: schemas/private_instance.schema.json
+
+resources:
+  wall_time_seconds: 600
+  cpu_cores: 2
+  memory_mb: 1024
+  disk_mb: 512
+  max_artifact_bytes: 262144
+  max_events: 1
+
+audit:
+  replay_mode: strict
+  require_signature: true
+  require_seed_commitment: false
+  require_instance_digest: true
+  require_event_chain: true
+  require_seed_reveal: false
+
+scoring:
+  primary: binary_accept
+  partial_progress: proof_submitted
+
+soundness:
+  class: deterministic_kernel_checked_proof
+  statement: >-
+    Lean 4.19.0 kernel checks an exact proof of the generated Challenge.Target;
+    the trusted boundary includes the challenge encoding and process isolation

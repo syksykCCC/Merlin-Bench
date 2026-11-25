@@ -1,0 +1,20 @@
+{
+  "api_version": "aip/1",
+  "event_schemas": {
+    "dafny.program": {
+      "schema_ref": "tasks/tier3_applied/dafny_verified_programs/schemas/program_submission.schema.json"
+    }
+  },
+  "initial_event_kinds": [
+    "dafny.program"
+  ],
+  "mode": "one_shot",
+  "public_parameters": {
+    "api": "Candidate.Reduce",
+    "max_solution_bytes": 1048576,
+    "one_shot": true,
+    "solution_module": "Solution",
+    "title": "Capture-avoiding beta reduction with typed traces under arbitrary binders",
+    "toolchain": "dafny-lang/dafny:4.11.0+z3"
+  }
+}

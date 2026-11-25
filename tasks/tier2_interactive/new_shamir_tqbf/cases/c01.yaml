@@ -1,0 +1,5 @@
+id: c01
+title: Explicit width-4 alternating branching game
+difficulty: H1
+parameters:
+  pairs: 9

@@ -1,0 +1,12 @@
+id: c05
+title: Column-mixed tensor-code lattice
+difficulty: H2
+parameters:
+  grid_size: 16
+  component_dimension: 12
+  modulus: 257
+  num_errors: 16
+  denominator: 13
+  clean_offset: 1
+  error_offset: -7
+  coefficient_magnitude: 7

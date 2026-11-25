@@ -1,0 +1,10 @@
+id: c04
+title: Locally compiled weighted closure
+difficulty: H2
+parameters:
+  num_layers: 64
+  layer_width: 96
+  adjacent_degree: 4
+  skip_degree: 1
+  min_weight: 1
+  max_weight: 4093

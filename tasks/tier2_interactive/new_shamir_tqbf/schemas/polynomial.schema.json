@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "aipbench://t2.new_shamir_tqbf/polynomial/v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["round_index", "coefficients"],
+  "properties": {
+    "round_index": {"type": "integer", "minimum": 0},
+    "coefficients": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 65,
+      "items": {"type": "string", "pattern": "^[0-9a-f]{16}$"}
+    }
+  }
+}

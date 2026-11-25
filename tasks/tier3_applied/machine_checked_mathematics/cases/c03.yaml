@@ -1,0 +1,5 @@
+id: c03
+title: Hidden line-graph root certificate
+difficulty: H2
+parameters:
+  base_vertices: 64

@@ -1,0 +1,11 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "aipbench://t2.new_boolean_hypercube_sumcheck/sumcheck.challenge/1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["round_index", "point"],
+  "properties": {
+    "round_index": {"type": "integer", "minimum": 0, "maximum": 399},
+    "point": {"type": "string", "pattern": "^[0-9a-f]{16}$"}
+  }
+}

@@ -1,0 +1,7 @@
+id: c02
+title: Shuffled CRT reconstruction certificate
+difficulty: H1
+parameters:
+  num_congruences: 12
+  prime_floor: 1000000
+  prime_window: 200000

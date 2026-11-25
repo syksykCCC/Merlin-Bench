@@ -1,0 +1,8 @@
+id: c02
+title: Serial cactus boundary constraints
+difficulty: STRUCTURE
+parameters:
+  num_cells: 768
+  minimum_edge_weight: 3
+  maximum_edge_weight: 31
+  constraints_per_boundary: 2

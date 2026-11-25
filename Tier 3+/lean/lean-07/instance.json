@@ -1,0 +1,18 @@
+{
+  "challenge_sha256": "527119c858f212f323f84ea6ff1aee3d468b0f70291d8eebfde274b05264de4f",
+  "challenge_source": "import Init\nnamespace Challenge\ninductive Ty where | base | arr (domain codomain : Ty)\ninductive Term where\n  | var : Nat → Term\n  | num : Nat → Term\n  | lam : Term → Term\n  | app : Term → Term → Term\ninductive Val where\n  | num : Nat → Val\n  | clo : Term → List Val → Val\nabbrev Env := List Val\ninductive Typing : List Ty → Term → Ty → Prop where\n  | var {Γ n A} : Γ[n]? = some A → Typing Γ (.var n) A\n  | num {Γ n} : Typing Γ (.num n) .base\n  | lam {Γ body A B} : Typing (A :: Γ) body B → Typing Γ (.lam body) (.arr A B)\n  | app {Γ f a A B} : Typing Γ f (.arr A B) → Typing Γ a A → Typing Γ (.app f a) B\nmutual\ninductive ValTyped : Val → Ty → Prop where\n  | num {n} : ValTyped (.num n) .base\n  | clo {body ρ Γ A B} : Typing (A :: Γ) body B → EnvTyped ρ Γ → ValTyped (.clo body ρ) (.arr A B)\ninductive EnvTyped : Env → List Ty → Prop where\n  | nil : EnvTyped [] []\n  | cons {v ρ A Γ} : ValTyped v A → EnvTyped ρ Γ → EnvTyped (v :: ρ) (A :: Γ)\nend\ninductive Frame where\n  | arg : Term → Env → Frame\n  | call : Term → Env → Frame\ninductive FrameTyped : Frame → Ty → Ty → Prop where\n  | arg {a ρ Γ A B} : Typing Γ a A → EnvTyped ρ Γ → FrameTyped (.arg a ρ) (.arr A B) B\n  | call {body ρ Γ A B} : Typing (A :: Γ) body B → EnvTyped ρ Γ → FrameTyped (.call body ρ) A B\ninductive StackTyped : List Frame → Ty → Ty → Prop where\n  | nil {A} : StackTyped [] A A\n  | cons {frame k A B C} : FrameTyped frame A B → StackTyped k B C → StackTyped (frame :: k) A C\ninductive State where\n  | eval : Term → Env → List Frame → State\n  | ret : Val → List Frame → State\ninductive StateTyped : State → Ty → Prop where\n  | eval {Γ t A ρ k R} : Typing Γ t A → EnvTyped ρ Γ → StackTyped k A R → StateTyped (.eval t ρ k) R\n  | ret {v A k R} : ValTyped v A → StackTyped k A R → StateTyped (.ret v k) R\ninductive Step : State → State → Prop where\n  | var {ρ n v k} : ρ[n]? = some v → Step (.eval (.var n) ρ k) (.ret v k)\n  | num {ρ n k} : Step (.eval (.num n) ρ k) (.ret (.num n) k)\n  | lam {ρ body k} : Step (.eval (.lam body) ρ k) (.ret (.clo body ρ) k)\n  | app {ρ f a k} : Step (.eval (.app f a) ρ k) (.eval f ρ (.arg a ρ :: k))\n  | argument {body saved a ρ k} : Step (.ret (.clo body saved) (.arg a ρ :: k)) (.eval a ρ (.call body saved :: k))\n  | apply {v body saved k} : Step (.ret v (.call body saved :: k)) (.eval body (v :: saved) k)\ndef Final : State → Prop\n  | .ret _ [] => True\n  | _ => False\ndef Target : Prop :=\n  (∀ s s' R, StateTyped s R → Step s s' → StateTyped s' R) ∧\n  (∀ s R, StateTyped s R → Final s ∨ ∃ s', Step s s')\nend Challenge\n",
+  "format_version": "aip-lean-proof-instance/1",
+  "instance_sha256": "352ba5b56ec37719b5d086100328c347874ce5f8dfc7a7d6e0fda18886cdcd67",
+  "prelude_sha256": "ad7365ced9cc452bc7e2124a0cd3f974cf2aecd48d056518969380b6c9abe025",
+  "prelude_source": "import Init\n\nnamespace AMBenchPrelude\n\ndef powMod (base exponent modulus : Nat) : Nat :=\n  match exponent with\n  | 0 => 1 % modulus\n  | n + 1 => (powMod base n modulus * (base % modulus)) % modulus\n\ndef evalPolyMod (coefficients : List Nat) (x modulus : Nat) : Nat :=\n  match coefficients with\n  | [] => 0\n  | coefficient :: rest =>\n      (coefficient + x * evalPolyMod rest x modulus) % modulus\n\ndef absDiff (a b : Nat) : Nat :=\n  if a <= b then b - a else a - b\n\nend AMBenchPrelude\n",
+  "problem": {
+    "family": "typed_closure_machine_safety",
+    "revision": "v001"
+  },
+  "proof_name": "AMBenchSolution.proof",
+  "public_features": {
+    "proof_task": "typed_closure_machine_safety"
+  },
+  "target_name": "Challenge.Target",
+  "toolchain": "leanprover/lean4:v4.19.0"
+}

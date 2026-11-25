@@ -1,0 +1,6 @@
+id: c06
+title: Grid independent-set image
+difficulty: H2
+parameters:
+  rows: 3
+  columns: 4

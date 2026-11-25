@@ -1,0 +1,11 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "aipbench://t3.drat_bounded_hardware_safety/private-instance/v1",
+  "type": "object",
+  "required": ["reference_solver", "reference_checker_commit"],
+  "properties": {
+    "reference_solver": {"const": "CaDiCaL 3.0.1 --no-binary"},
+    "reference_checker_commit": {"const": "2e3b2dc0ecf938addbd779d42877b6ed69d9a985"}
+  },
+  "additionalProperties": false
+}

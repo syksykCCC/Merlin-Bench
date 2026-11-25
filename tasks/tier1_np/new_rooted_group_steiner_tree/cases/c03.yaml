@@ -1,0 +1,9 @@
+id: c03
+title: Relabelled bounded-frontier choices
+difficulty: STRUCTURE
+parameters:
+  num_variables: 1536
+  window_width: 12
+  constraints_per_variable: 9
+  minimum_edge_weight: 3
+  maximum_edge_weight: 31

@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aip-bench.local/schemas/participant-api/v1/session.schema.json",
+  "title": "Participant API v1 session",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "api_version",
+    "session_id",
+    "task_id",
+    "task_version",
+    "case_id",
+    "mode",
+    "instance_digest",
+    "coin_commitment",
+    "budgets"
+  ],
+  "properties": {
+    "api_version": {"const": "aip/1"},
+    "session_id": {"type": "string", "minLength": 1},
+    "task_id": {"type": "string", "pattern": "^t[1-4]\\.[a-z][a-z0-9_]*$"},
+    "task_version": {"type": "string", "minLength": 1},
+    "case_id": {"type": "string", "minLength": 1},
+    "mode": {"enum": ["dev", "eval"]},
+    "instance_digest": {"$ref": "#/$defs/digest"},
+    "coin_commitment": {
+      "oneOf": [{"$ref": "#/$defs/digest"}, {"type": "null"}]
+    },
+    "budgets": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["wall_time_seconds", "max_events", "max_artifact_bytes"],
+      "properties": {
+        "wall_time_seconds": {"type": "integer", "minimum": 1},
+        "max_events": {"type": "integer", "minimum": 1},
+        "max_artifact_bytes": {"type": "integer", "minimum": 1}
+      }
+    }
+  },
+  "$defs": {
+    "digest": {
+      "type": "string",
+      "pattern": "^sha256:[0-9a-f]{64}$"
+    }
+  }
+}

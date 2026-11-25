@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "aipbench://t2.new_hamiltonicity_bind_open/public-instance/v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["format_version", "graph_model", "num_vertices", "edges", "challenge_lanes"],
+  "properties": {
+    "format_version": {"const": "aip-hamiltonicity/1"},
+    "graph_model": {"const": "undirected_simple"},
+    "num_vertices": {"type": "integer", "minimum": 3, "maximum": 4096},
+    "challenge_lanes": {"const": 24},
+    "edges": {
+      "type": "array",
+      "maxItems": 8386560,
+      "uniqueItems": true,
+      "items": {
+        "type": "array",
+        "minItems": 2,
+        "maxItems": 2,
+        "items": {"type": "integer", "minimum": 0, "maximum": 4095}
+      }
+    }
+  }
+}

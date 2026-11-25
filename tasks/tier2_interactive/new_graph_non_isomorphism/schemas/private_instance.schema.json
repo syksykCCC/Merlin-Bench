@@ -1,0 +1,7 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "aipbench://t2.new_graph_non_isomorphism/private-instance/v1",
+  "type": "object",
+  "maxProperties": 0,
+  "additionalProperties": false
+}

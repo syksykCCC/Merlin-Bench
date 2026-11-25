@@ -1,0 +1,11 @@
+id: c06
+title: Deep shared-routing ancestor coverage
+difficulty: STRUCTURE
+parameters:
+  branching_factor: 2
+  depth: 11
+  terminals_per_node: 2
+  ancestor_window: 10
+  groups_per_node: 4
+  minimum_edge_weight: 3
+  maximum_edge_weight: 31

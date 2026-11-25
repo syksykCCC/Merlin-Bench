@@ -1,0 +1,18 @@
+{
+  "challenge_sha256": "ed23c703d33bd9bf86e57195616cc568e373beb778498589bc0dcdd59f414415",
+  "challenge_source": "import AMBenchPrelude\nnamespace Challenge\n-- Constructive arithmetic interface; no tree-correctness lemmas are supplied.\ntheorem mul_assoc_free (a b c : Nat) : (a * b) * c = a * (b * c) := by\n  induction c with\n  | zero => rfl\n  | succ c ih =>\n    change (a * b) * c + a * b = a * (b * c + b)\n    exact Eq.trans (congrArg (fun z => z + a * b) ih) (Eq.symm (Nat.mul_add a (b * c) b))\nabbrev Affine := Nat × Nat\ndef act (f : Affine) (x : Nat) : Nat := f.1 * x + f.2\ndef compose (f g : Affine) : Affine := (f.1 * g.1, f.1 * g.2 + f.2)\ndef identity : Affine := (1, 0)\n\ninductive Eager where\n  | leaf (value : Nat)\n  | node (left right : Eager)\ninductive Lazy where\n  | leaf (value : Nat)\n  | node (tag : Affine) (cached : Nat) (left right : Lazy)\n\ndef leaves : Eager → Nat\n  | .leaf _ => 1\n  | .node l r => leaves l + leaves r\ndef total : Eager → Nat\n  | .leaf v => v\n  | .node l r => total l + total r\ndef map (f : Affine) : Eager → Eager\n  | .leaf v => .leaf (act f v)\n  | .node l r => .node (map f l) (map f r)\ndef count : Lazy → Nat\n  | .leaf _ => 1\n  | .node _ _ l r => count l + count r\ndef cached : Lazy → Nat\n  | .leaf v => v\n  | .node _ s _ _ => s\ndef apply (f : Affine) : Lazy → Lazy\n  | .leaf v => .leaf (act f v)\n  | .node tag s l r => .node (compose f tag) (f.1 * s + f.2 * (count l + count r)) l r\ndef join (l r : Lazy) : Lazy := .node identity (cached l + cached r) l r\ndef push : Lazy → Lazy\n  | .leaf v => .leaf v\n  | .node tag s l r => .node identity s (apply tag l) (apply tag r)\ndef build : Eager → Lazy\n  | .leaf v => .leaf v\n  | .node l r => join (build l) (build r)\n\ndef update : List Bool → Affine → Lazy → Lazy\n  | [], f, t => apply f t\n  | direction :: path, f, t => match push t with\n    | .leaf v => .leaf (act f v)\n    | .node _ _ l r =>\n      if direction then join l (update path f r) else join (update path f l) r\ndef eagerUpdate : List Bool → Affine → Eager → Eager\n  | [], f, t => map f t\n  | direction :: path, f, .leaf v => .leaf (act f v)\n  | direction :: path, f, .node l r =>\n    if direction then .node l (eagerUpdate path f r) else .node (eagerUpdate path f l) r\ndef query : List Bool → Lazy → Nat\n  | [], t => cached t\n  | direction :: path, t => match push t with\n    | .leaf v => v\n    | .node _ _ l r => if direction then query path r else query path l\ndef eagerQuery : List Bool → Eager → Nat\n  | [], t => total t\n  | direction :: path, .leaf v => v\n  | direction :: path, .node l r => if direction then eagerQuery path r else eagerQuery path l\nabbrev Update := List Bool × Affine\ndef run : List Update → Lazy → Lazy\n  | [], t => t\n  | command :: rest, t => run rest (update command.1 command.2 t)\ndef eagerRun : List Update → Eager → Eager\n  | [], t => t\n  | command :: rest, t => eagerRun rest (eagerUpdate command.1 command.2 t)\n\ndef Target : Prop := ∀ initial : Eager, ∀ commands : List Update, ∀ path : List Bool,\n  query path (run commands (build initial)) = eagerQuery path (eagerRun commands initial)\nend Challenge\n",
+  "format_version": "aip-lean-proof-instance/1",
+  "instance_sha256": "4a913ffbd7465e5aacf87706fb60c73f10e50bbd6e7834bbe1a8f0fe21b392d1",
+  "prelude_sha256": "427dc53408284f1fba1f4b2baeeca933ff16b22a3a22d3e0162dce59d67ac1db",
+  "prelude_source": "import Init\n",
+  "problem": {
+    "family": "lazy_affine_tree",
+    "revision": "v001"
+  },
+  "proof_name": "AMBenchSolution.proof",
+  "public_features": {
+    "proof_task": "lazy_affine_tree"
+  },
+  "target_name": "Challenge.Target",
+  "toolchain": "leanprover/lean4:v4.19.0"
+}

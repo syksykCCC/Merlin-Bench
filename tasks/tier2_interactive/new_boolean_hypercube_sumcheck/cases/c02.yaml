@@ -1,0 +1,5 @@
+id: c02
+title: Signed-Equivalence Expander
+difficulty: H2
+parameters:
+  num_variables: 360

@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "aipbench://t2.image_size_lower_bound/image.challenge/1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["hashes"],
+  "properties": {
+    "hashes": {
+      "type": "array",
+      "minItems": 128,
+      "maxItems": 128,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["matrix_rows", "target"],
+        "properties": {
+          "matrix_rows": {
+            "type": "array",
+            "minItems": 2,
+            "maxItems": 62,
+            "items": {"type": "string", "pattern": "^[0-9a-f]+$"}
+          },
+          "target": {"type": "string", "pattern": "^[0-9a-f]+$"}
+        }
+      }
+    }
+  }
+}

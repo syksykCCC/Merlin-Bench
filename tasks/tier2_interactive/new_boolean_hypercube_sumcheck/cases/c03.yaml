@@ -1,0 +1,6 @@
+id: c03
+title: Hidden Cylindrical Two-Spin Model, Width 16
+difficulty: H3
+parameters:
+  rows: 16
+  columns: 25

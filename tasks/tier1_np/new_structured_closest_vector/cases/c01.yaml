@@ -1,0 +1,9 @@
+id: c01
+title: Orthogonal residual calibration
+difficulty: CAL
+parameters:
+  rank: 24
+  minimum_scale: 11
+  maximum_scale: 29
+  coefficient_magnitude: 9
+  residual_magnitude: 3

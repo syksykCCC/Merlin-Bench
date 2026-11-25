@@ -1,0 +1,10 @@
+id: c03
+title: Paired-residual low-width tree
+difficulty: H2
+parameters:
+  rank: 128
+  branching_factor: 3
+  minimum_scale: 17
+  maximum_scale: 43
+  coefficient_magnitude: 15
+  residual_magnitude: 7

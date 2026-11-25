@@ -1,0 +1,5 @@
+id: c01
+title: Balanced inner product
+difficulty: H1
+parameters:
+  vector_length: 64

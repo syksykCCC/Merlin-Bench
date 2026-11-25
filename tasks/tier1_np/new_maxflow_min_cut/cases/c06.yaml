@@ -1,0 +1,6 @@
+id: c06
+title: Deep width-two diagnostic network
+difficulty: H2
+parameters:
+  num_layers: 3000
+  layer_width: 2

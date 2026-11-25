@@ -1,0 +1,34 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "aipbench://t3.dafny_verified_programs/public-instance/v1",
+  "type": "object",
+  "required": [
+    "format_version",
+    "toolchain",
+    "solution_module",
+    "challenge_sha256",
+    "harness_sha256",
+    "challenge_source",
+    "harness_source",
+    "success_marker",
+    "public_features",
+    "instance_sha256"
+  ],
+  "properties": {
+    "format_version": {"const": "aip-dafny-program-instance/1"},
+    "toolchain": {"const": "dafny-lang/dafny:4.11.0+z3"},
+    "solution_module": {"const": "Solution"},
+    "challenge_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "harness_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "challenge_source": {"type": "string", "minLength": 1, "maxLength": 262144},
+    "harness_source": {"type": "string", "minLength": 1, "maxLength": 262144},
+    "success_marker": {"type": "string", "pattern": "^AIPBENCH_DAFNY_OK:c0[1-8]$"},
+    "public_features": {
+      "type": "object",
+      "maxProperties": 4,
+      "additionalProperties": {"type": ["integer", "string"]}
+    },
+    "instance_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,63 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aip-bench.local/schemas/participant-api/v1/reply.schema.json",
+  "title": "Participant API v1 event response",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "api_version",
+    "session_id",
+    "sequence",
+    "status",
+    "reply",
+    "public_state",
+    "receipt"
+  ],
+  "properties": {
+    "api_version": {"const": "aip/1"},
+    "session_id": {"type": "string", "minLength": 1},
+    "sequence": {"type": "integer", "minimum": 0},
+    "status": {"enum": ["CONTINUE", "ACCEPT", "REJECT", "TIMEOUT", "SYSTEM_ERROR"]},
+    "reply": {
+      "oneOf": [
+        {"type": "null"},
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["kind", "payload"],
+          "properties": {
+            "kind": {"type": "string", "minLength": 1},
+            "payload": {"type": "object"}
+          }
+        }
+      ]
+    },
+    "public_state": {"type": "object"},
+    "reason_code": {"type": "string", "minLength": 1},
+    "receipt": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["event_hash"],
+      "properties": {
+        "event_hash": {
+          "type": "string",
+          "pattern": "^sha256:[0-9a-f]{64}$"
+        }
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": {"properties": {"status": {"const": "CONTINUE"}}},
+      "then": {"properties": {"reply": {"type": "object"}}}
+    },
+    {
+      "if": {
+        "properties": {
+          "status": {"enum": ["ACCEPT", "REJECT", "TIMEOUT", "SYSTEM_ERROR"]}
+        }
+      },
+      "then": {"required": ["reason_code"]}
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "aipbench://t2.new_gkr_layered_circuit/reply/challenge/v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["layer", "round", "point"],
+  "properties": {
+    "layer": {"type": "integer", "minimum": 0, "maximum": 511},
+    "round": {"type": "integer", "minimum": 0, "maximum": 39},
+    "point": {"type": "string", "pattern": "^[0-9a-f]{16}$"}
+  }
+}

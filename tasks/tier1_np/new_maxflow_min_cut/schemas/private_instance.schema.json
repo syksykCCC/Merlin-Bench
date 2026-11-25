@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "aipbench://t1.new_maxflow_min_cut/private-instance/1",
+  "type": "object",
+  "required": ["reference_flow_value", "reference_source_side_cut"],
+  "properties": {
+    "reference_flow_value": {"type": "integer", "minimum": 0},
+    "reference_source_side_cut": {
+      "type": "array",
+      "items": {"type": "integer", "minimum": 0},
+      "uniqueItems": true
+    }
+  },
+  "additionalProperties": false
+}

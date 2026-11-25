@@ -1,0 +1,12 @@
+id: c05
+title: Running-intersection bag-tree coverage
+difficulty: STRUCTURE
+parameters:
+  num_bags: 121
+  bag_width: 16
+  separator_size: 6
+  clauses_per_bag: 10
+  minimum_clause_size: 3
+  maximum_clause_size: 4
+  minimum_edge_weight: 3
+  maximum_edge_weight: 31

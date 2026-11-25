@@ -1,0 +1,655 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>Arthur Observer</title>
+  <style>
+    :root {
+      --ink: #17201d;
+      --muted: #69736f;
+      --line: #e1e7e3;
+      --paper: #fffefa;
+      --canvas: #f3f6f3;
+      --green: #176b4d;
+      --green-soft: #e5f3ec;
+      --amber: #9b6514;
+      --amber-soft: #fbefd8;
+      --red: #a33c35;
+      --red-soft: #fbe9e7;
+      --blue: #315e8a;
+      --blue-soft: #eaf1f8;
+      --shadow: 0 18px 48px rgba(28, 50, 41, .08);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 12% 8%, rgba(217, 234, 224, .82), transparent 30rem),
+        var(--canvas);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+        "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    button, input { font: inherit; }
+
+    button:focus-visible, input:focus-visible {
+      outline: 3px solid rgba(49, 94, 138, .22);
+      outline-offset: 2px;
+    }
+
+    .shell {
+      width: min(880px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 42px 0 56px;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 36px;
+      margin-bottom: 18px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .brand-mark {
+      width: 11px;
+      height: 11px;
+      border-radius: 50%;
+      background: var(--green);
+      box-shadow: 0 0 0 5px rgba(23, 107, 77, .1);
+    }
+
+    .connection {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+    }
+
+    .connection-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #aab2ae;
+    }
+
+    .connection-dot.live { background: var(--green); }
+    .connection-dot.error { background: var(--red); }
+
+    .card {
+      background: rgba(255, 254, 250, .96);
+      border: 1px solid rgba(214, 222, 217, .88);
+      border-radius: 24px;
+      box-shadow: var(--shadow);
+    }
+
+    .overview { padding: 32px 34px 30px; }
+
+    .overview-head {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .eyebrow {
+      margin: 0 0 8px;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      max-width: 620px;
+      margin: 0;
+      font-size: clamp(27px, 4vw, 40px);
+      line-height: 1.16;
+      letter-spacing: -.035em;
+    }
+
+    .result {
+      flex: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      min-height: 38px;
+      padding: 0 14px;
+      border-radius: 999px;
+      color: var(--blue);
+      background: var(--blue-soft);
+      font-size: 13px;
+      font-weight: 750;
+      white-space: nowrap;
+    }
+
+    .result::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: currentColor;
+    }
+
+    .result.pass { color: var(--green); background: var(--green-soft); }
+    .result.fail, .result.invalid { color: var(--red); background: var(--red-soft); }
+    .result.pending { color: var(--amber); background: var(--amber-soft); }
+
+    .case-line {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 14px;
+      align-items: baseline;
+      margin-top: 15px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .case-name { color: var(--ink); font-weight: 650; }
+    .case-id { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 12px; }
+
+    .details {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 0;
+      margin-top: 29px;
+      padding-top: 23px;
+      border-top: 1px solid var(--line);
+    }
+
+    .detail {
+      min-width: 0;
+      padding: 0 24px;
+      border-left: 1px solid var(--line);
+    }
+
+    .detail:first-child { padding-left: 0; border-left: 0; }
+    .detail:last-child { padding-right: 0; }
+
+    .detail-label {
+      margin-bottom: 6px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .detail-value {
+      overflow: hidden;
+      color: var(--ink);
+      font-size: 20px;
+      font-weight: 720;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .detail-value.time { font-variant-numeric: tabular-nums; }
+
+    .reason {
+      margin: 19px 0 0;
+      padding: 11px 13px;
+      border-radius: 10px;
+      color: var(--red);
+      background: var(--red-soft);
+      font: 12px/1.5 ui-monospace, SFMono-Regular, Consolas, monospace;
+      overflow-wrap: anywhere;
+    }
+
+    .conversation {
+      margin-top: 16px;
+      padding: 27px 30px 30px;
+    }
+
+    .section-head {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 20px;
+      margin-bottom: 20px;
+    }
+
+    h2 { margin: 0; font-size: 17px; letter-spacing: -.015em; }
+
+    .count { color: var(--muted); font-size: 12px; }
+
+    .messages {
+      display: grid;
+      gap: 17px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .message-pair { display: grid; gap: 8px; }
+
+    .message {
+      display: grid;
+      grid-template-columns: 58px minmax(0, 1fr) auto;
+      gap: 12px;
+      align-items: baseline;
+      padding: 11px 14px;
+      border-radius: 12px;
+      line-height: 1.5;
+    }
+
+    .message.agent { margin-right: 48px; background: #f0f3f1; }
+    .message.arthur { margin-left: 48px; background: #edf4ef; }
+
+    .speaker {
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: .07em;
+      text-transform: uppercase;
+    }
+
+    .message-text { min-width: 0; font-size: 14px; overflow-wrap: anywhere; }
+
+    .message-time {
+      color: var(--muted);
+      font-size: 11px;
+      font-variant-numeric: tabular-nums;
+      white-space: nowrap;
+    }
+
+    .omitted, .empty, .network-note {
+      color: var(--muted);
+      text-align: center;
+      font-size: 13px;
+    }
+
+    .omitted { margin: 0 0 16px; }
+    .empty { padding: 32px 0 18px; }
+
+    .network-note {
+      margin-bottom: 14px;
+      padding: 11px 14px;
+      border: 1px solid #efd5d1;
+      border-radius: 10px;
+      color: var(--red);
+      background: var(--red-soft);
+    }
+
+    .footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 17px 4px 0;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .quiet-button {
+      padding: 5px 0;
+      border: 0;
+      color: var(--muted);
+      background: transparent;
+      cursor: pointer;
+    }
+
+    .quiet-button:hover { color: var(--ink); }
+
+    .auth-card {
+      max-width: 480px;
+      margin: 13vh auto 0;
+      padding: 32px;
+    }
+
+    .auth-card h1 { font-size: 29px; }
+    .auth-copy { margin: 10px 0 22px; color: var(--muted); line-height: 1.65; }
+
+    .auth-form { display: flex; gap: 9px; }
+
+    .auth-input {
+      min-width: 0;
+      flex: 1;
+      padding: 11px 12px;
+      border: 1px solid #cbd4cf;
+      border-radius: 10px;
+      color: var(--ink);
+      background: #fff;
+    }
+
+    .primary-button {
+      padding: 11px 16px;
+      border: 0;
+      border-radius: 10px;
+      color: #fff;
+      background: var(--green);
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .auth-error { min-height: 21px; margin-top: 10px; color: var(--red); font-size: 13px; }
+
+    [hidden] { display: none !important; }
+
+    @media (max-width: 680px) {
+      .shell { width: min(100% - 20px, 880px); padding: 20px 0 32px; }
+      .overview, .conversation { padding: 23px 20px; border-radius: 18px; }
+      .overview-head { display: grid; gap: 17px; }
+      .result { justify-self: start; }
+      .details { grid-template-columns: 1fr 1fr; row-gap: 20px; }
+      .detail { padding: 0 15px; }
+      .detail:nth-child(3) {
+        grid-column: 1 / -1;
+        padding: 18px 0 0;
+        border-top: 1px solid var(--line);
+        border-left: 0;
+      }
+      .message { grid-template-columns: 50px minmax(0, 1fr); }
+      .message.agent { margin-right: 16px; }
+      .message.arthur { margin-left: 16px; }
+      .message-time { grid-column: 2; }
+      .auth-form { display: grid; }
+    }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <div class="topbar">
+      <div class="brand"><span class="brand-mark"></span>Arthur Observer</div>
+      <div class="connection" aria-live="polite">
+        <span id="connectionDot" class="connection-dot"></span>
+          <span id="connectionText">Not connected</span>
+      </div>
+    </div>
+
+    <main>
+      <section id="authPanel" class="auth-card card">
+        <p class="eyebrow">Local evaluation</p>
+          <h1>View this evaluation</h1>
+          <p class="auth-copy">Enter the Observer token shown when Arthur started. The credential is kept only in this browser tab.</p>
+        <form id="authForm" class="auth-form">
+          <input id="tokenInput" class="auth-input" type="password" autocomplete="off" placeholder="Observer token" required>
+            <button class="primary-button" type="submit">Connect</button>
+        </form>
+        <div id="authError" class="auth-error" role="alert"></div>
+      </section>
+
+      <div id="dashboard" hidden>
+        <div id="networkNote" class="network-note" hidden></div>
+
+        <section class="overview card" aria-labelledby="taskTitle">
+          <div class="overview-head">
+            <div>
+              <p id="taskId" class="eyebrow">Current task</p>
+              <h1 id="taskTitle">Loading task</h1>
+              <div class="case-line">
+                <span>Case</span>
+                <span id="caseTitle" class="case-name">—</span>
+                <span id="caseId" class="case-id"></span>
+              </div>
+            </div>
+            <div id="resultBadge" class="result">Running</div>
+          </div>
+
+          <div id="featureList" class="details" aria-label="Public data features"></div>
+          <p id="reasonText" class="reason" hidden></p>
+        </section>
+
+        <section class="conversation card" aria-labelledby="conversationTitle">
+          <div class="section-head">
+              <h2 id="conversationTitle">Interaction summary</h2>
+              <span id="conversationCount" class="count">0 messages</span>
+          </div>
+          <p id="omittedNote" class="omitted" hidden></p>
+          <ol id="messageList" class="messages"></ol>
+            <div id="emptyState" class="empty">No agent messages received</div>
+        </section>
+
+        <div class="footer">
+          <span id="updatedText">Waiting for first update</span>
+          <button id="credentialButton" class="quiet-button" type="button">Change Observer token</button>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    "use strict";
+
+    const apiPath = "/observer/api/summary";
+    const storageKey = "aip-observer-token";
+    const state = { token: "", timer: 0, controller: null, epoch: 0, failures: 0 };
+
+    function byId(id) { return document.getElementById(id); }
+    function setText(id, value) { byId(id).textContent = value == null ? "—" : String(value); }
+
+    function node(tag, className, text) {
+      const value = document.createElement(tag);
+      if (className) value.className = className;
+      if (text != null) value.textContent = String(text);
+      return value;
+    }
+
+    function formatDuration(milliseconds) {
+      const totalSeconds = Math.max(0, Math.floor(Number(milliseconds || 0) / 1000));
+      const hours = Math.floor(totalSeconds / 3600);
+      const minutes = Math.floor((totalSeconds % 3600) / 60);
+      const seconds = totalSeconds % 60;
+      if (hours) return `${hours}:${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`;
+      return `${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`;
+    }
+
+    function connection(kind, text) {
+      byId("connectionDot").className = `connection-dot ${kind || ""}`.trim();
+      setText("connectionText", text);
+    }
+
+    function showAuth(message) {
+      clearTimeout(state.timer);
+      byId("dashboard").hidden = true;
+      byId("authPanel").hidden = false;
+      setText("authError", message || "");
+        connection("", "Not connected");
+      byId("tokenInput").focus();
+    }
+
+    function resultPresentation(result) {
+      const stateName = result && result.state ? result.state : "RUNNING";
+        if (stateName === "PASS") return { label: "Pass", className: "pass" };
+        if (stateName === "FAIL") return { label: "Fail", className: "fail" };
+        if (stateName === "INVALID") return { label: "Audit invalid", className: "invalid" };
+        if (stateName === "PENDING_AUDIT") return { label: "Awaiting final score", className: "pending" };
+        return { label: "Running", className: "" };
+    }
+
+    function renderFeatures(instance, time) {
+      const features = Array.isArray(instance.features) ? instance.features.slice(0, 2) : [];
+      const all = features.map((feature) => ({
+            label: feature.label || "Public feature",
+        value: feature.value == null ? "—" : feature.value,
+        time: false
+      }));
+      const budget = Number(time.budget_ms || 0);
+      const elapsed = formatDuration(time.elapsed_ms);
+      all.push({
+          label: "Time",
+        value: budget > 0 ? `${elapsed} / ${formatDuration(budget)}` : elapsed,
+        time: true
+      });
+
+      const values = all.map((item) => {
+        const wrapper = node("div", "detail");
+        wrapper.append(
+          node("div", "detail-label", item.label),
+          node("div", `detail-value${item.time ? " time" : ""}`, item.value)
+        );
+        return wrapper;
+      });
+      byId("featureList").replaceChildren(...values);
+    }
+
+    function renderConversation(conversation) {
+      const items = Array.isArray(conversation.items) ? conversation.items : [];
+      const pairs = items.map((item) => {
+        const pair = node("li", "message-pair");
+        const elapsed = `+${formatDuration(item.elapsed_ms)}`;
+        const agent = node("div", "message agent");
+        agent.append(
+          node("span", "speaker", "Agent"),
+            node("span", "message-text", item.agent || "Submitted message"),
+          node("time", "message-time", elapsed)
+        );
+        const arthur = node("div", "message arthur");
+        arthur.append(
+          node("span", "speaker", "Arthur"),
+            node("span", "message-text", item.arthur || "Message processed"),
+          node("time", "message-time", elapsed)
+        );
+        pair.append(agent, arthur);
+        return pair;
+      });
+      byId("messageList").replaceChildren(...pairs);
+      byId("emptyState").hidden = pairs.length > 0;
+        setText("conversationCount", `${Number(conversation.total || 0)} interactions`);
+
+      const omitted = Number(conversation.omitted || 0);
+      byId("omittedNote").hidden = omitted === 0;
+        setText("omittedNote", omitted ? `${omitted} repeated interactions omitted` : "");
+    }
+
+    function render(data) {
+      byId("authPanel").hidden = true;
+      byId("dashboard").hidden = false;
+        setText("taskId", data.task.id || "Current task");
+      setText("taskTitle", data.task.title || data.task.id);
+      setText("caseTitle", data.task.case_title || data.task.case_id);
+      setText("caseId", data.task.case_id ? `· ${data.task.case_id}` : "");
+
+      const presentation = resultPresentation(data.result);
+      setText("resultBadge", presentation.label);
+      byId("resultBadge").className = `result ${presentation.className}`.trim();
+      const showReason = ["FAIL", "INVALID"].includes(data.result.state) && data.result.reason_code;
+      byId("reasonText").hidden = !showReason;
+      setText("reasonText", showReason ? data.result.reason_code : "");
+
+      renderFeatures(data.instance || {}, data.time || {});
+      renderConversation(data.conversation || {});
+        setText("updatedText", `Updated at ${new Date().toLocaleTimeString("en-GB", { hour12: false })}`);
+    }
+
+    function schedule(milliseconds) {
+      clearTimeout(state.timer);
+      if (milliseconds > 0) state.timer = setTimeout(refresh, milliseconds);
+    }
+
+    async function refresh() {
+      if (!state.token || document.hidden) return;
+      if (state.controller) state.controller.abort();
+      const controller = new AbortController();
+      const requestEpoch = state.epoch;
+      const requestToken = state.token;
+      state.controller = controller;
+
+      try {
+        const response = await fetch(apiPath, {
+          cache: "no-store",
+          headers: { "X-AIP-Observer-Token": requestToken },
+          signal: controller.signal
+        });
+        if (requestEpoch !== state.epoch || requestToken !== state.token) return;
+        if (response.status === 401) {
+          safeStorageRemove(storageKey);
+          showAuth("The Observer token is invalid or expired.");
+          return;
+        }
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+        const data = await response.json();
+        if (data.schema_version !== "aip-observer/2") throw new Error("Unsupported summary version");
+        render(data);
+        state.failures = 0;
+        connection("live", data.result.state === "RUNNING" ? "Live updates" : "Evaluation complete");
+        byId("networkNote").hidden = true;
+        schedule(data.result.state === "RUNNING" || data.result.state === "PENDING_AUDIT" ? 1200 : 0);
+      } catch (error) {
+        if (error.name === "AbortError" || requestEpoch !== state.epoch) return;
+        state.failures += 1;
+        connection("error", "Connection interrupted; retrying");
+        byId("networkNote").hidden = false;
+        setText("networkNote", "The latest result is temporarily unavailable; the last successful update remains visible.");
+        schedule(Math.min(10000, 1000 * (2 ** Math.min(state.failures - 1, 4))));
+      } finally {
+        if (state.controller === controller) state.controller = null;
+      }
+    }
+
+    function acceptToken(token) {
+      const normalized = String(token || "").trim();
+      if (!normalized) {
+          setText("authError", "Enter an Observer token.");
+        return;
+      }
+      state.epoch += 1;
+      if (state.controller) state.controller.abort();
+      state.token = normalized;
+      safeStorageSet(storageKey, normalized);
+      setText("authError", "");
+      refresh();
+    }
+
+    byId("authForm").addEventListener("submit", (event) => {
+      event.preventDefault();
+      acceptToken(byId("tokenInput").value);
+      byId("tokenInput").value = "";
+    });
+
+    byId("credentialButton").addEventListener("click", () => {
+      state.epoch += 1;
+      if (state.controller) state.controller.abort();
+      state.token = "";
+      safeStorageRemove(storageKey);
+      showAuth("");
+    });
+
+    document.addEventListener("visibilitychange", () => {
+      if (document.hidden) clearTimeout(state.timer);
+      else if (state.token) refresh();
+    });
+
+    function safeStorageGet(key) {
+      try { return sessionStorage.getItem(key) || ""; } catch (_error) { return ""; }
+    }
+
+    function safeStorageSet(key, value) {
+      try { sessionStorage.setItem(key, value); } catch (_error) { /* memory-only fallback */ }
+    }
+
+    function safeStorageRemove(key) {
+      try { sessionStorage.removeItem(key); } catch (_error) { /* already memory-only */ }
+    }
+
+    function safeDecode(value) {
+      try { return decodeURIComponent(value); } catch (_error) { return ""; }
+    }
+
+    const hash = location.hash.startsWith("#") ? location.hash.slice(1) : "";
+    const hashParams = new URLSearchParams(hash);
+    const fragmentToken = hashParams.get("token") || (hash && !hash.includes("=") ? safeDecode(hash) : "");
+    if (hash) {
+      try { history.replaceState(null, "", location.pathname + location.search); } catch (_error) { /* cosmetic only */ }
+    }
+    const storedToken = safeStorageGet(storageKey);
+    if (fragmentToken || storedToken) acceptToken(fragmentToken || storedToken);
+    else showAuth("");
+  </script>
+</body>
+</html>

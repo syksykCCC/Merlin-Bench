@@ -1,0 +1,7 @@
+id: c04
+title: Wide layered permutation network
+difficulty: H1
+parameters:
+  num_columns: 64
+  column_width: 64
+  matchings_per_transition: 3

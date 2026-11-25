@@ -1,0 +1,15 @@
+{
+  "challenge_sha256": "dda0662c1ac4d8fde2ba84ac52cd910d5f557bcab767f2fa6a634104b9161b7a",
+  "challenge_source": "module Challenge {\n  datatype Request = P | Q\n  datatype Mat = Mat(m00: int, m01: int, m02: int, m10: int, m11: int, m12: int, m20: int, m21: int, m22: int)\n  datatype Witness = Witness(u: Mat, ui: Mat, v: Mat, vi: Mat, d1: int, d2: int, d3: int)\n\n  function Input(r: Request): Mat {\n    if r == P then Mat(786, -1884, -156, -318, 762, 62, -600, 1440, 126)\n    else Mat(-468, 333, -18, 201, -141, 6, -759, 534, -24)\n  }\n  function I(): Mat { Mat(1, 0, 0, 0, 1, 0, 0, 0, 1) }\n  opaque function Product(a: Mat, b: Mat): Mat {\n    Mat(a.m00*b.m00 + a.m01*b.m10 + a.m02*b.m20,\n      a.m00*b.m01 + a.m01*b.m11 + a.m02*b.m21,\n      a.m00*b.m02 + a.m01*b.m12 + a.m02*b.m22,\n      a.m10*b.m00 + a.m11*b.m10 + a.m12*b.m20,\n      a.m10*b.m01 + a.m11*b.m11 + a.m12*b.m21,\n      a.m10*b.m02 + a.m11*b.m12 + a.m12*b.m22,\n      a.m20*b.m00 + a.m21*b.m10 + a.m22*b.m20,\n      a.m20*b.m01 + a.m21*b.m11 + a.m22*b.m21,\n      a.m20*b.m02 + a.m21*b.m12 + a.m22*b.m22)\n  }\n  predicate Inverse(a: Mat, b: Mat) { Product(a,b) == I() && Product(b,a) == I() }\n  predicate Valid(r: Request, w: Witness) {\n    0 < w.d1 && 0 < w.d2 && 0 <= w.d3 &&\n    w.d2 % w.d1 == 0 && w.d3 % w.d2 == 0 &&\n    Inverse(w.u,w.ui) && Inverse(w.v,w.vi) &&\n    Product(Product(w.u,Input(r)),w.v) == Mat(w.d1,0,0, 0,w.d2,0, 0,0,w.d3)\n  }\n\n  trait {:termination false} Candidate {\n    function Decompose(r: Request): Witness\n    ghost method Correct(r: Request)\n      ensures Valid(r,Decompose(r))\n  }\n}\n",
+  "format_version": "aip-dafny-program-instance/1",
+  "harness_sha256": "a52d4da76eaf67eb841e7220ce8d78d903ea9937b02f5a4efce77e4b8bbb03ab",
+  "harness_source": "module ArthurHarness {\n  import C = Challenge\n  import S = Solution\n  method Main() {\n    var p: C.Candidate := new S.Candidate();\n    var a := p.Decompose(C.P);\n    var b := p.Decompose(C.Q);\n    p.Correct(C.P);\n    p.Correct(C.Q);\n    if C.Valid(C.P,a) && C.Valid(C.Q,b) {\n      print \"AIPBENCH_DAFNY_OK:c05\\n\";\n    } else {\n      print \"Invalid integer matrix certificate.\\n\";\n    }\n  }\n}\n",
+  "instance_sha256": "a5f724eb6a67989938f6ee6d4d50696f406ca9811ae735b3fb02503891a4582a",
+  "public_features": {
+    "api": "Candidate.Decompose/Correct",
+    "title": "Smith normal form certificates for two integer presentations"
+  },
+  "solution_module": "Solution",
+  "success_marker": "AIPBENCH_DAFNY_OK:c05",
+  "toolchain": "dafny-lang/dafny:4.11.0+z3"
+}

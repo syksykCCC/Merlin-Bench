@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "aipbench://t1.new_maxflow_min_cut/public-instance/1",
+  "type": "object",
+  "required": ["format_version", "directed", "num_vertices", "source", "sink", "edges"],
+  "properties": {
+    "format_version": {"const": "aip-maxflow-instance/1"},
+    "directed": {"const": true},
+    "num_vertices": {"type": "integer", "minimum": 2},
+    "source": {"type": "integer", "minimum": 0},
+    "sink": {"type": "integer", "minimum": 0},
+    "edges": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["edge_id", "tail", "head", "capacity"],
+        "properties": {
+          "edge_id": {"type": "integer", "minimum": 0},
+          "tail": {"type": "integer", "minimum": 0},
+          "head": {"type": "integer", "minimum": 0},
+          "capacity": {"type": "integer", "minimum": 0}
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,5 @@
+id: c06
+title: Composite cube-root certificate
+difficulty: H3
+parameters:
+  latent_bits: 128

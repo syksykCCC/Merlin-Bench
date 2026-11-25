@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "aipbench://t1.new_structured_set_cover/selection/1",
+  "type": "object",
+  "required": ["set_ids"],
+  "properties": {
+    "set_ids": {
+      "type": "array", "uniqueItems": true,
+      "items": {"type": "integer", "minimum": 1, "maximum": 9007199254740991}
+    }
+  },
+  "additionalProperties": false
+}

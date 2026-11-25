@@ -1,0 +1,2416 @@
+{
+  "name": "Merlin-Bench",
+  "case_count": 124,
+  "base_case_count": 100,
+  "tier3_plus_case_count": 24,
+  "cases": [
+    {
+      "id": "t1.new_maxflow_min_cut/c01",
+      "split": "base",
+      "tier": "T1",
+      "task_id": "t1.new_maxflow_min_cut",
+      "case_id": "c01",
+      "title": "Independent-channel calibration",
+      "path": "tasks/tier1_np/new_maxflow_min_cut/cases/c01.yaml",
+      "prepare": [
+        "python",
+        "scripts/prepare_evaluation.py",
+        "--task",
+        "t1.new_maxflow_min_cut",
+        "--case",
+        "c01",
+        "--seed",
+        "random"
+      ],
+      "task_version": "0.1.0"
+    },
+    {
+      "id": "t1.new_maxflow_min_cut/c02",
+      "split": "base",
+      "tier": "T1",
+      "task_id": "t1.new_maxflow_min_cut",
+      "case_id": "c02",
+      "title": "Regular bipartite matching network",
+      "path": "tasks/tier1_np/new_maxflow_min_cut/cases/c02.yaml",
+      "prepare": [
+        "python",
+        "scripts/prepare_evaluation.py",
+        "--task",
+        "t1.new_maxflow_min_cut",
+        "--case",
+        "c02",
+        "--seed",
+        "random"
+      ],
+      "task_version": "0.1.0"
+    },
+    {
+      "id": "t1.new_maxflow_min_cut/c03",
+      "split": "base",
+      "tier": "T1",
+      "task_id": "t1.new_maxflow_min_cut",
+      "case_id": "c03",
+      "title": "Large-integer sharded serial network",
+      "path": "tasks/tier1_np/new_maxflow_min_cut/cases/c03.yaml",
+      "prepare": [
+        "python",
+        "scripts/prepare_evaluation.py",
+        "--task",
+        "t1.new_maxflow_min_cut",
+        "--case",
+        "c03",
+        "--seed",
+        "random"
+      ],
+      "task_version": "0.1.0"
+    },
+    {
+      "id": "t1.new_maxflow_min_cut/c04",
+      "split": "base",
+      "tier": "T1",
+      "task_id": "t1.new_maxflow_min_cut",
+      "case_id": "c04",
+      "title": "Wide layered permutation network",
+      "path": "tasks/tier1_np/new_maxflow_min_cut/cases/c04.yaml",
+      "prepare": [
+        "python",
+        "scripts/prepare_evaluation.py",
+        "--task",
+        "t1.new_maxflow_min_cut",
+        "--case",
+        "c04",
+        "--seed",
+        "random"
+      ],
+      "task_version": "0.1.0"
+    },
+    {
+      "id": "t1.new_maxflow_min_cut/c05",
+      "split": "base",
+      "tier": "T1",
+      "task_id": "t1.new_maxflow_min_cut",
+      "case_id": "c05",
+      "title": "Sparse cluster-interface network",
+      "path": "tasks/tier1_np/new_maxflow_min_cut/cases/c05.yaml",
+      "prepare": [
+        "python",
+        "scripts/prepare_evaluation.py",
+        "--task",
+        "t1.new_maxflow_min_cut",
+        "--case",
+        "c05",
+        "--seed",
+        "random"
+      ],
+      "task_version": "0.1.0"
+    },
+    {
+      "id": "t1.new_maxflow_min_cut/c06",
+      "split": "base",
+      "tier": "T1",
+      "task_id": "t1.new_maxflow_min_cut",
+      "case_id": "c06",
+      "title": "Deep width-two diagnostic network",
+      "path": "tasks/tier1_np/new_maxflow_min_cut/cases/c06.yaml",
+      "prepare": [
+        "python",
+        "scripts/prepare_evaluation.py",
+        "--task",
+        "t1.new_maxflow_min_cut",
+        "--case",
+        "c06",
+        "--seed",
+        "random"
+      ],
+      "task_version": "0.1.0"
+    },
+    {
+      "id": "t1.new_weighted_partial_maxsat/c01",
+      "split": "base",
+      "tier": "T1",
+      "task_id": "t1.new_weighted_partial_maxsat",
+      "case_id": "c01",
+      "title": "Propagation calibration",
+      "path": "tasks/tier1_np/new_weighted_partial_maxsat/cases/c01.yaml",
+      "prepare": [
+        "python",
+        "scripts/prepare_evaluation.py",
+        "--task",
+        "t1.new_weighted_partial_maxsat",
+        "--case",
+        "c01",
+        "--seed",
+        "random"
+      ],
+      "task_version": "0.1.0"
+    },
+    {
+      "id": "t1.new_weighted_partial_maxsat/c02",
+      "split": "base",
+      "tier": "T1",
+      "task_id": "t1.new_weighted_partial_maxsat",
+      "case_id": "c02",
+      "title": "Weighted implication closure",
+      "path": "tasks/tier1_np/new_weighted_partial_maxsat/cases/c02.yaml",
+      "prepare": [
+        "python",
+        "scripts/prepare_evaluation.py",
+        "--task",
+        "t1.new_weighted_partial_maxsat",
+        "--case",
+        "c02",
+        "--seed",
+        "random"
+      ],
+      "task_version": "0.1.0"
+    },
+    {
+      "id": "t1.new_weighted_partial_maxsat/c03",
+      "split": "base",
+      "tier": "T1",
+      "task_id": "t1.new_weighted_partial_maxsat",
+      "case_id": "c03",
+      "title": "Bounded-window weighted CNF",
+      "path": "tasks/tier1_np/new_weighted_partial_maxsat/cases/c03.yaml",
+      "prepare": [
+        "python",
+        "scripts/prepare_evaluation.py",
+        "--task",
+        "t1.new_weighted_partial_maxsat",
+        "--case",
+        "c03",
+        "--seed",
+        "random"
+      ],
+      "task_version": "0.1.0"
+    },
+    {
+      "id": "t1.new_weighted_partial_maxsat/c04",
+      "split": "base",
+      "tier": "T1",
+      "task_id": "t1.new_weighted_partial_maxsat",
+      "case_id": "c04",
+      "title": "Locally compiled weighted closure",
+      "path": "tasks/tier1_np/new_weighted_partial_maxsat/cases/c04.yaml",
+      "prepare": [
+        "python",
+        "scripts/prepare_evaluation.py",
+        "--task",
+        "t1.new_weighted_partial_maxsat",
+        "--case",
+        "c04",
+        "--seed",
+        "random"
+      ],
+      "task_version": "0.1.0"
+    },
+    {
+      "id": "t1.new_weighted_partial_maxsat/c05",
+      "split": "base",
+      "tier": "T1",
+      "task_id": "t1.new_weighted_partial_maxsat",
+      "case_id": "c05",
+      "title": "Sparse affine parity factors",
+      "path": "tasks/tier1_np/new_weighted_partial_maxsat/cases/c05.yaml",
+      "prepare": [
+        "python",
+        "scripts/prepare_evaluation.py",
+        "--task",
+        "t1.new_weighted_partial_maxsat",
+        "--case",
+        "c05",
+        "--seed",
+        "random"
+      ],
+      "task_version": "0.1.0"
+    },
+    {
+      "id": "t1.new_weighted_partial_maxsat/c06",
+      "split": "base",
+      "tier": "T1",
+      "task_id": "t1.new_weighted_partial_maxsat",
+      "case_id": "c06",
+      "title": "Hidden layered binary energy",
+      "path": "tasks/tier1_np/new_weighted_partial_maxsat/cases/c06.yaml",
+      "prepare": [
+        "python",
+        "scripts/prepare_evaluation.py",
+        "--task",
+        "t1.new_weighted_partial_maxsat",
+        "--case",
+        "c06",
+        "--seed",
+        "random"
+      ],
+      "task_version": "0.1.0"
+    },
+    {
+      "id": "t1.new_structured_set_cover/c01",
+      "split": "base",
+      "tier": "T1",
+      "task_id": "t1.new_structured_set_cover",
+      "case_id": "c01",
+      "title": "Weighted group calibration",
+      "path": "tasks/tier1_np/new_structured_set_cover/cases/c01.yaml",
+      "prepare": [
+        "python",
+        "scripts/prepare_evaluation.py",
+        "--task",
+        "t1.new_structured_set_cover",
+        "--case",
+        "c01",
+        "--seed",
+        "random"
+      ],
+      "task_version": "0.1.0"
+    },
+    {
+      "id": "t1.new_structured_set_cover/c02",
+      "split": "base",
+      "tier": "T1",
+      "task_id": "t1.new_structured_set_cover",
+      "case_id": "c02",
+      "title": "Relabeled cyclic overlap",
+      "path": "tasks/tier1_np/new_structured_set_cover/cases/c02.yaml",
+      "prepare": [
+        "python",
+        "scripts/prepare_evaluation.py",
+        "--task",
+        "t1.new_structured_set_cover",
+        "--case",
+        "c02",
+        "--seed",
+        "random"
+      ],
+      "task_version": "0.1.0"
+    },
+    {
+      "id": "t1.new_structured_set_cover/c03",
+      "split": "base",
+      "tier": "T1",
+      "task_id": "t1.new_structured_set_cover",
+      "case_id": "c03",
+      "title": "Hidden bounded-width Boolean path",
+      "path": "tasks/tier1_np/new_structured_set_cover/cases/c03.yaml",
+      "prepare": [
+        "python",
+        "scripts/prepare_evaluation.py",
+        "--task",
+        "t1.new_structured_set_cover",
+        "--case",
+        "c03",
+        "--seed",
+        "random"
+      ],
+      "task_version": "0.1.0"
+    },
+    {
+      "id": "t1.new_structured_set_cover/c04",
+      "split": "base",
+      "tier": "T1",
+      "task_id": "t1.new_structured_set_cover",
+      "case_id": "c04",
+      "title": "Marked width-16 weighted hitting-set path",
+      "path": "tasks/tier1_np/new_structured_set_cover/cases/c04.yaml",
+      "prepare": [
+        "python",
+        "scripts/prepare_evaluation.py",
+        "--task",
+        "t1.new_structured_set_cover",
+        "--case",
+        "c04",
+        "--seed",
+        "random"
+      ],
+      "task_version": "0.1.0"
+    },
+    {
+      "id": "t1.new_structured_set_cover/c05",
+      "split": "base",
+      "tier": "T1",
+      "task_id": "t1.new_structured_set_cover",
+      "case_id": "c05",
+      "title": "Marked width-18 weighted hitting-set path",
+      "path": "tasks/tier1_np/new_structured_set_cover/cases/c05.yaml",
+      "prepare": [
+        "python",
+        "scripts/prepare_evaluation.py",
+        "--task",
+        "t1.new_structured_set_cover",
+        "--case",
+        "c05",
+        "--seed",
+        "random"
+      ],
+      "task_version": "0.1.0"
+    },
+    {
+      "id": "t1.new_structured_set_cover/c06",
+      "split": "base",
+      "tier": "T1",
+      "task_id": "t1.new_structured_set_cover",
+      "case_id": "c06",
+      "title": "Marked width-16 weighted hitting-set tree",
+      "path": "tasks/tier1_np/new_structured_set_cover/cases/c06.yaml",
+      "prepare": [
+        "python",
+        "scripts/prepare_evaluation.py",
+        "--task",
+        "t1.new_structured_set_cover",
+        "--case",
+        "c06",
+        "--seed",
+        "random"
+      ],
+      "task_version": "0.1.0"
+    },
+    {
+      "id": "t1.new_structured_closest_vector/c01",
+      "split": "base",
+      "tier": "T1",
+      "task_id": "t1.new_structured_closest_vector",
+      "case_id": "c01",
+      "title": "Orthogonal residual calibration",
+      "path": "tasks/tier1_np/new_structured_closest_vector/cases/c01.yaml",
+      "prepare": [
+        "python",
+        "scripts/prepare_evaluation.py",
+        "--task",
+        "t1.new_structured_closest_vector",
+        "--case",
+        "c01",
+        "--seed",
+        "random"
+      ],
+      "task_version": "0.1.0"
+    },
+    {
+      "id": "t1.new_structured_closest_vector/c02",
+      "split": "base",
+      "tier": "T1",
+      "task_id": "t1.new_structured_closest_vector",
+      "case_id": "c02",
+      "title": "Hidden signed path equations",
+      "path": "tasks/tier1_np/new_structured_closest_vector/cases/c02.yaml",
+      "prepare": [
+        "python",
+        "scripts/prepare_evaluation.py",
+        "--task",
+        "t1.new_structured_closest_vector",
+        "--case",
+        "c02",
+        "--seed",
+        "random"
+      ],
+      "task_version": "0.1.0"
+    },
+    {
+      "id": "t1.new_structured_closest_vector/c03",
+      "split": "base",
+      "tier": "T1",
+      "task_id": "t1.new_structured_closest_vector",
+      "case_id": "c03",
+      "title": "Paired-residual low-width tree",
+      "path": "tasks/tier1_np/new_structured_closest_vector/cases/c03.yaml",
+      "prepare": [
+        "python",
+        "scripts/prepare_evaluation.py",
+        "--task",
+        "t1.new_structured_closest_vector",
+        "--case",
+        "c03",
+        "--seed",
+        "random"
+      ],
+      "task_version": "0.1.0"
+    },
+    {
+      "id": "t1.new_structured_closest_vector/c04",
+      "split": "base",
+      "tier": "T1",
+      "task_id": "t1.new_structured_closest_vector",
+      "case_id": "c04",
+      "title": "Hidden modular evaluation lattice",
+      "path": "tasks/tier1_np/new_structured_closest_vector/cases/c04.yaml",
+      "prepare": [
+        "python",
+        "scripts/prepare_evaluation.py",
+        "--task",
+        "t1.new_structured_closest_vector",
+        "--case",
+        "c04",
+        "--seed",
+        "random"
+      ],
+      "task_version": "0.1.0"
+    },
+    {
+      "id": "t1.new_structured_closest_vector/c05",
+      "split": "base",
+      "tier": "T1",
+      "task_id": "t1.new_structured_closest_vector",
+      "case_id": "c05",
+      "title": "Column-mixed tensor-code lattice",
+      "path": "tasks/tier1_np/new_structured_closest_vector/cases/c05.yaml",
+      "prepare": [
+        "python",
+        "scripts/prepare_evaluation.py",
+        "--task",
+        "t1.new_structured_closest_vector",
+        "--case",
+        "c05",
+        "--seed",
+        "random"
+      ],
+      "task_version": "0.1.0"
+    },
+    {
+      "id": "t1.new_structured_closest_vector/c06",
+      "split": "base",
+      "tier": "T1",
+      "task_id": "t1.new_structured_closest_vector",
+      "case_id": "c06",
+      "title": "Column-mixed Boolean-cube code lattice",
+      "path": "tasks/tier1_np/new_structured_closest_vector/cases/c06.yaml",
+      "prepare": [
+        "python",
+        "scripts/prepare_evaluation.py",
+        "--task",
+        "t1.new_structured_closest_vector",
+        "--case",
+        "c06",
+        "--seed",
+        "random"
+      ],
+      "task_version": "0.1.0"
+    },
+    {
+      "id": "t1.new_list_graph_homomorphism/c01",
+      "split": "base",
+      "tier": "T1",
+      "task_id": "t1.new_list_graph_homomorphism",
+      "case_id": "c01",
+      "title": "Anchored binary path calibration",
+      "path": "tasks/tier1_np/new_list_graph_homomorphism/cases/c01.yaml",
+      "prepare": [
+        "python",
+        "scripts/prepare_evaluation.py",
+        "--task",
+        "t1.new_list_graph_homomorphism",
+        "--case",
+        "c01",
+        "--seed",
+        "random"
+      ],
+      "task_version": "0.1.0"
+    },
+    {
+      "id": "t1.new_list_graph_homomorphism/c02",
+      "split": "base",
+      "tier": "T1",
+      "task_id": "t1.new_list_graph_homomorphism",
+      "case_id": "c02",
+      "title": "Hidden tree permutation constraints",
+      "path": "tasks/tier1_np/new_list_graph_homomorphism/cases/c02.yaml",
+      "prepare": [
+        "python",
+        "scripts/prepare_evaluation.py",
+        "--task",
+        "t1.new_list_graph_homomorphism",
+        "--case",
+        "c02",
+        "--seed",
+        "random"
+      ],
+      "task_version": "0.1.0"
+    },
+    {
+      "id": "t1.new_list_graph_homomorphism/c03",
+      "split": "base",
+      "tier": "T1",
+      "task_id": "t1.new_list_graph_homomorphism",
+      "case_id": "c03",
+      "title": "Coarsely listed switched CFI isomorphism",
+      "path": "tasks/tier1_np/new_list_graph_homomorphism/cases/c03.yaml",
+      "prepare": [
+        "python",
+        "scripts/prepare_evaluation.py",
+        "--task",
+        "t1.new_list_graph_homomorphism",
+        "--case",
+        "c03",
+        "--seed",
+        "random"
+      ],
+      "task_version": "0.1.0"
+    },
+    {
+      "id": "t1.new_list_graph_homomorphism/c04",
+      "split": "base",
+      "tier": "T1",
+      "task_id": "t1.new_list_graph_homomorphism",
+      "case_id": "c04",
+      "title": "Double-line blind switched CFI isomorphism",
+      "path": "tasks/tier1_np/new_list_graph_homomorphism/cases/c04.yaml",
+      "prepare": [
+        "python",
+        "scripts/prepare_evaluation.py",
+        "--task",
+        "t1.new_list_graph_homomorphism",
+        "--case",
+        "c04",
+        "--seed",
+        "random"
+      ],
+      "task_version": "0.1.0"
+    },
+    {
+      "id": "t1.new_list_graph_homomorphism/c05",
+      "split": "base",
+      "tier": "T1",
+      "task_id": "t1.new_list_graph_homomorphism",
+      "case_id": "c05",
+      "title": "Symmetric-cover switched CFI isomorphism",
+      "path": "tasks/tier1_np/new_list_graph_homomorphism/cases/c05.yaml",
+      "prepare": [
+        "python",
+        "scripts/prepare_evaluation.py",
+        "--task",
+        "t1.new_list_graph_homomorphism",
+        "--case",
+        "c05",
+        "--seed",
+        "random"
+      ],
+      "task_version": "0.1.0"
+    },
+    {
+      "id": "t1.new_list_graph_homomorphism/c06",
+      "split": "base",
+      "tier": "T1",
+      "task_id": "t1.new_list_graph_homomorphism",
+      "case_id": "c06",
+      "title": "Double-line switched-CFI difficulty replicate",
+      "path": "tasks/tier1_np/new_list_graph_homomorphism/cases/c06.yaml",
+      "prepare": [
+        "python",
+        "scripts/prepare_evaluation.py",
+        "--task",
+        "t1.new_list_graph_homomorphism",
+        "--case",
+        "c06",
+        "--seed",
+        "random"
+      ],
+      "task_version": "0.1.0"
+    },
+    {
+      "id": "t1.new_rooted_group_steiner_tree/c01",
+      "split": "base",
+      "tier": "T1",
+      "task_id": "t1.new_rooted_group_steiner_tree",
+      "case_id": "c01",
+      "title": "Mandatory-cut calibration",
+      "path": "tasks/tier1_np/new_rooted_group_steiner_tree/cases/c01.yaml",
+      "prepare": [
+        "python",
+        "scripts/prepare_evaluation.py",
+        "--task",
+        "t1.new_rooted_group_steiner_tree",
+        "--case",
+        "c01",
+        "--seed",
+        "random"
+      ],
+      "task_version": "0.1.0"
+    },
+    {
+      "id": "t1.new_rooted_group_steiner_tree/c02",
+      "split": "base",
+      "tier": "T1",
+      "task_id": "t1.new_rooted_group_steiner_tree",
+      "case_id": "c02",
+      "title": "Serial cactus boundary constraints",
+      "path": "tasks/tier1_np/new_rooted_group_steiner_tree/cases/c02.yaml",
+      "prepare": [
+        "python",
+        "scripts/prepare_evaluation.py",
+        "--task",
+        "t1.new_rooted_group_steiner_tree",
+        "--case",
+        "c02",
+        "--seed",
+        "random"
+      ],
+      "task_version": "0.1.0"
+    },
+    {
+      "id": "t1.new_rooted_group_steiner_tree/c03",
+      "split": "base",
+      "tier": "T1",
+      "task_id": "t1.new_rooted_group_steiner_tree",
+      "case_id": "c03",
+      "title": "Relabelled bounded-frontier choices",
+      "path": "tasks/tier1_np/new_rooted_group_steiner_tree/cases/c03.yaml",
+      "prepare": [
+        "python",
+        "scripts/prepare_evaluation.py",
+        "--task",
+        "t1.new_rooted_group_steiner_tree",
+        "--case",
+        "c03",
+        "--seed",
+        "random"
+      ],
+      "task_version": "0.1.0"
+    },
+    {
+      "id": "t1.new_rooted_group_steiner_tree/c04",
+      "split": "base",
+      "tier": "T1",
+      "task_id": "t1.new_rooted_group_steiner_tree",
+      "case_id": "c04",
+      "title": "Higher-order bounded-frontier coverage",
+      "path": "tasks/tier1_np/new_rooted_group_steiner_tree/cases/c04.yaml",
+      "prepare": [
+        "python",
+        "scripts/prepare_evaluation.py",
+        "--task",
+        "t1.new_rooted_group_steiner_tree",
+        "--case",
+        "c04",
+        "--seed",
+        "random"
+      ],
+      "task_version": "0.1.0"
+    },
+    {
+      "id": "t1.new_rooted_group_steiner_tree/c05",
+      "split": "base",
+      "tier": "T1",
+      "task_id": "t1.new_rooted_group_steiner_tree",
+      "case_id": "c05",
+      "title": "Running-intersection bag-tree coverage",
+      "path": "tasks/tier1_np/new_rooted_group_steiner_tree/cases/c05.yaml",
+      "prepare": [
+        "python",
+        "scripts/prepare_evaluation.py",
+        "--task",
+        "t1.new_rooted_group_steiner_tree",
+        "--case",
+        "c05",
+        "--seed",
+        "random"
+      ],
+      "task_version": "0.1.0"
+    },
+    {
+      "id": "t1.new_rooted_group_steiner_tree/c06",
+      "split": "base",
+      "tier": "T1",
+      "task_id": "t1.new_rooted_group_steiner_tree",
+      "case_id": "c06",
+      "title": "Deep shared-routing ancestor coverage",
+      "path": "tasks/tier1_np/new_rooted_group_steiner_tree/cases/c06.yaml",
+      "prepare": [
+        "python",
+        "scripts/prepare_evaluation.py",
+        "--task",
+        "t1.new_rooted_group_steiner_tree",
+        "--case",
+        "c06",
+        "--seed",
+        "random"
+      ],
+      "task_version": "0.1.0"
+    },
+    {
+      "id": "t2.new_graph_non_isomorphism/c01",
+      "split": "base",
+      "tier": "T2",
+      "task_id": "t2.new_graph_non_isomorphism",
+      "case_id": "c01",
+      "title": "Connected prism--Moebius baseline",
+      "path": "tasks/tier2_interactive/new_graph_non_isomorphism/cases/c01.yaml",
+      "prepare": [
+        "python",
+        "scripts/prepare_evaluation.py",
+        "--task",
+        "t2.new_graph_non_isomorphism",
+        "--case",
+        "c01",
+        "--seed",
+        "random"
+      ],
+      "task_version": "0.1.0"
+    },
+    {
+      "id": "t2.new_graph_non_isomorphism/c02",
+      "split": "base",
+      "tier": "T2",
+      "task_id": "t2.new_graph_non_isomorphism",
+      "case_id": "c02",
+      "title": "Connected Shrikhande--rook amplification",
+      "path": "tasks/tier2_interactive/new_graph_non_isomorphism/cases/c02.yaml",
+      "prepare": [
+        "python",
+        "scripts/prepare_evaluation.py",
+        "--task",
+        "t2.new_graph_non_isomorphism",
+        "--case",
+        "c02",
+        "--seed",
+        "random"
+      ],
+      "task_version": "0.1.0"
+    },
+    {
+      "id": "t2.new_graph_non_isomorphism/c03",
+      "split": "base",
+      "tier": "T2",
+      "task_id": "t2.new_graph_non_isomorphism",
+      "case_id": "c03",
+      "title": "Locally matched group-table geometries",
+      "path": "tasks/tier2_interactive/new_graph_non_isomorphism/cases/c03.yaml",
+      "prepare": [
+        "python",
+        "scripts/prepare_evaluation.py",
+        "--task",
+        "t2.new_graph_non_isomorphism",
+        "--case",
+        "c03",
+        "--seed",
+        "random"
+      ],
+      "task_version": "0.1.0"
+    },
+    {
+      "id": "t2.new_graph_non_isomorphism/c04",
+      "split": "base",
+      "tier": "T2",
+      "task_id": "t2.new_graph_non_isomorphism",
+      "case_id": "c04",
+      "title": "Uncolored enlarged CFI parity",
+      "path": "tasks/tier2_interactive/new_graph_non_isomorphism/cases/c04.yaml",
+      "prepare": [
+        "python",
+        "scripts/prepare_evaluation.py",
+        "--task",
+        "t2.new_graph_non_isomorphism",
+        "--case",
+        "c04",
+        "--seed",
+        "random"
+      ],
+      "task_version": "0.1.0"
+    },
+    {
+      "id": "t2.new_graph_non_isomorphism/c05",
+      "split": "base",
+      "tier": "T2",
+      "task_id": "t2.new_graph_non_isomorphism",
+      "case_id": "c05",
+      "title": "Fisher-transformed uncolored CFI parity",
+      "path": "tasks/tier2_interactive/new_graph_non_isomorphism/cases/c05.yaml",
+      "prepare": [
+        "python",
+        "scripts/prepare_evaluation.py",
+        "--task",
+        "t2.new_graph_non_isomorphism",
+        "--case",
+        "c05",
+        "--seed",
+        "random"
+      ],
+      "task_version": "0.1.0"
+    },
+    {
+      "id": "t2.new_graph_non_isomorphism/c06",
+      "split": "base",
+      "tier": "T2",
+      "task_id": "t2.new_graph_non_isomorphism",
+      "case_id": "c06",
+      "title": "Line graph of uncolored CFI parity",
+      "path": "tasks/tier2_interactive/new_graph_non_isomorphism/cases/c06.yaml",
+      "prepare": [
+        "python",
+        "scripts/prepare_evaluation.py",
+        "--task",
+        "t2.new_graph_non_isomorphism",
+        "--case",
+        "c06",
+        "--seed",
+        "random"
+      ],
+      "task_version": "0.1.0"
+    },
+    {
+      "id": "t2.new_graph_non_isomorphism/c07",
+      "split": "base",
+      "tier": "T2",
+      "task_id": "t2.new_graph_non_isomorphism",
+      "case_id": "c07",
+      "title": "Double line graph of uncolored CFI parity",
+      "path": "tasks/tier2_interactive/new_graph_non_isomorphism/cases/c07.yaml",
+      "prepare": [
+        "python",
+        "scripts/prepare_evaluation.py",
+        "--task",
+        "t2.new_graph_non_isomorphism",
+        "--case",
+        "c07",
+        "--seed",
+        "random"
+      ],
+      "task_version": "0.1.0"
+    },
+    {
+      "id": "t2.new_boolean_hypercube_sumcheck/c01",
+      "split": "base",
+      "tier": "T2",
+      "task_id": "t2.new_boolean_hypercube_sumcheck",
+      "case_id": "c01",
+      "title": "Rank-One Expander",
+      "path": "tasks/tier2_interactive/new_boolean_hypercube_sumcheck/cases/c01.yaml",
+      "prepare": [
+        "python",
+        "scripts/prepare_evaluation.py",
+        "--task",
+        "t2.new_boolean_hypercube_sumcheck",
+        "--case",
+        "c01",
+        "--seed",
+        "random"
+      ],
+      "task_version": "0.1.0"
+    },
+    {
+      "id": "t2.new_boolean_hypercube_sumcheck/c02",
+      "split": "base",
+      "tier": "T2",
+      "task_id": "t2.new_boolean_hypercube_sumcheck",
+      "case_id": "c02",
+      "title": "Signed-Equivalence Expander",
+      "path": "tasks/tier2_interactive/new_boolean_hypercube_sumcheck/cases/c02.yaml",
+      "prepare": [
+        "python",
+        "scripts/prepare_evaluation.py",
+        "--task",
+        "t2.new_boolean_hypercube_sumcheck",
+        "--case",
+        "c02",
+        "--seed",
+        "random"
+      ],
+      "task_version": "0.1.0"
+    },
+    {
+      "id": "t2.new_boolean_hypercube_sumcheck/c03",
+      "split": "base",
+      "tier": "T2",
+      "task_id": "t2.new_boolean_hypercube_sumcheck",
+      "case_id": "c03",
+      "title": "Hidden Cylindrical Two-Spin Model, Width 16",
+      "path": "tasks/tier2_interactive/new_boolean_hypercube_sumcheck/cases/c03.yaml",
+      "prepare": [
+        "python",
+        "scripts/prepare_evaluation.py",
+        "--task",
+        "t2.new_boolean_hypercube_sumcheck",
+        "--case",
+        "c03",
+        "--seed",
+        "random"
+      ],
+      "task_version": "0.1.0"
+    },
+    {
+      "id": "t2.new_boolean_hypercube_sumcheck/c04",
+      "split": "base",
+      "tier": "T2",
+      "task_id": "t2.new_boolean_hypercube_sumcheck",
+      "case_id": "c04",
+      "title": "Hidden Cylindrical Two-Spin Model, Width 12",
+      "path": "tasks/tier2_interactive/new_boolean_hypercube_sumcheck/cases/c04.yaml",
+      "prepare": [
+        "python",
+        "scripts/prepare_evaluation.py",
+        "--task",
+        "t2.new_boolean_hypercube_sumcheck",
+        "--case",
+        "c04",
+        "--seed",
+        "random"
+      ],
+      "task_version": "0.1.0"
+    },
+    {
+      "id": "t2.new_boolean_hypercube_sumcheck/c05",
+      "split": "base",
+      "tier": "T2",
+      "task_id": "t2.new_boolean_hypercube_sumcheck",
+      "case_id": "c05",
+      "title": "Cylindrical Monomer-Dimer Model",
+      "path": "tasks/tier2_interactive/new_boolean_hypercube_sumcheck/cases/c05.yaml",
+      "prepare": [
+        "python",
+        "scripts/prepare_evaluation.py",
+        "--task",
+        "t2.new_boolean_hypercube_sumcheck",
+        "--case",
+        "c05",
+        "--seed",
+        "random"
+      ],
+      "task_version": "0.1.0"
+    },
+    {
+      "id": "t2.new_boolean_hypercube_sumcheck/c06",
+      "split": "base",
+      "tier": "T2",
+      "task_id": "t2.new_boolean_hypercube_sumcheck",
+      "case_id": "c06",
+      "title": "Six-Vertex Torus",
+      "path": "tasks/tier2_interactive/new_boolean_hypercube_sumcheck/cases/c06.yaml",
+      "prepare": [
+        "python",
+        "scripts/prepare_evaluation.py",
+        "--task",
+        "t2.new_boolean_hypercube_sumcheck",
+        "--case",
+        "c06",
+        "--seed",
+        "random"
+      ],
+      "task_version": "0.1.0"
+    },
+    {
+      "id": "t2.new_boolean_hypercube_sumcheck/c07",
+      "split": "base",
+      "tier": "T2",
+      "task_id": "t2.new_boolean_hypercube_sumcheck",
+      "case_id": "c07",
+      "title": "Memory-Ten Tail-Biting Enumerator",
+      "path": "tasks/tier2_interactive/new_boolean_hypercube_sumcheck/cases/c07.yaml",
+      "prepare": [
+        "python",
+        "scripts/prepare_evaluation.py",
+        "--task",
+        "t2.new_boolean_hypercube_sumcheck",
+        "--case",
+        "c07",
+        "--seed",
+        "random"
+      ],
+      "task_version": "0.1.0"
+    },
+    {
+      "id": "t2.new_gkr_layered_circuit/c01",
+      "split": "base",
+      "tier": "T2",
+      "task_id": "t2.new_gkr_layered_circuit",
+      "case_id": "c01",
+      "title": "Balanced inner product",
+      "path": "tasks/tier2_interactive/new_gkr_layered_circuit/cases/c01.yaml",
+      "prepare": [
+        "python",
+        "scripts/prepare_evaluation.py",
+        "--task",
+        "t2.new_gkr_layered_circuit",
+        "--case",
+        "c01",
+        "--seed",
+        "random"
+      ],
+      "task_version": "0.1.0"
+    },
+    {
+      "id": "t2.new_gkr_layered_circuit/c02",
+      "split": "base",
+      "tier": "T2",
+      "task_id": "t2.new_gkr_layered_circuit",
+      "case_id": "c02",
+      "title": "Batched second-order affine recurrences",
+      "path": "tasks/tier2_interactive/new_gkr_layered_circuit/cases/c02.yaml",
+      "prepare": [
+        "python",
+        "scripts/prepare_evaluation.py",
+        "--task",
+        "t2.new_gkr_layered_circuit",
+        "--case",
+        "c02",
+        "--seed",
+        "random"
+      ],
+      "task_version": "0.1.0"
+    },
+    {
+      "id": "t2.new_gkr_layered_circuit/c03",
+      "split": "base",
+      "tier": "T2",
+      "task_id": "t2.new_gkr_layered_circuit",
+      "case_id": "c03",
+      "title": "Batched matrix triple product",
+      "path": "tasks/tier2_interactive/new_gkr_layered_circuit/cases/c03.yaml",
+      "prepare": [
+        "python",
+        "scripts/prepare_evaluation.py",
+        "--task",
+        "t2.new_gkr_layered_circuit",
+        "--case",
+        "c03",
+        "--seed",
+        "random"
+      ],
+      "task_version": "0.1.0"
+    },
+    {
+      "id": "t2.new_gkr_layered_circuit/c04",
+      "split": "base",
+      "tier": "T2",
+      "task_id": "t2.new_gkr_layered_circuit",
+      "case_id": "c04",
+      "title": "Walsh--Hadamard XOR convolution",
+      "path": "tasks/tier2_interactive/new_gkr_layered_circuit/cases/c04.yaml",
+      "prepare": [
+        "python",
+        "scripts/prepare_evaluation.py",
+        "--task",
+        "t2.new_gkr_layered_circuit",
+        "--case",
+        "c04",
+        "--seed",
+        "random"
+      ],
+      "task_version": "0.1.0"
+    },
+    {
+      "id": "t2.new_gkr_layered_circuit/c05",
+      "split": "base",
+      "tier": "T2",
+      "task_id": "t2.new_gkr_layered_circuit",
+      "case_id": "c05",
+      "title": "Bitonic Boolean-key payload routing",
+      "path": "tasks/tier2_interactive/new_gkr_layered_circuit/cases/c05.yaml",
+      "prepare": [
+        "python",
+        "scripts/prepare_evaluation.py",
+        "--task",
+        "t2.new_gkr_layered_circuit",
+        "--case",
+        "c05",
+        "--seed",
+        "random"
+      ],
+      "task_version": "0.1.0"
+    },
+    {
+      "id": "t2.new_gkr_layered_circuit/c06",
+      "split": "base",
+      "tier": "T2",
+      "task_id": "t2.new_gkr_layered_circuit",
+      "case_id": "c06",
+      "title": "Rule 110 periodic spacetime",
+      "path": "tasks/tier2_interactive/new_gkr_layered_circuit/cases/c06.yaml",
+      "prepare": [
+        "python",
+        "scripts/prepare_evaluation.py",
+        "--task",
+        "t2.new_gkr_layered_circuit",
+        "--case",
+        "c06",
+        "--seed",
+        "random"
+      ],
+      "task_version": "0.1.0"
+    },
+    {
+      "id": "t2.new_gkr_layered_circuit/c07",
+      "split": "base",
+      "tier": "T2",
+      "task_id": "t2.new_gkr_layered_circuit",
+      "case_id": "c07",
+      "title": "Boolean repeated-squaring transitive closure",
+      "path": "tasks/tier2_interactive/new_gkr_layered_circuit/cases/c07.yaml",
+      "prepare": [
+        "python",
+        "scripts/prepare_evaluation.py",
+        "--task",
+        "t2.new_gkr_layered_circuit",
+        "--case",
+        "c07",
+        "--seed",
+        "random"
+      ],
+      "task_version": "0.1.0"
+    },
+    {
+      "id": "t2.image_size_lower_bound/c01",
+      "split": "base",
+      "tier": "T2",
+      "task_id": "t2.image_size_lower_bound",
+      "case_id": "c01",
+      "title": "Systematic subcube image",
+      "path": "tasks/tier2_interactive/image_size_lower_bound/cases/c01.yaml",
+      "prepare": [
+        "python",
+        "scripts/prepare_evaluation.py",
+        "--task",
+        "t2.image_size_lower_bound",
+        "--case",
+        "c01",
+        "--seed",
+        "random"
+      ],
+      "task_version": "0.1.0"
+    },
+    {
+      "id": "t2.image_size_lower_bound/c02",
+      "split": "base",
+      "tier": "T2",
+      "task_id": "t2.image_size_lower_bound",
+      "case_id": "c02",
+      "title": "Hidden affine image",
+      "path": "tasks/tier2_interactive/image_size_lower_bound/cases/c02.yaml",
+      "prepare": [
+        "python",
+        "scripts/prepare_evaluation.py",
+        "--task",
+        "t2.image_size_lower_bound",
+        "--case",
+        "c02",
+        "--seed",
+        "random"
+      ],
+      "task_version": "0.1.0"
+    },
+    {
+      "id": "t2.image_size_lower_bound/c03",
+      "split": "base",
+      "tier": "T2",
+      "task_id": "t2.image_size_lower_bound",
+      "case_id": "c03",
+      "title": "Hamming ball via truncation",
+      "path": "tasks/tier2_interactive/image_size_lower_bound/cases/c03.yaml",
+      "prepare": [
+        "python",
+        "scripts/prepare_evaluation.py",
+        "--task",
+        "t2.image_size_lower_bound",
+        "--case",
+        "c03",
+        "--seed",
+        "random"
+      ],
+      "task_version": "0.1.0"
+    },
+    {
+      "id": "t2.image_size_lower_bound/c04",
+      "split": "base",
+      "tier": "T2",
+      "task_id": "t2.image_size_lower_bound",
+      "case_id": "c04",
+      "title": "Separable nonlinear product code",
+      "path": "tasks/tier2_interactive/image_size_lower_bound/cases/c04.yaml",
+      "prepare": [
+        "python",
+        "scripts/prepare_evaluation.py",
+        "--task",
+        "t2.image_size_lower_bound",
+        "--case",
+        "c04",
+        "--seed",
+        "random"
+      ],
+      "task_version": "0.1.0"
+    },
+    {
+      "id": "t2.image_size_lower_bound/c05",
+      "split": "base",
+      "tier": "T2",
+      "task_id": "t2.image_size_lower_bound",
+      "case_id": "c05",
+      "title": "Rank-one binary matrix variety",
+      "path": "tasks/tier2_interactive/image_size_lower_bound/cases/c05.yaml",
+      "prepare": [
+        "python",
+        "scripts/prepare_evaluation.py",
+        "--task",
+        "t2.image_size_lower_bound",
+        "--case",
+        "c05",
+        "--seed",
+        "random"
+      ],
+      "task_version": "0.1.0"
+    },
+    {
+      "id": "t2.image_size_lower_bound/c06",
+      "split": "base",
+      "tier": "T2",
+      "task_id": "t2.image_size_lower_bound",
+      "case_id": "c06",
+      "title": "Grid independent-set image",
+      "path": "tasks/tier2_interactive/image_size_lower_bound/cases/c06.yaml",
+      "prepare": [
+        "python",
+        "scripts/prepare_evaluation.py",
+        "--task",
+        "t2.image_size_lower_bound",
+        "--case",
+        "c06",
+        "--seed",
+        "random"
+      ],
+      "task_version": "0.1.0"
+    },
+    {
+      "id": "t2.new_shamir_tqbf/c01",
+      "split": "base",
+      "tier": "T2",
+      "task_id": "t2.new_shamir_tqbf",
+      "case_id": "c01",
+      "title": "Explicit width-4 alternating branching game",
+      "path": "tasks/tier2_interactive/new_shamir_tqbf/cases/c01.yaml",
+      "prepare": [
+        "python",
+        "scripts/prepare_evaluation.py",
+        "--task",
+        "t2.new_shamir_tqbf",
+        "--case",
+        "c01",
+        "--seed",
+        "random"
+      ],
+      "task_version": "0.1.0"
+    },
+    {
+      "id": "t2.new_shamir_tqbf/c02",
+      "split": "base",
+      "tier": "T2",
+      "task_id": "t2.new_shamir_tqbf",
+      "case_id": "c02",
+      "title": "Memory-five alternating recurrence game",
+      "path": "tasks/tier2_interactive/new_shamir_tqbf/cases/c02.yaml",
+      "prepare": [
+        "python",
+        "scripts/prepare_evaluation.py",
+        "--task",
+        "t2.new_shamir_tqbf",
+        "--case",
+        "c02",
+        "--seed",
+        "random"
+      ],
+      "task_version": "0.1.0"
+    },
+    {
+      "id": "t2.new_shamir_tqbf/c03",
+      "split": "base",
+      "tier": "T2",
+      "task_id": "t2.new_shamir_tqbf",
+      "case_id": "c03",
+      "title": "Rank-five affine-syndrome game",
+      "path": "tasks/tier2_interactive/new_shamir_tqbf/cases/c03.yaml",
+      "prepare": [
+        "python",
+        "scripts/prepare_evaluation.py",
+        "--task",
+        "t2.new_shamir_tqbf",
+        "--case",
+        "c03",
+        "--seed",
+        "random"
+      ],
+      "task_version": "0.1.0"
+    },
+    {
+      "id": "t2.new_shamir_tqbf/c04",
+      "split": "base",
+      "tier": "T2",
+      "task_id": "t2.new_shamir_tqbf",
+      "case_id": "c04",
+      "title": "Hidden blocked reversible map, 11 plus 10 bits",
+      "path": "tasks/tier2_interactive/new_shamir_tqbf/cases/c04.yaml",
+      "prepare": [
+        "python",
+        "scripts/prepare_evaluation.py",
+        "--task",
+        "t2.new_shamir_tqbf",
+        "--case",
+        "c04",
+        "--seed",
+        "random"
+      ],
+      "task_version": "0.1.0"
+    },
+    {
+      "id": "t2.new_shamir_tqbf/c05",
+      "split": "base",
+      "tier": "T2",
+      "task_id": "t2.new_shamir_tqbf",
+      "case_id": "c05",
+      "title": "Double-tap blocked reversible map, 12 plus 9 bits",
+      "path": "tasks/tier2_interactive/new_shamir_tqbf/cases/c05.yaml",
+      "prepare": [
+        "python",
+        "scripts/prepare_evaluation.py",
+        "--task",
+        "t2.new_shamir_tqbf",
+        "--case",
+        "c05",
+        "--seed",
+        "random"
+      ],
+      "task_version": "0.1.0"
+    },
+    {
+      "id": "t2.new_shamir_tqbf/c06",
+      "split": "base",
+      "tier": "T2",
+      "task_id": "t2.new_shamir_tqbf",
+      "case_id": "c06",
+      "title": "Identity-cloaked double-tap blocked reversible map, 12 plus 9 bits",
+      "path": "tasks/tier2_interactive/new_shamir_tqbf/cases/c06.yaml",
+      "prepare": [
+        "python",
+        "scripts/prepare_evaluation.py",
+        "--task",
+        "t2.new_shamir_tqbf",
+        "--case",
+        "c06",
+        "--seed",
+        "random"
+      ],
+      "task_version": "0.1.0"
+    },
+    {
+      "id": "t2.new_hamiltonicity_bind_open/c01",
+      "split": "base",
+      "tier": "T2",
+      "task_id": "t2.new_hamiltonicity_bind_open",
+      "case_id": "c01",
+      "title": "Scaled randomly relabeled wheel",
+      "path": "tasks/tier2_interactive/new_hamiltonicity_bind_open/cases/c01.yaml",
+      "prepare": [
+        "python",
+        "scripts/prepare_evaluation.py",
+        "--task",
+        "t2.new_hamiltonicity_bind_open",
+        "--case",
+        "c01",
+        "--seed",
+        "random"
+      ],
+      "task_version": "0.1.0"
+    },
+    {
+      "id": "t2.new_hamiltonicity_bind_open/c02",
+      "split": "base",
+      "tier": "T2",
+      "task_id": "t2.new_hamiltonicity_bind_open",
+      "case_id": "c02",
+      "title": "Scaled balanced complete bipartite graph",
+      "path": "tasks/tier2_interactive/new_hamiltonicity_bind_open/cases/c02.yaml",
+      "prepare": [
+        "python",
+        "scripts/prepare_evaluation.py",
+        "--task",
+        "t2.new_hamiltonicity_bind_open",
+        "--case",
+        "c02",
+        "--seed",
+        "random"
+      ],
+      "task_version": "0.1.0"
+    },
+    {
+      "id": "t2.new_hamiltonicity_bind_open/c03",
+      "split": "base",
+      "tier": "T2",
+      "task_id": "t2.new_hamiltonicity_bind_open",
+      "case_id": "c03",
+      "title": "Quiet-planted satisfiability lift",
+      "path": "tasks/tier2_interactive/new_hamiltonicity_bind_open/cases/c03.yaml",
+      "prepare": [
+        "python",
+        "scripts/prepare_evaluation.py",
+        "--task",
+        "t2.new_hamiltonicity_bind_open",
+        "--case",
+        "c03",
+        "--seed",
+        "random"
+      ],
+      "task_version": "0.1.0"
+    },
+    {
+      "id": "t2.new_hamiltonicity_bind_open/c04",
+      "split": "base",
+      "tier": "T2",
+      "task_id": "t2.new_hamiltonicity_bind_open",
+      "case_id": "c04",
+      "title": "Hidden affine-parity Hamilton lift",
+      "path": "tasks/tier2_interactive/new_hamiltonicity_bind_open/cases/c04.yaml",
+      "prepare": [
+        "python",
+        "scripts/prepare_evaluation.py",
+        "--task",
+        "t2.new_hamiltonicity_bind_open",
+        "--case",
+        "c04",
+        "--seed",
+        "random"
+      ],
+      "task_version": "0.1.0"
+    },
+    {
+      "id": "t2.new_hamiltonicity_bind_open/c05",
+      "split": "base",
+      "tier": "T2",
+      "task_id": "t2.new_hamiltonicity_bind_open",
+      "case_id": "c05",
+      "title": "Weak-signal planted satisfiability lift",
+      "path": "tasks/tier2_interactive/new_hamiltonicity_bind_open/cases/c05.yaml",
+      "prepare": [
+        "python",
+        "scripts/prepare_evaluation.py",
+        "--task",
+        "t2.new_hamiltonicity_bind_open",
+        "--case",
+        "c05",
+        "--seed",
+        "random"
+      ],
+      "task_version": "0.1.0"
+    },
+    {
+      "id": "t2.new_hamiltonicity_bind_open/c06",
+      "split": "base",
+      "tier": "T2",
+      "task_id": "t2.new_hamiltonicity_bind_open",
+      "case_id": "c06",
+      "title": "Hidden implication-ring Hamilton lift",
+      "path": "tasks/tier2_interactive/new_hamiltonicity_bind_open/cases/c06.yaml",
+      "prepare": [
+        "python",
+        "scripts/prepare_evaluation.py",
+        "--task",
+        "t2.new_hamiltonicity_bind_open",
+        "--case",
+        "c06",
+        "--seed",
+        "random"
+      ],
+      "task_version": "0.1.0"
+    },
+    {
+      "id": "t2.new_hamiltonicity_bind_open/c07",
+      "split": "base",
+      "tier": "T2",
+      "task_id": "t2.new_hamiltonicity_bind_open",
+      "case_id": "c07",
+      "title": "Auxiliary-cloaked affine Hamilton lift",
+      "path": "tasks/tier2_interactive/new_hamiltonicity_bind_open/cases/c07.yaml",
+      "prepare": [
+        "python",
+        "scripts/prepare_evaluation.py",
+        "--task",
+        "t2.new_hamiltonicity_bind_open",
+        "--case",
+        "c07",
+        "--seed",
+        "random"
+      ],
+      "task_version": "0.1.0"
+    },
+    {
+      "id": "t3.machine_checked_mathematics/c01",
+      "split": "base",
+      "tier": "T3",
+      "task_id": "t3.machine_checked_mathematics",
+      "case_id": "c01",
+      "title": "Dense binary linear certificate",
+      "path": "tasks/tier3_applied/machine_checked_mathematics/cases/c01.yaml",
+      "prepare": [
+        "python",
+        "scripts/prepare_evaluation.py",
+        "--task",
+        "t3.machine_checked_mathematics",
+        "--case",
+        "c01",
+        "--seed",
+        "random"
+      ],
+      "task_version": "0.1.0"
+    },
+    {
+      "id": "t3.machine_checked_mathematics/c02",
+      "split": "base",
+      "tier": "T3",
+      "task_id": "t3.machine_checked_mathematics",
+      "case_id": "c02",
+      "title": "Shuffled CRT reconstruction certificate",
+      "path": "tasks/tier3_applied/machine_checked_mathematics/cases/c02.yaml",
+      "prepare": [
+        "python",
+        "scripts/prepare_evaluation.py",
+        "--task",
+        "t3.machine_checked_mathematics",
+        "--case",
+        "c02",
+        "--seed",
+        "random"
+      ],
+      "task_version": "0.1.0"
+    },
+    {
+      "id": "t3.machine_checked_mathematics/c03",
+      "split": "base",
+      "tier": "T3",
+      "task_id": "t3.machine_checked_mathematics",
+      "case_id": "c03",
+      "title": "Hidden line-graph root certificate",
+      "path": "tasks/tier3_applied/machine_checked_mathematics/cases/c03.yaml",
+      "prepare": [
+        "python",
+        "scripts/prepare_evaluation.py",
+        "--task",
+        "t3.machine_checked_mathematics",
+        "--case",
+        "c03",
+        "--seed",
+        "random"
+      ],
+      "task_version": "0.1.0"
+    },
+    {
+      "id": "t3.machine_checked_mathematics/c04",
+      "split": "base",
+      "tier": "T3",
+      "task_id": "t3.machine_checked_mathematics",
+      "case_id": "c04",
+      "title": "Anonymous affine-plane decoding certificate",
+      "path": "tasks/tier3_applied/machine_checked_mathematics/cases/c04.yaml",
+      "prepare": [
+        "python",
+        "scripts/prepare_evaluation.py",
+        "--task",
+        "t3.machine_checked_mathematics",
+        "--case",
+        "c04",
+        "--seed",
+        "random"
+      ],
+      "task_version": "0.1.0"
+    },
+    {
+      "id": "t3.machine_checked_mathematics/c05",
+      "split": "base",
+      "tier": "T3",
+      "task_id": "t3.machine_checked_mathematics",
+      "case_id": "c05",
+      "title": "Anonymous modular column equivalence",
+      "path": "tasks/tier3_applied/machine_checked_mathematics/cases/c05.yaml",
+      "prepare": [
+        "python",
+        "scripts/prepare_evaluation.py",
+        "--task",
+        "t3.machine_checked_mathematics",
+        "--case",
+        "c05",
+        "--seed",
+        "random"
+      ],
+      "task_version": "0.1.0"
+    },
+    {
+      "id": "t3.machine_checked_mathematics/c06",
+      "split": "base",
+      "tier": "T3",
+      "task_id": "t3.machine_checked_mathematics",
+      "case_id": "c06",
+      "title": "Composite cube-root certificate",
+      "path": "tasks/tier3_applied/machine_checked_mathematics/cases/c06.yaml",
+      "prepare": [
+        "python",
+        "scripts/prepare_evaluation.py",
+        "--task",
+        "t3.machine_checked_mathematics",
+        "--case",
+        "c06",
+        "--seed",
+        "random"
+      ],
+      "task_version": "0.1.0"
+    },
+    {
+      "id": "t3.machine_checked_mathematics/c07",
+      "split": "base",
+      "tier": "T3",
+      "task_id": "t3.machine_checked_mathematics",
+      "case_id": "c07",
+      "title": "Anonymous modular subset certificate",
+      "path": "tasks/tier3_applied/machine_checked_mathematics/cases/c07.yaml",
+      "prepare": [
+        "python",
+        "scripts/prepare_evaluation.py",
+        "--task",
+        "t3.machine_checked_mathematics",
+        "--case",
+        "c07",
+        "--seed",
+        "random"
+      ],
+      "task_version": "0.1.0"
+    },
+    {
+      "id": "t3.machine_checked_mathematics/c08",
+      "split": "base",
+      "tier": "T3",
+      "task_id": "t3.machine_checked_mathematics",
+      "case_id": "c08",
+      "title": "Anonymous binary syndrome certificate",
+      "path": "tasks/tier3_applied/machine_checked_mathematics/cases/c08.yaml",
+      "prepare": [
+        "python",
+        "scripts/prepare_evaluation.py",
+        "--task",
+        "t3.machine_checked_mathematics",
+        "--case",
+        "c08",
+        "--seed",
+        "random"
+      ],
+      "task_version": "0.1.0"
+    },
+    {
+      "id": "t3.dafny_verified_programs/c01",
+      "split": "base",
+      "tier": "T3",
+      "task_id": "t3.dafny_verified_programs",
+      "case_id": "c01",
+      "title": "Stable partition preservation",
+      "path": "tasks/tier3_applied/dafny_verified_programs/cases/c01.yaml",
+      "prepare": [
+        "python",
+        "scripts/prepare_evaluation.py",
+        "--task",
+        "t3.dafny_verified_programs",
+        "--case",
+        "c01",
+        "--seed",
+        "random"
+      ],
+      "task_version": "0.2.0"
+    },
+    {
+      "id": "t3.dafny_verified_programs/c02",
+      "split": "base",
+      "tier": "T3",
+      "task_id": "t3.dafny_verified_programs",
+      "case_id": "c02",
+      "title": "Boundary-safe lower-bound search",
+      "path": "tasks/tier3_applied/dafny_verified_programs/cases/c02.yaml",
+      "prepare": [
+        "python",
+        "scripts/prepare_evaluation.py",
+        "--task",
+        "t3.dafny_verified_programs",
+        "--case",
+        "c02",
+        "--seed",
+        "random"
+      ],
+      "task_version": "0.2.0"
+    },
+    {
+      "id": "t3.dafny_verified_programs/c03",
+      "split": "base",
+      "tier": "T3",
+      "task_id": "t3.dafny_verified_programs",
+      "case_id": "c03",
+      "title": "Capacity-constrained reservation update",
+      "path": "tasks/tier3_applied/dafny_verified_programs/cases/c03.yaml",
+      "prepare": [
+        "python",
+        "scripts/prepare_evaluation.py",
+        "--task",
+        "t3.dafny_verified_programs",
+        "--case",
+        "c03",
+        "--seed",
+        "random"
+      ],
+      "task_version": "0.2.0"
+    },
+    {
+      "id": "t3.dafny_verified_programs/c04",
+      "split": "base",
+      "tier": "T3",
+      "task_id": "t3.dafny_verified_programs",
+      "case_id": "c04",
+      "title": "Precedence-constrained earliest schedule",
+      "path": "tasks/tier3_applied/dafny_verified_programs/cases/c04.yaml",
+      "prepare": [
+        "python",
+        "scripts/prepare_evaluation.py",
+        "--task",
+        "t3.dafny_verified_programs",
+        "--case",
+        "c04",
+        "--seed",
+        "random"
+      ],
+      "task_version": "0.2.0"
+    },
+    {
+      "id": "t3.dafny_verified_programs/c05",
+      "split": "base",
+      "tier": "T3",
+      "task_id": "t3.dafny_verified_programs",
+      "case_id": "c05",
+      "title": "Dependency-order validation",
+      "path": "tasks/tier3_applied/dafny_verified_programs/cases/c05.yaml",
+      "prepare": [
+        "python",
+        "scripts/prepare_evaluation.py",
+        "--task",
+        "t3.dafny_verified_programs",
+        "--case",
+        "c05",
+        "--seed",
+        "random"
+      ],
+      "task_version": "0.2.0"
+    },
+    {
+      "id": "t3.dafny_verified_programs/c06",
+      "split": "base",
+      "tier": "T3",
+      "task_id": "t3.dafny_verified_programs",
+      "case_id": "c06",
+      "title": "Audited priority firewall batch evaluation",
+      "path": "tasks/tier3_applied/dafny_verified_programs/cases/c06.yaml",
+      "prepare": [
+        "python",
+        "scripts/prepare_evaluation.py",
+        "--task",
+        "t3.dafny_verified_programs",
+        "--case",
+        "c06",
+        "--seed",
+        "random"
+      ],
+      "task_version": "0.2.0"
+    },
+    {
+      "id": "t3.dafny_verified_programs/c07",
+      "split": "base",
+      "tier": "T3",
+      "task_id": "t3.dafny_verified_programs",
+      "case_id": "c07",
+      "title": "Reference-counted handle-table invariant preservation",
+      "path": "tasks/tier3_applied/dafny_verified_programs/cases/c07.yaml",
+      "prepare": [
+        "python",
+        "scripts/prepare_evaluation.py",
+        "--task",
+        "t3.dafny_verified_programs",
+        "--case",
+        "c07",
+        "--seed",
+        "random"
+      ],
+      "task_version": "0.2.0"
+    },
+    {
+      "id": "t3.dafny_verified_programs/c08",
+      "split": "base",
+      "tier": "T3",
+      "task_id": "t3.dafny_verified_programs",
+      "case_id": "c08",
+      "title": "Free-list memory-pool invariant preservation",
+      "path": "tasks/tier3_applied/dafny_verified_programs/cases/c08.yaml",
+      "prepare": [
+        "python",
+        "scripts/prepare_evaluation.py",
+        "--task",
+        "t3.dafny_verified_programs",
+        "--case",
+        "c08",
+        "--seed",
+        "random"
+      ],
+      "task_version": "0.2.0"
+    },
+    {
+      "id": "t3.drat_bounded_hardware_safety/c01",
+      "split": "base",
+      "tier": "T3",
+      "task_id": "t3.drat_bounded_hardware_safety",
+      "case_id": "c01",
+      "title": "FIFO occupancy safety",
+      "path": "tasks/tier3_applied/drat_bounded_hardware_safety/cases/c01.yaml",
+      "prepare": [
+        "python",
+        "scripts/prepare_evaluation.py",
+        "--task",
+        "t3.drat_bounded_hardware_safety",
+        "--case",
+        "c01",
+        "--seed",
+        "random"
+      ],
+      "task_version": "0.8.0"
+    },
+    {
+      "id": "t3.drat_bounded_hardware_safety/c02",
+      "split": "base",
+      "tier": "T3",
+      "task_id": "t3.drat_bounded_hardware_safety",
+      "case_id": "c02",
+      "title": "FIFO underflow safety",
+      "path": "tasks/tier3_applied/drat_bounded_hardware_safety/cases/c02.yaml",
+      "prepare": [
+        "python",
+        "scripts/prepare_evaluation.py",
+        "--task",
+        "t3.drat_bounded_hardware_safety",
+        "--case",
+        "c02",
+        "--seed",
+        "random"
+      ],
+      "task_version": "0.8.0"
+    },
+    {
+      "id": "t3.drat_bounded_hardware_safety/c03",
+      "split": "base",
+      "tier": "T3",
+      "task_id": "t3.drat_bounded_hardware_safety",
+      "case_id": "c03",
+      "title": "Round-robin mutual exclusion",
+      "path": "tasks/tier3_applied/drat_bounded_hardware_safety/cases/c03.yaml",
+      "prepare": [
+        "python",
+        "scripts/prepare_evaluation.py",
+        "--task",
+        "t3.drat_bounded_hardware_safety",
+        "--case",
+        "c03",
+        "--seed",
+        "random"
+      ],
+      "task_version": "0.8.0"
+    },
+    {
+      "id": "t3.drat_bounded_hardware_safety/c04",
+      "split": "base",
+      "tier": "T3",
+      "task_id": "t3.drat_bounded_hardware_safety",
+      "case_id": "c04",
+      "title": "Round-robin bounded fairness",
+      "path": "tasks/tier3_applied/drat_bounded_hardware_safety/cases/c04.yaml",
+      "prepare": [
+        "python",
+        "scripts/prepare_evaluation.py",
+        "--task",
+        "t3.drat_bounded_hardware_safety",
+        "--case",
+        "c04",
+        "--seed",
+        "random"
+      ],
+      "task_version": "0.8.0"
+    },
+    {
+      "id": "t3.drat_bounded_hardware_safety/c05",
+      "split": "base",
+      "tier": "T3",
+      "task_id": "t3.drat_bounded_hardware_safety",
+      "case_id": "c05",
+      "title": "Credit-router conservation",
+      "path": "tasks/tier3_applied/drat_bounded_hardware_safety/cases/c05.yaml",
+      "prepare": [
+        "python",
+        "scripts/prepare_evaluation.py",
+        "--task",
+        "t3.drat_bounded_hardware_safety",
+        "--case",
+        "c05",
+        "--seed",
+        "random"
+      ],
+      "task_version": "0.8.0"
+    },
+    {
+      "id": "t3.drat_bounded_hardware_safety/c06",
+      "split": "base",
+      "tier": "T3",
+      "task_id": "t3.drat_bounded_hardware_safety",
+      "case_id": "c06",
+      "title": "Credit-router forwarding safety",
+      "path": "tasks/tier3_applied/drat_bounded_hardware_safety/cases/c06.yaml",
+      "prepare": [
+        "python",
+        "scripts/prepare_evaluation.py",
+        "--task",
+        "t3.drat_bounded_hardware_safety",
+        "--case",
+        "c06",
+        "--seed",
+        "random"
+      ],
+      "task_version": "0.8.0"
+    },
+    {
+      "id": "t3.drat_bounded_hardware_safety/c07",
+      "split": "base",
+      "tier": "T3",
+      "task_id": "t3.drat_bounded_hardware_safety",
+      "case_id": "c07",
+      "title": "Pipeline flush-stall safety",
+      "path": "tasks/tier3_applied/drat_bounded_hardware_safety/cases/c07.yaml",
+      "prepare": [
+        "python",
+        "scripts/prepare_evaluation.py",
+        "--task",
+        "t3.drat_bounded_hardware_safety",
+        "--case",
+        "c07",
+        "--seed",
+        "random"
+      ],
+      "task_version": "0.8.0"
+    },
+    {
+      "id": "t3.drat_bounded_hardware_safety/c08",
+      "split": "base",
+      "tier": "T3",
+      "task_id": "t3.drat_bounded_hardware_safety",
+      "case_id": "c08",
+      "title": "Pipeline writeback consistency",
+      "path": "tasks/tier3_applied/drat_bounded_hardware_safety/cases/c08.yaml",
+      "prepare": [
+        "python",
+        "scripts/prepare_evaluation.py",
+        "--task",
+        "t3.drat_bounded_hardware_safety",
+        "--case",
+        "c08",
+        "--seed",
+        "random"
+      ],
+      "task_version": "0.8.0"
+    },
+    {
+      "id": "tier3_plus/lean-01",
+      "split": "tier3_plus",
+      "tier": "T3+",
+      "fixture_id": "lean-01",
+      "task_id": "t3.machine_checked_mathematics_long_horizon",
+      "task_version": "0.2.0",
+      "case_id": "c09",
+      "title": "Transactional first-write rollback",
+      "path": "Tier 3+/lean/lean-01/instance.json",
+      "prepare": [
+        "python",
+        "scripts/prepare_tier3_plus.py",
+        "--fixture",
+        "lean-01"
+      ]
+    },
+    {
+      "id": "tier3_plus/lean-02",
+      "split": "tier3_plus",
+      "tier": "T3+",
+      "fixture_id": "lean-02",
+      "task_id": "t3.machine_checked_mathematics_long_horizon",
+      "task_version": "0.2.0",
+      "case_id": "c09",
+      "title": "Lazy affine segment tree correctness",
+      "path": "Tier 3+/lean/lean-02/instance.json",
+      "prepare": [
+        "python",
+        "scripts/prepare_tier3_plus.py",
+        "--fixture",
+        "lean-02"
+      ]
+    },
+    {
+      "id": "tier3_plus/lean-03",
+      "split": "tier3_plus",
+      "tier": "T3+",
+      "fixture_id": "lean-03",
+      "task_id": "t3.machine_checked_mathematics_long_horizon",
+      "task_version": "0.2.0",
+      "case_id": "c09",
+      "title": "Reverse-mode automatic differentiation",
+      "path": "Tier 3+/lean/lean-03/instance.json",
+      "prepare": [
+        "python",
+        "scripts/prepare_tier3_plus.py",
+        "--fixture",
+        "lean-03"
+      ]
+    },
+    {
+      "id": "tier3_plus/lean-04",
+      "split": "tier3_plus",
+      "tier": "T3+",
+      "fixture_id": "lean-04",
+      "task_id": "t3.machine_checked_mathematics_long_horizon",
+      "task_version": "0.2.0",
+      "case_id": "c10",
+      "title": "Simply typed lambda calculus safety",
+      "path": "Tier 3+/lean/lean-04/instance.json",
+      "prepare": [
+        "python",
+        "scripts/prepare_tier3_plus.py",
+        "--fixture",
+        "lean-04"
+      ]
+    },
+    {
+      "id": "tier3_plus/lean-05",
+      "split": "tier3_plus",
+      "tier": "T3+",
+      "fixture_id": "lean-05",
+      "task_id": "t3.machine_checked_mathematics_long_horizon",
+      "task_version": "0.2.0",
+      "case_id": "c10",
+      "title": "Exceptions and finally machine correctness",
+      "path": "Tier 3+/lean/lean-05/instance.json",
+      "prepare": [
+        "python",
+        "scripts/prepare_tier3_plus.py",
+        "--fixture",
+        "lean-05"
+      ]
+    },
+    {
+      "id": "tier3_plus/lean-06",
+      "split": "tier3_plus",
+      "tier": "T3+",
+      "fixture_id": "lean-06",
+      "task_id": "t3.machine_checked_mathematics_long_horizon",
+      "task_version": "0.2.0",
+      "case_id": "c09",
+      "title": "Parallel reduction confluence for lambda calculus",
+      "path": "Tier 3+/lean/lean-06/instance.json",
+      "prepare": [
+        "python",
+        "scripts/prepare_tier3_plus.py",
+        "--fixture",
+        "lean-06"
+      ]
+    },
+    {
+      "id": "tier3_plus/lean-07",
+      "split": "tier3_plus",
+      "tier": "T3+",
+      "fixture_id": "lean-07",
+      "task_id": "t3.machine_checked_mathematics_long_horizon",
+      "task_version": "0.2.0",
+      "case_id": "c10",
+      "title": "Typed closure machine safety",
+      "path": "Tier 3+/lean/lean-07/instance.json",
+      "prepare": [
+        "python",
+        "scripts/prepare_tier3_plus.py",
+        "--fixture",
+        "lean-07"
+      ]
+    },
+    {
+      "id": "tier3_plus/lean-08",
+      "split": "tier3_plus",
+      "tier": "T3+",
+      "fixture_id": "lean-08",
+      "task_id": "t3.machine_checked_mathematics_long_horizon",
+      "task_version": "0.2.0",
+      "case_id": "c10",
+      "title": "Fuelled closure evaluator correctness",
+      "path": "Tier 3+/lean/lean-08/instance.json",
+      "prepare": [
+        "python",
+        "scripts/prepare_tier3_plus.py",
+        "--fixture",
+        "lean-08"
+      ]
+    },
+    {
+      "id": "tier3_plus/dafny-01",
+      "split": "tier3_plus",
+      "tier": "T3+",
+      "fixture_id": "dafny-01",
+      "task_id": "t3.dafny_verified_programs",
+      "task_version": "0.2.0",
+      "case_id": "c04",
+      "title": "Affine loop safety by inductive halfspaces and Farkas certificates, with a faulty execution",
+      "path": "Tier 3+/dafny/dafny-01/instance.json",
+      "prepare": [
+        "python",
+        "scripts/prepare_tier3_plus.py",
+        "--fixture",
+        "dafny-01"
+      ]
+    },
+    {
+      "id": "tier3_plus/dafny-02",
+      "split": "tier3_plus",
+      "tier": "T3+",
+      "fixture_id": "dafny-02",
+      "task_id": "t3.dafny_verified_programs",
+      "task_version": "0.2.0",
+      "case_id": "c02",
+      "title": "Capture-avoiding beta reduction with typed traces under arbitrary binders",
+      "path": "Tier 3+/dafny/dafny-02/instance.json",
+      "prepare": [
+        "python",
+        "scripts/prepare_tier3_plus.py",
+        "--fixture",
+        "dafny-02"
+      ]
+    },
+    {
+      "id": "tier3_plus/dafny-03",
+      "split": "tier3_plus",
+      "tier": "T3+",
+      "fixture_id": "dafny-03",
+      "task_id": "t3.dafny_verified_programs",
+      "task_version": "0.2.0",
+      "case_id": "c06",
+      "title": "Fixed generalized Büchi intersection witnesses with executable certificate checking",
+      "path": "Tier 3+/dafny/dafny-03/instance.json",
+      "prepare": [
+        "python",
+        "scripts/prepare_tier3_plus.py",
+        "--fixture",
+        "dafny-03"
+      ]
+    },
+    {
+      "id": "tier3_plus/dafny-04",
+      "split": "tier3_plus",
+      "tier": "T3+",
+      "fixture_id": "dafny-04",
+      "task_id": "t3.dafny_verified_programs",
+      "task_version": "0.2.0",
+      "case_id": "c03",
+      "title": "Multi-pivot Davis–Putnam projection with constructive model reconstruction",
+      "path": "Tier 3+/dafny/dafny-04/instance.json",
+      "prepare": [
+        "python",
+        "scripts/prepare_tier3_plus.py",
+        "--fixture",
+        "dafny-04"
+      ]
+    },
+    {
+      "id": "tier3_plus/dafny-05",
+      "split": "tier3_plus",
+      "tier": "T3+",
+      "fixture_id": "dafny-05",
+      "task_id": "t3.dafny_verified_programs",
+      "task_version": "0.2.0",
+      "case_id": "c04",
+      "title": "Trace-oblivious compilation of stateful nested choices and indirect memory accesses",
+      "path": "Tier 3+/dafny/dafny-05/instance.json",
+      "prepare": [
+        "python",
+        "scripts/prepare_tier3_plus.py",
+        "--fixture",
+        "dafny-05"
+      ]
+    },
+    {
+      "id": "tier3_plus/dafny-06",
+      "split": "tier3_plus",
+      "tier": "T3+",
+      "fixture_id": "dafny-06",
+      "task_id": "t3.dafny_verified_programs",
+      "task_version": "0.2.0",
+      "case_id": "c08",
+      "title": "Reachability-game synthesis with paired strategies and finite-play certificates",
+      "path": "Tier 3+/dafny/dafny-06/instance.json",
+      "prepare": [
+        "python",
+        "scripts/prepare_tier3_plus.py",
+        "--fixture",
+        "dafny-06"
+      ]
+    },
+    {
+      "id": "tier3_plus/dafny-07",
+      "split": "tier3_plus",
+      "tier": "T3+",
+      "fixture_id": "dafny-07",
+      "task_id": "t3.dafny_verified_programs",
+      "task_version": "0.2.0",
+      "case_id": "c05",
+      "title": "Smith normal form certificates for two integer presentations",
+      "path": "Tier 3+/dafny/dafny-07/instance.json",
+      "prepare": [
+        "python",
+        "scripts/prepare_tier3_plus.py",
+        "--fixture",
+        "dafny-07"
+      ]
+    },
+    {
+      "id": "tier3_plus/dafny-08",
+      "split": "tier3_plus",
+      "tier": "T3+",
+      "fixture_id": "dafny-08",
+      "task_id": "t3.dafny_verified_programs",
+      "task_version": "0.2.0",
+      "case_id": "c04",
+      "title": "Longest strictly rising contiguous telemetry run",
+      "path": "Tier 3+/dafny/dafny-08/instance.json",
+      "prepare": [
+        "python",
+        "scripts/prepare_tier3_plus.py",
+        "--fixture",
+        "dafny-08"
+      ]
+    },
+    {
+      "id": "tier3_plus/drat-01",
+      "split": "tier3_plus",
+      "tier": "T3+",
+      "fixture_id": "drat-01",
+      "task_id": "t3.drat_bounded_hardware_safety",
+      "task_version": "0.8.0",
+      "case_id": "c05",
+      "title": "serial-mod-five",
+      "path": "Tier 3+/drat/drat-01/instance.json",
+      "prepare": [
+        "python",
+        "scripts/prepare_tier3_plus.py",
+        "--fixture",
+        "drat-01"
+      ]
+    },
+    {
+      "id": "tier3_plus/drat-02",
+      "split": "tier3_plus",
+      "tier": "T3+",
+      "fixture_id": "drat-02",
+      "task_id": "t3.drat_bounded_hardware_safety",
+      "task_version": "0.8.0",
+      "case_id": "c06",
+      "title": "mesh-parity-conservation",
+      "path": "Tier 3+/drat/drat-02/instance.json",
+      "prepare": [
+        "python",
+        "scripts/prepare_tier3_plus.py",
+        "--fixture",
+        "drat-02"
+      ]
+    },
+    {
+      "id": "tier3_plus/drat-03",
+      "split": "tier3_plus",
+      "tier": "T3+",
+      "fixture_id": "drat-03",
+      "task_id": "t3.drat_bounded_hardware_safety",
+      "task_version": "0.8.0",
+      "case_id": "c07",
+      "title": "restartable-shift-add-multiplier",
+      "path": "Tier 3+/drat/drat-03/instance.json",
+      "prepare": [
+        "python",
+        "scripts/prepare_tier3_plus.py",
+        "--fixture",
+        "drat-03"
+      ]
+    },
+    {
+      "id": "tier3_plus/drat-04",
+      "split": "tier3_plus",
+      "tier": "T3+",
+      "fixture_id": "drat-04",
+      "task_id": "t3.drat_bounded_hardware_safety",
+      "task_version": "0.8.0",
+      "case_id": "c08",
+      "title": "self-routing-switch-fabric",
+      "path": "Tier 3+/drat/drat-04/instance.json",
+      "prepare": [
+        "python",
+        "scripts/prepare_tier3_plus.py",
+        "--fixture",
+        "drat-04"
+      ]
+    },
+    {
+      "id": "tier3_plus/drat-05",
+      "split": "tier3_plus",
+      "tier": "T3+",
+      "fixture_id": "drat-05",
+      "task_id": "t3.drat_bounded_hardware_safety",
+      "task_version": "0.8.0",
+      "case_id": "c04",
+      "title": "nested-checkpoint-undo-store",
+      "path": "Tier 3+/drat/drat-05/instance.json",
+      "prepare": [
+        "python",
+        "scripts/prepare_tier3_plus.py",
+        "--fixture",
+        "drat-05"
+      ]
+    },
+    {
+      "id": "tier3_plus/drat-06",
+      "split": "tier3_plus",
+      "tier": "T3+",
+      "fixture_id": "drat-06",
+      "task_id": "t3.drat_bounded_hardware_safety",
+      "task_version": "0.8.0",
+      "case_id": "c08",
+      "title": "dual-polynomial-retimed-crc",
+      "path": "Tier 3+/drat/drat-06/instance.json",
+      "prepare": [
+        "python",
+        "scripts/prepare_tier3_plus.py",
+        "--fixture",
+        "drat-06"
+      ]
+    },
+    {
+      "id": "tier3_plus/drat-07",
+      "split": "tier3_plus",
+      "tier": "T3+",
+      "fixture_id": "drat-07",
+      "task_id": "t3.drat_bounded_hardware_safety",
+      "task_version": "0.8.0",
+      "case_id": "c07",
+      "title": "epoch-tagged-carry-save-retirement",
+      "path": "Tier 3+/drat/drat-07/instance.json",
+      "prepare": [
+        "python",
+        "scripts/prepare_tier3_plus.py",
+        "--fixture",
+        "drat-07"
+      ]
+    },
+    {
+      "id": "tier3_plus/drat-08",
+      "split": "tier3_plus",
+      "tier": "T3+",
+      "fixture_id": "drat-08",
+      "task_id": "t3.drat_bounded_hardware_safety",
+      "task_version": "0.8.0",
+      "case_id": "c06",
+      "title": "buffered-dirty-eviction-refill",
+      "path": "Tier 3+/drat/drat-08/instance.json",
+      "prepare": [
+        "python",
+        "scripts/prepare_tier3_plus.py",
+        "--fixture",
+        "drat-08"
+      ]
+    }
+  ]
+}

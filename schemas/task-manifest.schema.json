@@ -1,0 +1,152 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aip-bench.local/schemas/task-manifest.schema.json",
+  "title": "Merlin-Bench task manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "version",
+    "tier",
+    "title",
+    "plugin",
+    "protocol",
+    "randomness",
+    "resources",
+    "audit",
+    "scoring"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^t[1-4]\\.[a-z][a-z0-9_]*$"
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)(?:-[0-9A-Za-z.-]+)?(?:\\+[0-9A-Za-z.-]+)?$"
+    },
+    "tier": {"type": "integer", "minimum": 1, "maximum": 4},
+    "title": {"type": "string", "minLength": 1},
+    "plugin": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["entrypoint"],
+      "properties": {
+        "entrypoint": {
+          "type": "string",
+          "pattern": "^[A-Za-z_][A-Za-z0-9_.]*:[A-Za-z_][A-Za-z0-9_]*$"
+        }
+      }
+    },
+    "protocol": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["api_version", "mode", "public_coin", "one_shot_eval", "max_events"],
+      "properties": {
+        "api_version": {"const": "aip/1"},
+        "mode": {"enum": ["one_shot", "interactive"]},
+        "public_coin": {"type": "boolean"},
+        "one_shot_eval": {"type": "boolean"},
+        "max_events": {"type": "integer", "minimum": 1},
+        "participant_feedback": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "dev": {"enum": ["verbose", "minimal"]},
+            "eval": {"const": "minimal"}
+          }
+        }
+      }
+    },
+    "randomness": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["model", "reveal_on_terminal", "domain_separation"],
+          "properties": {
+            "model": {"const": "committed_prg"},
+            "reveal_on_terminal": {"const": true},
+            "domain_separation": {"const": "required"}
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["model", "reveal_on_terminal", "domain_separation"],
+          "properties": {
+            "model": {"const": "none"},
+            "reveal_on_terminal": {"const": false},
+            "domain_separation": {"const": "not_applicable"}
+          }
+        }
+      ]
+    },
+    "instance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["public_schema", "private_schema"],
+      "properties": {
+        "public_schema": {"type": "string", "minLength": 1},
+        "private_schema": {"type": "string", "minLength": 1}
+      }
+    },
+    "resources": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "wall_time_seconds",
+        "cpu_cores",
+        "memory_mb",
+        "disk_mb",
+        "max_artifact_bytes",
+        "max_events"
+      ],
+      "properties": {
+        "wall_time_seconds": {"type": "integer", "minimum": 1},
+        "cpu_cores": {"type": "integer", "minimum": 1},
+        "memory_mb": {"type": "integer", "minimum": 1},
+        "disk_mb": {"type": "integer", "minimum": 1},
+        "max_artifact_bytes": {"type": "integer", "minimum": 1},
+        "max_events": {"type": "integer", "minimum": 1}
+      }
+    },
+    "audit": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "replay_mode",
+        "require_signature",
+        "require_seed_commitment",
+        "require_instance_digest",
+        "require_event_chain"
+      ],
+      "properties": {
+        "replay_mode": {"const": "strict"},
+        "require_signature": {"type": "boolean"},
+        "require_seed_commitment": {"type": "boolean"},
+        "require_instance_digest": {"type": "boolean"},
+        "require_event_chain": {"type": "boolean"},
+        "require_seed_reveal": {"type": "boolean", "default": false}
+      }
+    },
+    "scoring": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["primary"],
+      "properties": {
+        "primary": {"type": "string", "minLength": 1},
+        "partial_progress": {
+          "type": ["string", "null"],
+          "minLength": 1
+        }
+      }
+    },
+    "soundness": {"type": "object"},
+    "cases": {
+      "type": "object",
+      "additionalProperties": {"type": "object"}
+    },
+    "metadata": {"type": "object"}
+  }
+}

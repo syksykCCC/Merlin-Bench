@@ -1,0 +1,11 @@
+id: c04
+title: Higher-order bounded-frontier coverage
+difficulty: STRUCTURE
+parameters:
+  num_variables: 1280
+  window_width: 15
+  clauses_per_variable: 7
+  minimum_clause_size: 3
+  maximum_clause_size: 4
+  minimum_edge_weight: 3
+  maximum_edge_weight: 31

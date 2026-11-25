@@ -1,0 +1,7 @@
+id: c05
+title: Bitonic Boolean-key payload routing
+difficulty: H2
+parameters:
+  records: 8
+  payload_fields: 4
+  expansion_width: 524288

@@ -1,0 +1,6 @@
+id: c05
+title: Cylindrical Monomer-Dimer Model
+difficulty: H3
+parameters:
+  rows: 6
+  columns: 30

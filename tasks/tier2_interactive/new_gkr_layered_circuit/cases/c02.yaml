@@ -1,0 +1,6 @@
+id: c02
+title: Batched second-order affine recurrences
+difficulty: H1
+parameters:
+  batch_size: 8
+  time_steps: 6

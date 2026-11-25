@@ -1,0 +1,10 @@
+id: c03
+title: Bounded-window weighted CNF
+difficulty: H1
+parameters:
+  num_variables: 2400
+  window_width: 12
+  hard_clauses_per_step: 3
+  soft_clauses_per_step: 4
+  min_weight: 1
+  max_weight: 101

@@ -1,0 +1,9 @@
+id: c01
+title: Weighted group calibration
+difficulty: CAL
+parameters:
+  num_groups: 24
+  elements_per_group: 6
+  decoys_per_group: 8
+  min_group_weight: 5
+  max_group_weight: 17

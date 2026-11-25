@@ -1,0 +1,5 @@
+id: c02
+title: Scaled balanced complete bipartite graph
+difficulty: H1
+parameters:
+  part_size: 128

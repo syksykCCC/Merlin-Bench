@@ -1,0 +1,6 @@
+id: c05
+title: Rank-one binary matrix variety
+difficulty: H2
+parameters:
+  left_dimension: 4
+  right_dimension: 5

@@ -1,0 +1,8 @@
+id: c05
+title: Double-tap blocked reversible map, 12 plus 9 bits
+difficulty: H3
+parameters:
+  large_block: 12
+  small_block: 9
+  quadratic_taps: 2
+  row_cloak_rounds: 0

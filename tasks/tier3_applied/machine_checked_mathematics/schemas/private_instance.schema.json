@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "aipbench://t3.machine_checked_mathematics/private-instance/v1",
+  "type": "object",
+  "required": [
+    "reference_certificate",
+    "reference_solution",
+    "reference_solution_sha256"
+  ],
+  "properties": {
+    "reference_certificate": {
+      "type": "array",
+      "items": {"type": "integer", "minimum": 0}
+    },
+    "reference_solution": {"type": "string", "minLength": 1, "maxLength": 262144},
+    "reference_solution_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+  },
+  "additionalProperties": false
+}

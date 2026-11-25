@@ -1,0 +1,8 @@
+id: c01
+title: Propagation calibration
+difficulty: CAL
+parameters:
+  num_variables: 160
+  num_soft_clauses: 240
+  min_soft_weight: 1
+  max_soft_weight: 31

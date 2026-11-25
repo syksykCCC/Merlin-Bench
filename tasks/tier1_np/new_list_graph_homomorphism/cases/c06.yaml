@@ -1,0 +1,5 @@
+id: c06
+title: Double-line switched-CFI difficulty replicate
+difficulty: H2
+parameters:
+  lift_factor: 4

@@ -1,0 +1,7 @@
+id: c01
+title: Anchored binary path calibration
+difficulty: H1
+parameters:
+  num_components: 64
+  component_size: 16
+  target_order: 3

@@ -1,0 +1,15 @@
+{
+  "challenge_sha256": "a523bf2be62f4c1322e8f2980ccdee19d8ebe98639a38d81c289d80182217c63",
+  "challenge_source": "module Challenge {\n  datatype Clause = Clause(pos: set<int>, neg: set<int>)\n  type Formula = set<Clause>\n\n  predicate Holds(c: Clause, m: set<int>) {\n    c.pos * m != {} || c.neg - m != {}\n  }\n\n  predicate Sat(f: Formula, m: set<int>) {\n    forall c :: c in f ==> Holds(c,m)\n  }\n\n  predicate Free(c: Clause, v: int) { v !in c.pos && v !in c.neg }\n  predicate Plus(c: Clause, v: int) { v in c.pos && v !in c.neg }\n  predicate Minus(c: Clause, v: int) { v !in c.pos && v in c.neg }\n\n  function Drop(c: Clause, v: int): Clause {\n    Clause(c.pos-{v},c.neg-{v})\n  }\n\n  function Resolve(p: Clause, n: Clause, v: int): Clause {\n    Clause((p.pos+n.pos)-{v},(p.neg+n.neg)-{v})\n  }\n\n  ghost function Next(f: Formula, v: int): Formula {\n    (set c | c in f && Free(c,v)) +\n    (set p,n | p in f && n in f && Plus(p,v) && Minus(n,v) :: Resolve(p,n,v))\n  }\n\n  ghost predicate Trace(f: Formula, piv: seq<int>, h: seq<Formula>) {\n    |h| == |piv|+1 && h[0] == f &&\n    (forall i :: 0 <= i < |piv| ==> h[i+1] == Next(h[i],piv[i]))\n  }\n\n  trait {:termination false} Candidate {\n    method Reduce(f: Formula, piv: seq<int>) returns (h: seq<Formula>)\n      ensures Trace(f,piv,h)\n      ensures forall m :: Sat(f,m) ==> Sat(h[|h|-1],m)\n      ensures forall c,v :: c in h[|h|-1] && v in piv ==> Free(c,v)\n\n    method Lift(f: Formula, piv: seq<int>, h: seq<Formula>, partial: set<int>)\n      returns (full: set<int>)\n      requires Trace(f,piv,h) && Sat(h[|h|-1],partial)\n      ensures Sat(f,full)\n      ensures forall v :: v !in piv ==> (v in full) == (v in partial)\n  }\n}\n",
+  "format_version": "aip-dafny-program-instance/1",
+  "harness_sha256": "c8f827945ae9280863df2053b91c8684d00c4acccd06a9416d01b23ec6ca6262",
+  "harness_source": "module ArthurHarness {\n  import C = Challenge\n  import S = Solution\n  method Main() {\n    var c: C.Candidate := new S.Candidate();\n    var f := {C.Clause({1},{}),C.Clause({2},{1}),C.Clause({3},{2}),\n              C.Clause({1,73},{1})};\n    var piv := [1,2];\n    var h := c.Reduce(f,piv);\n    expect |h| == 3 && h[2] == {C.Clause({3},{})};\n    assert h[2] == {C.Clause({3},{})} by {\n      assert h[1] == C.Next(f,1);\n      assert h[1] == {C.Clause({2},{}),C.Clause({3},{2})};\n      assert h[2] == C.Next(h[1],2);\n    }\n    var m := c.Lift(f,piv,h,{3,99});\n    expect m == {1,2,3,99};\n    var impossible := c.Reduce({C.Clause({6},{}),C.Clause({},{6})},[6]);\n    expect impossible[1] == {C.Clause({},{})};\n    var repeats := c.Reduce({C.Clause({4},{4})},[4,4]);\n    expect repeats[1] == {} && repeats[2] == {};\n    print \"AIPBENCH_DAFNY_OK:c03\\n\";\n  }\n}\n",
+  "instance_sha256": "9cd7e857fb096ffb505138ecc2571519463b1d73abcdde1642f106d211e8defd",
+  "public_features": {
+    "api": "Candidate.Reduce/Lift",
+    "title": "Multi-pivot Davis–Putnam projection with constructive model reconstruction"
+  },
+  "solution_module": "Solution",
+  "success_marker": "AIPBENCH_DAFNY_OK:c03",
+  "toolchain": "dafny-lang/dafny:4.11.0+z3"
+}

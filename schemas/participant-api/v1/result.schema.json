@@ -1,0 +1,65 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aip-bench.local/schemas/participant-api/v1/result.schema.json",
+  "title": "Merlin-Bench official result v1",
+  "type": "object",
+  "additionalProperties": true,
+  "required": [
+    "schema_version",
+    "run_id",
+    "session_id",
+    "task_id",
+    "task_version",
+    "case_id",
+    "terminal_status",
+    "reason_code",
+    "instance_digest",
+    "task_manifest_digest",
+    "transcript_root",
+    "coin_commitment",
+    "seed_reveal",
+    "events_received",
+    "duration_ms",
+    "milestones"
+  ],
+  "properties": {
+    "schema_version": {"const": "aip-result/1"},
+    "run_id": {"type": "string", "minLength": 1},
+    "session_id": {"type": "string", "minLength": 1},
+    "session_digest": {"$ref": "#/$defs/digest"},
+    "signing_public_key_digest": {"$ref": "#/$defs/digest"},
+    "seed_commitment_document_digest": {"$ref": "#/$defs/digest"},
+    "mode": {"enum": ["dev", "eval"]},
+    "task_id": {"type": "string", "pattern": "^t[1-4]\\.[a-z][a-z0-9_]*$"},
+    "task_version": {"type": "string", "minLength": 1},
+    "case_id": {"type": "string", "minLength": 1},
+    "terminal_status": {"enum": ["ACCEPT", "REJECT", "TIMEOUT", "SYSTEM_ERROR"]},
+    "reason_code": {"type": "string", "minLength": 1},
+    "instance_digest": {"$ref": "#/$defs/digest"},
+    "artifact_index_digest": {"$ref": "#/$defs/digest"},
+    "private_instance_digest": {"$ref": "#/$defs/digest"},
+    "generation_metadata_digest": {"$ref": "#/$defs/digest"},
+    "protocol_digest": {"$ref": "#/$defs/digest"},
+    "task_manifest_digest": {"$ref": "#/$defs/digest"},
+    "transcript_root": {"$ref": "#/$defs/digest"},
+    "coin_commitment": {
+      "oneOf": [{"$ref": "#/$defs/digest"}, {"type": "null"}]
+    },
+    "seed_reveal": {"type": ["string", "null"]},
+    "events_received": {"type": "integer", "minimum": 0},
+    "duration_ms": {"type": "integer", "minimum": 0},
+    "decision_duration_ms": {"type": "integer", "minimum": 0},
+    "milestones": {
+      "type": "object",
+      "additionalProperties": {
+        "type": ["integer", "number", "string", "boolean", "null"]
+      }
+    }
+  },
+  "$defs": {
+    "digest": {
+      "type": "string",
+      "pattern": "^sha256:[0-9a-f]{64}$"
+    }
+  }
+}

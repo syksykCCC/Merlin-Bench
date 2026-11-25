@@ -1,0 +1,9 @@
+id: c05
+title: Sparse affine parity factors
+difficulty: H2
+parameters:
+  num_components: 320
+  component_width: 16
+  factors_per_component: 44
+  min_weight: 1
+  max_weight: 4093

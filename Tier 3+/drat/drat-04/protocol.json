@@ -1,0 +1,20 @@
+{
+  "api_version": "aip/1",
+  "event_schemas": {
+    "hardware.drat": {
+      "schema_ref": "tasks/tier3_applied/drat_bounded_hardware_safety/schemas/proof_submission.schema.json"
+    }
+  },
+  "initial_event_kinds": [
+    "hardware.drat"
+  ],
+  "mode": "one_shot",
+  "public_parameters": {
+    "bound": 9,
+    "max_proof_bytes": 16777216,
+    "num_cnf_clauses": 6687,
+    "num_cnf_variables": 2480,
+    "one_shot": true,
+    "toolchain": "aiger-039ec1a2/bmc-tseitin-v1+drat-trim-2e3b2dc0+cadical-3.0.1-reference"
+  }
+}

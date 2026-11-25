@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "aipbench://t1.new_structured_closest_vector/public-instance/1",
+  "type": "object",
+  "required": [
+    "format_version",
+    "ambient_dimension",
+    "rank",
+    "basis",
+    "target_numerator",
+    "denominator",
+    "radius_squared_numerator",
+    "coefficient_bound"
+  ],
+  "properties": {
+    "format_version": {"const": "aip-structured-closest-vector-instance/1"},
+    "ambient_dimension": {"type": "integer", "minimum": 1, "maximum": 256},
+    "rank": {"type": "integer", "minimum": 1, "maximum": 256},
+    "basis": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 256,
+      "items": {
+        "type": "array",
+        "minItems": 1,
+        "maxItems": 256,
+        "items": {
+          "type": "integer",
+          "minimum": -9007199254740991,
+          "maximum": 9007199254740991
+        }
+      }
+    },
+    "target_numerator": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 256,
+      "items": {
+        "type": "integer",
+        "minimum": -9007199254740991,
+        "maximum": 9007199254740991
+      }
+    },
+    "denominator": {"type": "integer", "minimum": 1, "maximum": 9007199254740991},
+    "radius_squared_numerator": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 9007199254740991
+    },
+    "coefficient_bound": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 9007199254740991
+    }
+  },
+  "additionalProperties": false
+}

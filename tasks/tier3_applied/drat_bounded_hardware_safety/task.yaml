@@ -1,0 +1,52 @@
+id: t3.drat_bounded_hardware_safety
+version: 0.8.0
+tier: 3
+title: DRAT-Certified Bounded Hardware Safety
+
+plugin:
+  entrypoint: aipbench.tasks.drat_bounded_hardware_safety:create_task
+
+protocol:
+  api_version: aip/1
+  mode: one_shot
+  public_coin: false
+  one_shot_eval: true
+  max_events: 1
+  participant_feedback:
+    dev: verbose
+    eval: minimal
+
+randomness:
+  model: none
+  reveal_on_terminal: false
+  domain_separation: not_applicable
+
+instance:
+  public_schema: schemas/public_instance.schema.json
+  private_schema: schemas/private_instance.schema.json
+
+resources:
+  wall_time_seconds: 600
+  cpu_cores: 2
+  memory_mb: 2048
+  disk_mb: 2048
+  max_artifact_bytes: 16777216
+  max_events: 1
+
+audit:
+  replay_mode: strict
+  require_signature: true
+  require_seed_commitment: false
+  require_instance_digest: true
+  require_event_chain: true
+  require_seed_reveal: false
+
+scoring:
+  primary: binary_accept
+  partial_progress: proof_submitted
+
+soundness:
+  class: native_drat_checked_bounded_safety
+  statement: >-
+    The published bounded-miter DIMACS formula is checked UNSAT by the pinned
+    drat-trim checker using the submitted standard DRAT proof

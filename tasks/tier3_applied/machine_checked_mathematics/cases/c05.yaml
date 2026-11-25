@@ -1,0 +1,6 @@
+id: c05
+title: Anonymous modular column equivalence
+difficulty: H3
+parameters:
+  field_modulus: 1009
+  num_columns: 80

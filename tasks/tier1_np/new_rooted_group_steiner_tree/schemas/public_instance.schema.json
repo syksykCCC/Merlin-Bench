@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "aipbench://t1.new_rooted_group_steiner_tree/public-instance/1",
+  "type": "object",
+  "required": ["format_version", "num_vertices", "root", "edges", "groups", "budget"],
+  "properties": {
+    "format_version": {"const": "aip-rooted-group-steiner-tree-instance/1"},
+    "num_vertices": {"type": "integer", "minimum": 2},
+    "root": {"type": "integer", "minimum": 1},
+    "edges": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["edge_id", "u", "v", "weight"],
+        "properties": {
+          "edge_id": {"type": "integer", "minimum": 1, "maximum": 9007199254740991},
+          "u": {"type": "integer", "minimum": 1},
+          "v": {"type": "integer", "minimum": 1},
+          "weight": {"type": "integer", "minimum": 1, "maximum": 9007199254740991}
+        },
+        "additionalProperties": false
+      }
+    },
+    "groups": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["group_id", "vertices"],
+        "properties": {
+          "group_id": {"type": "integer", "minimum": 1, "maximum": 9007199254740991},
+          "vertices": {
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {"type": "integer", "minimum": 1}
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "budget": {"type": "integer", "minimum": 1, "maximum": 9007199254740991}
+  },
+  "additionalProperties": false
+}

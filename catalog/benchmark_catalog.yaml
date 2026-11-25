@@ -1,0 +1,973 @@
+benchmark:
+  name: Merlin-Bench
+  version: 0.1.0
+  roles:
+    agent: Merlin
+    official_runtime: Arthur
+  case_count: 100
+  difficulty_policy:
+    CAL: The sole global calibration; validates only the basic path and may be excluded from the main
+      leaderboard.
+    H1: Entry-level difficulty; requires correctly implementing the common relation/protocol and completing
+      at least one nontrivial public-only solution route.
+    H2: Adds representation mismatch, proof reconstruction, batching, resource planning, or multistage
+      composition beyond H1.
+    H3: Highest designated difficulty level in this inventory; combines larger instances or more
+      involved proof reconstruction and protocol execution.
+  case_profile_policy: difficulty is a qualitative CAL/H1/H2/H3 designation; case_profile is the task-local
+    profile label in the generator case YAML. When they differ, the catalog explicitly records case_profile;
+    if absent, it equals difficulty.
+  inventory_note: Compact paper-release inventory containing exactly the current 15 tasks and 100 cases.
+tiers:
+- id: T1
+  name: Deterministic Proof-Carrying NP-Aligned Tasks
+  definition: Arthur uses no protocol randomness. Merlin submits an answer and a certificate verifiable
+    by a deterministic polynomial-time checker, either in one submission or in stages. For NO/optimality
+    conclusions, the benchmark uses only instances with a standard proof log, dual, or promise refutation;
+    it does not claim that every coNP conclusion has a short certificate.
+  goal: Align with traditional mathematics/algorithm benchmarks while upgrading bare answers into a solver
+    + certificate + artifact pipeline.
+  tasks:
+  - id: T1.1
+    runtime_id: t1.new_maxflow_min_cut
+    name: New Max-Flow / Min-Cut Certificates
+    description: An independent 600-second Max-Flow / Min-Cut certificate task. It preserves the exact
+      primal-feasibility plus equal-capacity dual-cut acceptance relation while using a new generator
+      domain and new case designs. All six cases are implemented and frozen under version 0.1.0.
+    implementation:
+      status: C01--C06 implemented and frozen
+      current_profiles: C01 has 8--16 independent two-edge channels; C02 is a 402-vertex, 5,000-edge unit-capacity
+        matching network; C03 has 257 vertices, 18,944 edges, and flow value 3,000,000,007; C04 is a 4,098-vertex,
+        12,224-edge layered unit network; C05 is a sparse 12,290-vertex, 24,704-edge cluster/interface
+        network; C06 is a depth-3,000 width-two diagnostic with 6,002 vertices and 12,000 edges.
+    cases:
+    - id: C01
+      name: Independent-channel calibration
+      construction: Each randomly relabeled internal vertex is one independent two-edge channel whose
+        two capacities agree.
+      merlin: Submit the saturated channel flow, every public edge ID, and a matching source-side cut.
+      focus: Accessible 600-second one-shot primal/dual certificate calibration under opaque labels and
+        edge IDs.
+      difficulty: CAL
+    - id: C02
+      name: Regular bipartite matching network
+      construction: A hidden 200-by-200 regular bipartite middle layer plus 200 redundant edges is wrapped
+        by unit-capacity source and sink arcs.
+      merlin: Find any perfect matching or run a general maximum-flow solver, then export the complete
+        flow and residual source-side cut.
+      focus: Scale, unit-capacity matching structure, opaque edge IDs, and complete zero-flow serialization.
+      difficulty: H1
+    - id: C03
+      name: Large-integer sharded serial network
+      construction: A 256-segment serial network shards the same 3,000,000,007 bandwidth across 72 parallel
+        edges per segment and adds 512 backward edges.
+      merlin: Use exact wide integers, retain every parallel edge ID, and serialize a complete 18,944-edge
+        primal witness plus a matching cut.
+      focus: Large exact arithmetic, parallel-edge accounting, certificate volume, and source-side cut
+        reconstruction.
+      difficulty: H1
+    - id: C04
+      name: Wide layered permutation network
+      construction: Sixty-four width-64 layers are joined by three seed-selected permutation matchings
+        per transition, with unit terminal arcs.
+      merlin: Find any of many maximum flows through the layered network and serialize all 12,224 edge
+        values with a matching cut.
+      focus: Larger layered traversal, non-unique primal witnesses, complete certificate mapping, and
+        residual-cut recovery.
+      difficulty: H1
+    - id: C05
+      name: Sparse cluster-interface network
+      construction: Forty-eight width-128 clusters use three internal permutation matchings and one sparse
+        permutation interface between adjacent clusters.
+      merlin: Route 128 units through the large sparse graph, choose among non-unique internal flows,
+        and serialize all 24,704 edge values.
+      focus: Sparse-large-graph implementation pressure, cluster/interface alternation, non-unique flows,
+        and complete-certificate I/O.
+      difficulty: H2
+    - id: C06
+      name: Deep width-two diagnostic network
+      construction: Three thousand width-two layers are connected by complete unit-capacity K2,2 transitions,
+        yielding source-to-sink distance 3,001.
+      merlin: Use an iterative or otherwise depth-safe implementation, find either of many two-unit flows,
+        and serialize all 12,000 edge values.
+      focus: Long-path implementation diagnostics, residual/level traversal, non-unique flow mapping,
+        and complete zero-flow output; not a general max-flow hardness claim.
+      difficulty: H2
+  - id: T1.2
+    runtime_id: t1.new_weighted_partial_maxsat
+    name: New Weighted Partial MaxSAT Assignment
+    description: An independent 600-second Weighted Partial MaxSAT assignment task. Arthur accepts a complete
+      Boolean assignment exactly when it satisfies every hard clause and its exact unsatisfied-soft weight
+      is at most the public threshold. All six cases are implemented and frozen.
+    implementation:
+      status: C01--C06 implemented and frozen
+      current_profiles: C01 has 160 variables and 559 clauses; C02 has 12,000 variables and 130,200 clauses;
+        C03 has 2,400 variables and 16,797 clauses; C04 has 36,289 variables and 126,721 clauses; C05
+        has 33,280 variables and 126,720 clauses; C06 has 3,840 variables and 65,248 weighted binary clauses.
+    cases:
+    - id: C01
+      name: Propagation calibration
+      construction: A randomly relabeled and polarity-obscured anchored binary-relation path uniquely
+        fixes a balanced hidden assignment; weighted two- and three-literal soft clauses set its exact
+        cost.
+      merlin: Submit the complete public-variable assignment satisfying all hard clauses and meeting the
+        public threshold.
+      focus: Accessible one-shot WCNF parsing, forced-value propagation, exact weighted cost, and non-obvious
+        public polarity.
+      difficulty: CAL
+    - id: C02
+      name: Weighted implication closure
+      construction: A polarity-obscured 80-layer successor-closure network carries random weighted true/false
+        preferences and an exact minimum-cut threshold.
+      merlin: Recover any threshold-attaining closed assignment, using either general optimization or
+        the weighted-closure structure.
+      focus: Large WCNF ingestion, latent-polarity recovery, exact weighted optimization, and public-only
+        certificate reconstruction.
+      difficulty: H1
+    - id: C03
+      name: Bounded-window weighted CNF
+      construction: Seeded two- and three-literal clauses have logical span at most twelve before independent
+        variable and polarity hiding; an exact path-decomposition dynamic program certifies the threshold.
+      merlin: Find any assignment satisfying the hard formula whose exact weighted soft cost meets the
+        threshold.
+      focus: Moderate general weighted optimization, hidden low-width structure, and complete assignment
+        reconstruction.
+      difficulty: H1
+    - id: C04
+      name: Locally compiled weighted closure
+      construction: A layered maximum-weight closure core is compiled through 30,144 local auxiliary gates
+        and one hidden constant before independent variable/polarity obfuscation.
+      merlin: Solve the public WCNF directly or recognize and eliminate the local gates before exact closed-set
+        optimization.
+      focus: Local CNF gadget recognition, hidden-structure reconstruction, exact weighted optimization,
+        and large complete assignments.
+      difficulty: H2
+    - id: C05
+      name: Sparse affine parity factors
+      construction: Three-variable affine factors in 320 width-16 components are compiled through 28,160
+        complete XOR gates, independently relabeled, and weighted on their output wires.
+      merlin: Solve the public WCNF directly or recover affine factor components and optimize each component
+        exactly.
+      focus: Tseitin truth-table recovery, sparse parity structure, component decomposition, exact weights,
+        and large assignments.
+      difficulty: H2
+    - id: C06
+      name: Hidden layered binary energy
+      construction: Two-clause weighted parity factors form 240 hidden width-16 cliques joined by seeded
+        perfect matchings; public relabeling hides the clique-path order.
+      merlin: Solve the public WCNF directly or recover the clique path and run exact min-sum transfer
+        optimization.
+      focus: Hidden graph decomposition, weighted binary energy, state-space dynamic programming, and
+        exact full assignment reconstruction.
+      difficulty: H2
+  - id: T1.3
+    runtime_id: t1.new_structured_set_cover
+    name: New Structured Set Cover
+    description: An independent 600-second weighted Set Cover task. Arthur accepts distinct public set
+      IDs exactly when their exact total weight is within the public budget and their union covers the
+      universe.
+    implementation:
+      status: C01--C06 implemented and frozen
+      current_profiles: C01 is an independent-component calibration; C02 is a connected weighted cycle;
+        C03 is a width-12 Boolean path; C04/C05 are exact weighted hitting-set paths; C06 is an exact
+        weighted hitting-set bag tree.
+    cases:
+    - id: C01
+      name: Weighted group calibration
+      construction: Each randomly relabeled six-element component has one uniquely cheapest full candidate
+        and eight strictly more expensive proper-subset decoys.
+      merlin: Select the full candidate from each public incidence component and submit their opaque IDs.
+      focus: Accessible weighted-cover parsing, incidence components, opaque IDs, exact budget, and one-shot
+        submission.
+      difficulty: CAL
+    - id: C02
+      name: Relabeled cyclic overlap
+      construction: Candidate incidences form a randomly relabeled weighted cycle in which adjacent choices
+        overlap and the exact optimum requires boundary-state coordination.
+      merlin: Recover the candidate cycle from shared public elements, solve its two-boundary-state weighted-cover
+        dynamic program, and map the chosen vertices back to opaque set IDs.
+      focus: Incidence-graph recovery, overlapping choices, exact cyclic dynamic programming, and complete
+        public certificate reconstruction.
+      difficulty: H1
+    - id: C03
+      name: Hidden bounded-width Boolean path
+      construction: Equal-weight selector pairs and mandatory clause-group markers encode randomly relabeled
+        width-12 local constraints along a hidden 42-bag path.
+      merlin: Recover selector pairs and marked local/boundary clauses, rebuild the bag path, and run
+        exact state compatibility dynamic programming.
+      focus: Hidden decomposition recovery, bounded-width constraint solving, exact threshold reconstruction,
+        and opaque certificate mapping.
+      difficulty: H2
+    - id: C04
+      name: Marked width-16 weighted hitting-set path
+      construction: Random positive-weight candidates and ordinary three/four-way cover constraints form
+        124 overlapping width-16 bags; non-selectable high-weight labels group each bag without singleton
+        elements.
+      merlin: Recover the marked bag path, run exact overlap-state dynamic programming, and return only
+        the selected ordinary candidates.
+      focus: Weighted hitting set, hidden path decomposition, exact separator DP, and avoiding planted
+        selector shortcuts.
+      difficulty: H2
+    - id: C05
+      name: Marked width-18 weighted hitting-set path
+      construction: The C04 exact hitting-set relation is lifted to 124 width-18 bags with nine-candidate
+        overlaps and independently seeded weights.
+      merlin: Recover the bag path from non-selectable group labels and run exact width-18 overlap-state
+        dynamic programming.
+      focus: Larger separator state space, exact weighted optimization, public decomposition recovery,
+        and complete certificate backtracking.
+      difficulty: H2
+    - id: C06
+      name: Marked width-16 weighted hitting-set tree
+      construction: A randomly relabeled ternary running-intersection tree has 109 width-16 bags, six-candidate
+        parent separators, ordinary weighted cover constraints, and non-selectable group labels.
+      merlin: Recover the bag-intersection tree and run exact bottom-up separator dynamic programming
+        with certificate backtracking.
+      focus: Tree-decomposition recovery, branching subproblem aggregation, exact weighted optimization,
+        and complete public certificate reconstruction.
+      difficulty: H2
+  - id: T1.4
+    runtime_id: t1.new_structured_closest_vector
+    name: New Structured Closest Vector
+    description: An independent 600-second exact Closest Vector task. Merlin submits bounded integer coefficients
+      and Arthur checks the public rational-target squared-distance inequality with arbitrary-precision
+      integer arithmetic.
+    implementation:
+      status: C01--C06 implemented
+      current_profiles: C01 is an exact orthogonal-residual calibration; C02 is a hidden signed path equation
+        system; C03 is a paired-residual low-width tree system; C04 is a hidden modular evaluation lattice;
+        C05 is a column-mixed tensor-code lattice; C06 is a column-mixed Boolean-cube code lattice.
+    cases:
+    - id: C01
+      name: Orthogonal residual calibration
+      construction: Signed and independently relabeled pivot coordinates determine a nonzero bounded coefficient
+        vector, while orthogonal target residuals give a positive exact optimum.
+      merlin: Recover the coefficients from the public pivot rows and submit them in public column order.
+      focus: Matrix orientation, signed coordinates, exact arithmetic, public-only recovery, and one-shot
+        submission.
+      difficulty: CAL
+    - id: C02
+      name: Hidden signed path equations
+      construction: A signed bidiagonal integer system and orthogonal residual coordinates are independently
+        row/column relabeled; the exact optimum requires reconstructing and eliminating the sparse equation
+        path.
+      merlin: Recover the singleton/adjacent-pair support path, solve its exact integer equations from
+        the exposed leaf, and translate the coefficients to public column order.
+      focus: Sparse support-graph recovery, signed leaf elimination, exact divisibility, and certificate
+        reconstruction.
+      difficulty: H1
+    - id: C03
+      name: Paired-residual low-width tree
+      construction: Every sparse ternary-tree equation is published twice with opposite target residuals,
+        then all rows and columns are independently permuted and signed.
+      merlin: Pair equal-up-to-sign public rows, cancel their antisymmetric residuals, recover a sparse
+        elimination matching, and back-substitute exact integers.
+      focus: Signed row normalization, hidden pairing, sparse hypergraph elimination, exact midpoint arithmetic,
+        and complete coefficient recovery.
+      difficulty: H2
+    - id: C04
+      name: Hidden modular evaluation lattice
+      construction: A length-128 dimension-20 evaluation code over F257 defines a Construction-A lattice;
+        a 32-position rational error pattern is hidden by signed row/column permutations.
+      merlin: Recover the modular evaluation code from the public basis, uniquely decode the rounded target,
+        lift the nearest congruent integer point, and solve for public coefficients.
+      focus: Modular structure recovery, finite-field unique decoding, exact closest representatives,
+        and defeating naive real least-squares rounding.
+      difficulty: H2
+    - id: C05
+      name: Column-mixed tensor-code lattice
+      construction: A signed and relabeled 16-by-16 tensor evaluation lattice has a sparse rational error
+        matching and a deeply sheared public integer basis.
+      merlin: Recover the modular grid quotient, decode its component rows, lift the nearest lattice point,
+        and solve the mixed public basis exactly.
+      focus: Quotient recovery, product-code decoding, bounded-distance uniqueness, basis-invariant lattice
+        points, and exact coefficient reconstruction.
+      difficulty: H2
+    - id: C06
+      name: Column-mixed Boolean-cube code lattice
+      construction: A degree-three Boolean-cube evaluation code over F257 defines a Construction-A lattice
+        with a deeply sheared kernel basis and a sparse exact rational error set.
+      merlin: Recover Boolean coordinates from the public quotient, majority-decode the low-degree word,
+        lift the closest lattice point, and solve the mixed public basis exactly.
+      focus: Boolean-quotient recovery, recursive majority decoding, bounded-distance uniqueness, and
+        dense exact coefficient reconstruction.
+      difficulty: H2
+  - id: T1.5
+    runtime_id: t1.new_list_graph_homomorphism
+    name: New List Graph Homomorphism
+    description: An independent 600-second List Graph Homomorphism task. Merlin submits a complete public
+      mapping, and Arthur checks every list and source-edge constraint deterministically.
+    implementation:
+      status: C01--C06 implemented
+      current_profiles: C01 is an anchored binary-path calibration; C02 is a hidden tree of local permutation
+        constraints; C03 is a coarsely listed switched CFI isomorphism over a rooted-WL-rigid cubic base;
+        C04 applies two blind line-graph transforms; C05 uses direct CFI over a symmetric cyclic cover;
+        C06 independently replicates C04's frozen double-line difficulty profile.
+    cases:
+    - id: C01
+      name: Anchored binary path calibration
+      construction: Sixty-four independently relabeled length-16 paths each use two allowed target colors
+        and one singleton anchor.
+      merlin: Propagate the forced target choice along every source path and return the complete mapping
+        in public source order.
+      focus: Public list indexing, independent source/target namespaces, component traversal, and one-shot
+        submission.
+      difficulty: H1
+    - id: C02
+      name: Hidden tree permutation constraints
+      construction: A relabeled 1,365-vertex source tree carries six-state lists whose adjacent domains
+        are linked by independently chosen perfect matchings in the target graph.
+      merlin: Locate the singleton root and propagate the unique compatible target state through every
+        source edge.
+      focus: Large public graph indexing, hidden root discovery, local functional constraints, and complete
+        mapping recovery.
+      difficulty: H1
+    - id: C03
+      name: Coarsely listed switched CFI isomorphism
+      construction: Two independently relabeled 2,400-vertex CFI graphs differ by local even frame switches
+        over the same seeded cubic bipartite base; lists reveal only outer/middle role and base bipartition
+        side.
+      merlin: Recover and match the contracted base from public rooted refinement signatures, solve the
+        public frame equations, and lift the result to a complete homomorphism.
+      focus: Gadget recovery, hidden graph isomorphism, rooted refinement, affine frame consistency, and
+        complete mapping reconstruction.
+      difficulty: H2
+    - id: C04
+      name: Double-line blind switched CFI isomorphism
+      construction: Two line-graph transforms hide independently relabeled switched CFI roots, yielding
+        3,600-vertex, 10,800-edge public graphs with only coarse wedge-role lists.
+      merlin: Recover maximal K4 roots, then K3 roots, reconstruct the switched CFI isomorphism, and lift
+        it through both edge transforms.
+      focus: Repeated line-graph inversion, hidden root recovery, CFI frame consistency, and complete
+        edge-map lifting.
+      difficulty: H2
+    - id: C05
+      name: Symmetric-cover switched CFI isomorphism
+      construction: Two independently relabeled 1,800-vertex CFI graphs use one connected cyclic cover
+        and differ by hidden local even frame switches; lists reveal only outer/middle role and cover
+        bipartition side.
+      merlin: Contract public gadgets, recover a cover isomorphism up to cyclic sheet phase, solve the
+        public affine frame equations, and lift to all graph vertices.
+      focus: Symmetric quotient recovery, cyclic-cover phase ambiguity, CFI frame consistency, and complete
+        mapping reconstruction.
+      difficulty: H2
+    - id: C06
+      name: Double-line switched-CFI difficulty replicate
+      construction: An independently domain-separated seed instantiates the same 3,600-vertex, 10,800-edge
+        double-line switched-CFI profile and coarse wedge-role lists as C04.
+      merlin: Recover both line-graph roots, reconstruct the switched CFI isomorphism, and lift it through
+        both edge transforms on a fresh instance.
+      focus: Seed robustness, repeated line-graph inversion, hidden root recovery, affine frame consistency,
+        and complete edge-map lifting.
+      difficulty: H2
+  - id: T1.6
+    runtime_id: t1.new_rooted_group_steiner_tree
+    name: New Rooted Group Steiner Tree
+    description: An independent 600-second Rooted Group Steiner Tree task. Merlin submits public edge
+      IDs, and Arthur checks exact weight, root connectivity, and coverage of every public group.
+    implementation:
+      status: C01--C06 implemented
+      current_profiles: C01 is a calibration; C02 is a serial cactus; C03--C04 use bounded paths; C05
+        uses a width-16 running-intersection ternary bag tree; C06 uses a deep shared-routing tree with
+        bounded ancestor coverage.
+    cases:
+    - id: C01
+      name: Mandatory-cut calibration
+      construction: A relabeled 1,365-vertex weighted tree has one singleton group at every depth-five
+        vertex; 1,600 additional edges each individually exceed the total public budget.
+      merlin: Discard individually unaffordable edges, root the remaining public tree, and take the union
+        of paths from the root to all grouped vertices.
+      focus: Shuffled graph parsing, opaque edge IDs, connectivity, exact cost, and long witness serialization.
+      difficulty: H1
+      case_profile: STRUCTURE
+    - id: C02
+      name: Serial cactus boundary constraints
+      construction: A chain of 768 weighted four-cycles has two branch choices per cell; shuffled two-vertex
+        groups couple choices across adjacent cells and a terminal group forces traversal of the full
+        chain.
+      merlin: Recover the cactus order, translate groups into local compatibility constraints, run an
+        exact three-state path DP, and reconstruct the public edge IDs.
+      focus: Cactus decomposition, group-induced local constraints, exact DP, and witness recovery.
+      difficulty: H1
+      case_profile: STRUCTURE
+    - id: C03
+      name: Relabelled bounded-frontier choices
+      construction: A relabelled 1,536-gadget root-star encodes a weighted binary CSP with nine couplings
+        per variable spanning a hidden width-12 order.
+      merlin: Recover centers and the redundant public ordering path, translate choice-pair groups into
+        forbidden patterns, and run an exact width-12 frontier DP.
+      focus: Hidden-order recovery, bounded-frontier exact optimization, opaque edge reconstruction, and
+        dense group parsing.
+      difficulty: H2
+      case_profile: STRUCTURE
+    - id: C04
+      name: Higher-order bounded-frontier coverage
+      construction: A relabelled 1,280-gadget root-star encodes weighted three/four-literal coverage clauses
+        over a hidden width-15 order.
+      merlin: Recover centers and center-triple order markers, translate higher-arity groups into clauses,
+        and run an exact width-15 frontier DP.
+      focus: Non-bijunctive local relations, hidden-order recovery, exact bounded-frontier optimization,
+        and opaque witness reconstruction.
+      difficulty: H2
+      case_profile: STRUCTURE
+    - id: C05
+      name: Running-intersection bag-tree coverage
+      construction: A relabelled 121-node ternary tree decomposition has width-16 bags, six-variable parent
+        separators, and planted three/four-literal coverage clauses.
+      merlin: Recover bags and separators from public center groups, reconstruct the bag tree, and run
+        exact bottom-up separator DP.
+      focus: Tree-decomposition recovery, running-intersection joins, exact higher-order coverage optimization,
+        and opaque witness reconstruction.
+      difficulty: H2
+      case_profile: STRUCTURE
+    - id: C06
+      name: Deep shared-routing ancestor coverage
+      construction: A relabelled depth-11 binary routing tree carries two terminal alternatives at every
+        routing vertex and 16,380 planted coverage groups coupling terminals along bounded ancestor paths.
+      merlin: Recover the routing tree and terminal pairs, assign each group to its deepest variable,
+        run exact bounded-ancestor message passing, and reconstruct the connected public edge set.
+      focus: Shared root paths, public tree recovery, higher-order group coupling, exact bounded-state
+        optimization, and large opaque witness reconstruction.
+      difficulty: H2
+      case_profile: STRUCTURE
+- id: T2
+  name: Interactive-Proof Core
+  definition: Every randomness barrier requires Merlin to fix dependent material before Arthur samples
+    fresh randomness. Each task separately specifies private/public coins, completeness, soundness, and
+    replay semantics.
+  goal: Directly assess online challenge responses, long-lived state, arithmetization, structure recovery,
+    and prover-algorithm design.
+  tasks:
+  - id: T2.1
+    runtime_id: t2.new_graph_non_isomorphism
+    name: new Graph Non-Isomorphism
+    description: A harder, independently generated version of the 24-lane private-coin hidden-source protocol.
+      The public participant specification discloses only the graph relation and wire format; all construction
+      families and intended recovery routes remain maintainer-only.
+    implementation:
+      status: implemented with a 600-second calibration budget
+      current_profiles: C01--C07 use 24 complete relabeled challenges. The source orders are approximately
+        1.4k--2k, 1.4k--2k, 1,024, 3,600, 9,000, 7,200, and 10,800 vertices.
+    cases:
+    - id: C01
+      name: Connected prism--Moebius baseline
+      construction: A connected odd circular prism is paired with a bipartite Moebius ladder of the same
+        order, size, degree sequence, and color histogram.
+      merlin: Recover any relabeling-invariant distinction, with bipartiteness providing the calibration
+        route.
+      focus: A nontrivial but accessible baseline for the two-event protocol.
+      difficulty: H1
+    - id: C02
+      name: Connected Shrikhande--rook amplification
+      construction: The Shrikhande and 4-by-4 rook graphs are each Cartesian-multiplied by the same long
+        odd cycle.
+      merlin: Recover the 16-vertex factor geometry or an equivalent clique invariant despite connected
+        amplification.
+      focus: Product recovery and strongly-regular local geometry.
+      difficulty: H2
+    - id: C03
+      name: Locally matched group-table geometries
+      construction: Latin-square graphs of the groups C16 times C2 and C8 times C4 have equal strongly-regular
+        parameters and matched intercalate counts.
+      merlin: Reconstruct the three parallel classes, recover a group isotope, and distinguish its element-order
+        structure.
+      focus: Dense incidence geometry and algebraic reconstruction under a short wall-clock budget.
+      difficulty: H3
+    - id: C04
+      name: Uncolored enlarged CFI parity
+      construction: Opposite-parity CFI graphs over a connected 12-fold cyclic cover of the GQ(2,2) incidence
+        graph are published without outer/middle role colors.
+      merlin: Recover gadgets from the unlabeled graph and evaluate the global switching parity.
+      focus: WL resistance, role recovery, and global parity.
+      difficulty: H3
+    - id: C05
+      name: Fisher-transformed uncolored CFI parity
+      construction: Each uncolored CFI source is edge-subdivided and then line-graph transformed, producing
+        a connected cubic Fisher graph.
+      merlin: Invert the triangle/matching transform, recover the CFI root, and evaluate its parity.
+      focus: Composed structural inversion with no public role labels.
+      difficulty: H3
+    - id: C06
+      name: Line graph of uncolored CFI parity
+      construction: A line-graph layer hides an uncolored CFI pair over a connected 16-fold cyclic cover.
+      merlin: Invert maximal star cliques to recover the cubic root, then solve its CFI parity.
+      focus: Line-graph inversion composed with a WL-resistant root.
+      difficulty: H3
+    - id: C07
+      name: Double line graph of uncolored CFI parity
+      construction: Two successive line-graph layers hide an uncolored CFI pair over a connected 12-fold
+        cyclic cover.
+      merlin: Invert maximal K4s, then maximal K3s, and finally recover the CFI switching parity.
+      focus: Two-stage root reconstruction and resource control at the largest sparse point.
+      difficulty: H3
+  - id: T2.2
+    runtime_id: t2.new_boolean_hypercube_sumcheck
+    name: new Boolean-Hypercube Polynomial Sum-Check
+    description: A 600-second, independently generated version of the factor-table Sum-Check task. The
+      participant specification exposes only the common polynomial relation and adaptive message grammar;
+      all factor families and bounded-state decompositions remain maintainer-only.
+    cases:
+    - id: C01
+      name: Rank-One Expander
+      construction: Rank-one binary factors are placed on a connected 4-regular expander with 384 variables.
+      merlin: Detect determinant-zero tables and factor the polynomial into independent univariates.
+      focus: Algebraic compression and long adaptive interaction.
+      difficulty: H1
+    - id: C02
+      name: Signed-Equivalence Expander
+      construction: Weighted equality/disequality factors and unaries are placed on a 360-variable expander.
+      merlin: Recover parity components and maintain their two weighted orientations.
+      focus: Support-pattern recognition and component messages.
+      difficulty: H2
+    - id: C03
+      name: Hidden Cylindrical Two-Spin Model, Width 16
+      construction: Random unary and pair tensors occupy a relabeled C16-by-P25 cylinder.
+      merlin: Recover the strip and use persistent 65536-state transfer environments.
+      focus: Structure recovery, large frontier contraction, and protocol persistence.
+      difficulty: H3
+    - id: C04
+      name: Hidden Cylindrical Two-Spin Model, Width 12
+      construction: Random unary and pair tensors occupy a relabeled C12-by-P33 cylinder.
+      merlin: Recover the strip and correctly handle fixed-layer constants in width-12 transfer messages.
+      focus: Layer-boundary correctness and adaptive finite-field contraction.
+      difficulty: H3
+    - id: C05
+      name: Cylindrical Monomer-Dimer Model
+      construction: Edge variables and occupancy tensors encode matchings of a C6-by-P30 cylinder.
+      merlin: Reconstruct the underlying strip and use persistent matching-frontier messages.
+      focus: Hyperfactor incidence recovery and coefficient-ring DP.
+      difficulty: H3
+    - id: C06
+      name: Six-Vertex Torus
+      construction: Unary edge weights and ice-rule tensors encode a C6-by-C24 torus.
+      merlin: Recover the torus directions and evaluate tail-biting transfer environments.
+      focus: Periodic tensor-network contraction and non-Boolean prefixes.
+      difficulty: H3
+    - id: C07
+      name: Memory-Ten Tail-Biting Enumerator
+      construction: A length-160 cyclic convolutional relation couples 320 variables with memory ten.
+      merlin: Recover time order and run a 1024-state tail-biting trellis prover.
+      focus: Hidden finite memory and long-session state management.
+      difficulty: H3
+  - id: T2.3
+    runtime_id: t2.new_gkr_layered_circuit
+    name: new GKR Layered Arithmetic-Circuit Evaluation
+    description: Seven larger public layered circuits share one 600-second GKR verifier, with complete
+      gate tables but no participant-facing application-family or prover-construction hints.
+    cases:
+    - id: C01
+      name: Balanced inner product
+      construction: A length-64 field inner product is compiled into a balanced depth-7 circuit.
+      merlin: Execute the public circuit and provide all GKR layer reductions.
+      focus: Scaled generic-prover entry.
+      difficulty: H1
+    - id: C02
+      name: Batched second-order affine recurrences
+      construction: Eight length-six affine recurrences are expanded through copy and arithmetic micro-layers.
+      merlin: Maintain public layer values and sparse folding tables across 184 barriers.
+      focus: Irregular depths and persistent rails.
+      difficulty: H1
+    - id: C03
+      name: Batched matrix triple product
+      construction: A trace of an order-eight matrix triple product creates a width-1024 tensor circuit.
+      merlin: Follow authoritative child maps without conflating the two Sum-Check variable blocks.
+      focus: Wide tensor wiring.
+      difficulty: H2
+    - id: C04
+      name: Walsh--Hadamard XOR convolution
+      construction: Two FWHTs, pointwise multiplication, inverse scaling, and a digest form a 6655-position
+        circuit.
+      merlin: Prove the public gate table through 368 randomness barriers.
+      focus: Butterfly wiring and long transcripts.
+      difficulty: H2
+    - id: C05
+      name: Bitonic Boolean-key payload routing
+      construction: Eight records with four payload fields traverse an expanded bitonic comparator network.
+      merlin: Handle deep selector micro-layers and 475 barriers.
+      focus: Depth and payload-routing consistency.
+      difficulty: H2
+    - id: C06
+      name: Rule 110 periodic spacetime
+      construction: Four steps on a 256-cell ring are expanded into a width-1024 Boolean arithmetic circuit.
+      merlin: Use the gate table rather than application shortcuts and preserve periodic indices.
+      focus: Wide repeated local wiring.
+      difficulty: H2
+    - id: C07
+      name: Boolean repeated-squaring transitive closure
+      construction: Four Boolean matrix squarings for a 16-vertex relation produce 32255 positions and
+        500 barriers.
+      merlin: Sustain the generic prover at the widest allowed tensor layers.
+      focus: Resource frontier and exact OR arithmetization.
+      difficulty: H3
+  - id: T2.4
+    runtime_id: t2.image_size_lower_bound
+    name: Goldwasser--Sipser Image-Size Lower Bound
+    description: A public function f and threshold T promise that the image size is at least 16T or at
+      most T. Arthur gives 128 independent affine hashes; Merlin opens a preimage of the designated bucket
+      in at least 64 lanes.
+    implementation:
+      status: correctness-scaled implementation complete; difficulty not frozen
+      current_profiles: C01--C06 retain all 128 lanes and the 64-success threshold. Their current (inputs,outputs,gates,image_size)
+        values are (10,12,7,256), (12,14,24,256), (12,12,162,299), (12,24,17,4096), (9,20,28,466), and
+        (12,12,39,227).
+    cases:
+    - id: C01
+      name: Systematic subcube image
+      construction: The output explicitly preserves a set of free input bits; the remaining bits are determined
+        by a public low-complexity map.
+      merlin: Set the systematic bits directly to invert every hash bucket.
+      focus: Hashing-protocol entry and lane batching.
+      difficulty: H1
+    - id: C02
+      name: Hidden affine image
+      construction: f(x)=Ax+b over F_2, with the matrix hidden through row/column basis transformations
+        while rank and the YES threshold satisfy the promise.
+      merlin: Use GF(2) elimination to solve hash equations jointly with image equations for preimages.
+      focus: Affine algebra, rank, and bucket inversion.
+      difficulty: H2
+    - id: C03
+      name: Hamming ball via truncation
+      construction: In a hidden order, the input retains only the first at most r ones, then undergoes
+        output permutation and shift. Its image is exactly the corresponding Hamming ball; the first candidate
+        is 56-bit, weight 5.
+      merlin: Recover public coordinates with singleton probes, solve each affine bucket by weight-bounded
+        XOR meet-in-the-middle, and stop after 64 successful lanes.
+      focus: Truncation semantics, bounded-weight syndrome search, and full-batch resources.
+      difficulty: H2
+    - id: C04
+      name: Separable nonlinear product code
+      construction: A Cartesian product of several small nonlinear block encoders, with a hidden block
+        permutation.
+      merlin: Solve hash constraints with meet-in-the-middle or block DP.
+      focus: Product decomposition and nonlinear inversion.
+      difficulty: H2
+    - id: C05
+      name: Rank-one binary matrix variety
+      construction: The image is a canonical encoding of all binary outer products uv^T, with duplicate
+        parameterizations removed.
+      merlin: Exploit rank-one structure to enumerate one side and solve the remaining affine conditions.
+      focus: Quotient parameterization and bilinear search.
+      difficulty: H2
+    - id: C06
+      name: Grid independent-set image
+      construction: f is a greedy fixed-point projection with a hidden scan order; its image is exactly
+        every independent-set indicator of a 4x12 grid.
+      merlin: Recover the grid with singleton/pair probes, then use independent sets of two 4x6 half-grids
+        for syndrome meet-in-the-middle; the resulting indicator is itself a valid preimage.
+      focus: Grid recovery, fixed-point inversion, and half-grid syndrome DP.
+      difficulty: H2
+  - id: T2.5
+    runtime_id: t2.new_shamir_tqbf
+    name: new Shamir-Style TQBF Interactive Proof
+    description: Six larger true QBF circuits share the same 600-second Shamir arithmetization protocol;
+      family-specific state quotients are withheld from participant materials.
+    cases:
+    - id: C01
+      name: Explicit width-4 alternating branching game
+      construction: Nine universal/existential response pairs compile to an 18-variable, 106-gate circuit.
+      merlin: Recover a four-state quotient and complete 171 dependent polynomial rounds.
+      focus: Scaled TQBF protocol entry.
+      difficulty: H1
+    - id: C02
+      name: Memory-five alternating recurrence game
+      construction: Twelve response pairs update a hidden five-bit recurrence state in a 1594-gate ITE
+        DAG.
+      merlin: Maintain synchronized single/pair state messages over 300 rounds.
+      focus: Finite-memory quotient and nonlinear quantifier products.
+      difficulty: H2
+    - id: C03
+      name: Rank-five affine-syndrome game
+      construction: Universal and existential blocks act on a relabeled 32-state affine syndrome quotient.
+      merlin: Recover the transition group and evaluate single/pair messages.
+      focus: Hidden algebraic quotient.
+      difficulty: H2
+    - id: C04
+      name: Hidden blocked reversible map, 11 plus 10 bits
+      construction: Two disjoint nonlinear triangular bijections compile to a shuffled 44-variable, 195-gate
+        relation.
+      merlin: Recover the hidden 11+10 component split, maintain local relation tables, and complete 990
+        dependent rounds.
+      focus: Exponential ordered width versus nonlinear block factorization.
+      difficulty: H2
+    - id: C05
+      name: Double-tap blocked reversible map, 12 plus 9 bits
+      construction: Two quadratic taps per late coordinate raise nonlinear degree in a 44-variable, 234-gate
+        relation.
+      merlin: Recover the nonlinear map factors and sustain their local contractions across 990 rounds.
+      focus: Structural recovery under higher nonlinear degree.
+      difficulty: H3
+    - id: C06
+      name: Identity-cloaked double-tap blocked reversible map, 12 plus 9 bits
+      construction: Two separated quadratic taps per late coordinate are hidden behind field-exact row
+        identities in a 44-variable, 277-gate relation.
+      merlin: Recover the hidden factors through heterogeneous identity syntax and sustain 990 dependent
+        rounds.
+      focus: Structural recovery under exact algebraic cloaking and the interaction frontier.
+      difficulty: H3
+  - id: T2.6
+    runtime_id: t2.new_hamiltonicity_bind_open
+    name: new Hamiltonicity Bind--Challenge--Open
+    description: Seven larger Hamiltonian graph families retain the complete 24-lane two-event protocol
+      and a 600-second budget while withholding all construction-family hints from participants.
+    cases:
+    - id: C01
+      name: Scaled randomly relabeled wheel
+      construction: A 1000-vertex wheel is randomly relabeled.
+      merlin: Recover the unique hub and outer rim, then batch 24 commitments.
+      focus: Large-instance protocol entry.
+      difficulty: H1
+    - id: C02
+      name: Scaled balanced complete bipartite graph
+      construction: A randomly relabeled K128,128 has 16384 edges.
+      merlin: Recover the bipartition, alternate a cycle, and control dense serialization.
+      focus: Dense commitments and memory planning.
+      difficulty: H1
+    - id: C03
+      name: Quiet-planted satisfiability lift
+      construction: A sign-balanced planted 64-variable 3-CNF is encoded as directed Hamiltonicity and
+        lifted to a 3462-vertex undirected graph.
+      merlin: Recover the hidden reduction, solve the formula, and translate the assignment to a Hamilton
+        cycle.
+      focus: Reduction discovery without literal-sign leakage.
+      difficulty: H3
+    - id: C04
+      name: Hidden affine-parity Hamilton lift
+      construction: A full-rank 80-variable sparse affine GF(2) system is encoded through 3-CNF and a
+        4086-vertex Hamilton lift.
+      merlin: Recover the reduction and solve the affine system by Gaussian elimination before translating
+        its witness.
+      focus: Hidden algebraic structure behind a Hamilton reduction.
+      difficulty: H3
+    - id: C05
+      name: Weak-signal planted satisfiability lift
+      construction: A 40-variable, 320-clause weakly biased planted 3-CNF is encoded as directed Hamiltonicity
+        and then lifted to a 3966-vertex undirected graph.
+      merlin: Recover the forced triples and formula incidence, estimate and check the planted assignment,
+        then emit the induced Hamilton cycle.
+      focus: Hidden reduction recovery and noisy assignment inference.
+      difficulty: H3
+    - id: C06
+      name: Hidden implication-ring Hamilton lift
+      construction: An anchored 160-variable binary implication ring is encoded as directed Hamiltonicity
+        and lifted to a 3372-vertex undirected graph.
+      merlin: Recover the forced triples and implication ring, solve it by propagation or SCC, and translate
+        the assignment to a cycle.
+      focus: Hidden linear-time logical structure inside a sparse Hamilton graph.
+      difficulty: H3
+    - id: C07
+      name: Auxiliary-cloaked affine Hamilton lift
+      construction: A full-rank 23-variable system of five-term affine XOR equations is hidden behind
+        69 auxiliary XOR-gate variables, 322 CNF clauses, and a 4008-vertex Hamilton lift.
+      merlin: Recover the forced triples and gate groups, eliminate the auxiliary syntax, solve the affine
+        core, and translate the witness.
+      focus: Composed reduction recovery and hidden algebraic elimination.
+      difficulty: H3
+- id: T3
+  name: Native-Tool Proof-Carrying Applied Mathematics
+  definition: Merlin submits standard evidence artifacts from three real high-assurance workflows. Arthur
+    checks Lean source with the Lean kernel, contract-verified programs with native Dafny and Z3, and
+    bounded hardware UNSAT proofs with native drat-trim. AM-style denotes the prover/verifier role separation.
+  goal: Demonstrate one protocol boundary across formal mathematics, verified software, and bounded hardware
+    safety.
+  implementation:
+    status: implemented; correctness-scaled; difficulty-unfrozen
+    current_profiles: All 24 cases have a registry, schema, generator, Arthur, participant specification,
+      public-only reference/virtual agent, prepare-run, observer, and tests; 600-second multi-model, multi-seed
+      calibration is not yet complete.
+  tasks:
+  - id: T3.1
+    runtime_id: t3.machine_checked_mathematics
+    name: Machine-Checked Mathematics
+    description: Merlin uploads a Lean proof artifact. Arthur reconstructs the trusted challenge and checks
+      Challenge.Target with a pinned Lean 4.19.0 kernel.
+    implementation:
+      status: implemented; requires pinned Lean 4.19.0
+    cases:
+    - id: C01
+      name: Dense binary linear certificate
+      construction: Publish a seeded square full-rank binary system in sparse row-index form, with rows
+        and columns presented only in their final public order.
+      merlin: Recover the unique binary vector and provide a Lean proof that every published parity equation
+        holds.
+      focus: Public-data recovery, exact GF(2) arithmetic, and Lean-kernel artifact packaging.
+      difficulty: H1
+    - id: C02
+      name: Shuffled CRT reconstruction certificate
+      construction: Publish twelve shuffled pairwise-coprime congruences whose normalized joint solution
+        has roughly 240 bits; no generation factors or planted value are released.
+      merlin: Reconstruct the unique value in the published product range and provide every exact quotient.
+      focus: Chinese remaindering, arbitrary-precision arithmetic, witness ordering, and robust Lean packaging.
+      difficulty: H1
+    - id: C03
+      name: Hidden line-graph root certificate
+      construction: Publish a relabeled twice-iterated line graph of a connected cubic bipartite base;
+        the visible graph has 192 vertices and 576 edges, while neither intermediate root nor relabeling
+        is released.
+      merlin: Recover the 96 hidden root vertices and encode the two root endpoints of every public vertex.
+      focus: Hidden graph-transform inversion, clique incidence, packed certificates, and exact Lean checking.
+      difficulty: H2
+    - id: C04
+      name: Anonymous affine-plane decoding certificate
+      construction: Publish the shuffled point-line incidence blocks of an anonymous order-19 affine plane,
+        plus 361 readings formed from a total-degree-8 polynomial with 72 structured corruptions; no coordinate
+        anchors, parallel classes, row partition, or decoding family are released.
+      merlin: Choose and recover a complete affine coordinate frame, recover the unique low-total-degree
+        codeword, mark every mismatch, pack forward and inverse maps, and obtain Lean kernel acceptance.
+      focus: Synthetic coordinatization, affine-invariant polynomial recovery, structured error correction,
+        packed permutation witnesses, and robust Lean reflection.
+      difficulty: H3
+    - id: C05
+      name: Anonymous modular column equivalence
+      construction: Publish two rank-three matrices over a prime field whose projective column configurations
+        are equivalent, without the generating family, parameter labels, or planted transformation.
+      merlin: Recover an invertible row transformation, every nonzero column scale, and a packed column
+        permutation with its inverse, then satisfy every exact matrix-entry check in Lean.
+      focus: Finite projective reconstruction, monomial code equivalence, packed permutations, and exact
+        Lean checking.
+      difficulty: H3
+    - id: C06
+      name: Composite cube-root certificate
+      construction: Publish a roughly 765-bit composite modulus and one modular cube residue, without
+        the two factors or the generation family.
+      merlin: Exhibit two strict nontrivial factors whose product is the modulus and a root whose modular
+        cube is the published residue.
+      focus: Hidden integer structure, exact modular arithmetic, and kernel-checked large-natural certificates.
+      difficulty: H3
+    - id: C07
+      name: Anonymous modular subset certificate
+      construction: Publish 256 shuffled residues, one modulus, and one target without the hidden family
+        or planted subset.
+      merlin: Recover packed selection bits and exact per-block residues whose full modular dot product
+        is the target.
+      focus: Structured modular subset recovery, packed witnesses, and exact Lean-kernel arithmetic.
+      difficulty: H4
+    - id: C08
+      name: Anonymous binary syndrome certificate
+      construction: Publish a dense 252-by-511 binary parity relation and one syndrome without its hidden
+        code coordinates or planted error.
+      merlin: Recover a weight-28 packed binary vector and prove all public parity equations in Lean.
+      focus: Exact syndrome decoding, hidden code equivalence, packed witnesses, and kernel-checked parity
+        arithmetic.
+      difficulty: H4
+  - id: T3.2
+    runtime_id: t3.dafny_verified_programs
+    name: Dafny-Verified Programs
+    description: Merlin submits ordinary Solution.dfy source implementing a public contract. Arthur invokes
+      Dafny 4.11.0 with its bundled Z3, then compiles and executes the fixed public Java harness.
+    implementation:
+      status: implemented; requires pinned Dafny 4.11.0 and Java 17
+    cases:
+    - id: C01
+      name: Stable partition preservation
+      construction: A public recursive specification fixes the stable negative/nonnegative partition and
+        a seeded harness.
+      merlin: Implement the partition and discharge preservation and ordering proof obligations.
+      focus: Sequence recursion, loop/recursive invariants, and executable postconditions.
+      difficulty: H1
+    - id: C02
+      name: Boundary-safe lower-bound search
+      construction: A public sorted-sequence contract specifies the first index not smaller than a key.
+      merlin: Implement binary search with bounds, partition invariants, and a termination measure.
+      focus: Boundary safety and loop-invariant design.
+      difficulty: H1
+    - id: C03
+      name: Capacity-constrained reservation update
+      construction: A slot-usage API exposes capacity, feasibility, acceptance, and exact update contracts.
+      merlin: Verify the admission scan and the accepted/rejected state update.
+      focus: Resource invariants and two-phase state construction.
+      difficulty: H2
+    - id: C04
+      name: Precedence-constrained earliest schedule
+      construction: A predecessor-ordered task graph and duration contract define the exact earliest start
+        recurrence.
+      merlin: Build every start time while proving all processed predecessors are available and correct.
+      focus: Scheduling, dependency order, and prefix invariants.
+      difficulty: H2
+    - id: C05
+      name: Dependency-order validation
+      construction: A graph API defines a valid topological order using a recursive public position function.
+      merlin: Validate every dependency while relating executable scans to the quantified graph contract.
+      focus: Graph validity, permutations, and quantified loop invariants.
+      difficulty: H3
+    - id: C06
+      name: Audited priority firewall batch evaluation
+      construction: A packet/rule matrix defines first-match policy decisions plus an exact per-rule hit
+        audit.
+      merlin: Prove every ordered decision and the complete histogram derived from the decision sequence.
+      focus: Policy priority, nested prefix invariants, and cross-output consistency.
+      difficulty: H3
+    - id: C07
+      name: Reference-counted handle-table invariant preservation
+      construction: A client-resource ownership matrix carries redundant exact per-resource reference
+        counts.
+      merlin: Verify acquire/release updates while re-establishing all matrix/count consistency invariants.
+      focus: Stateful resource accounting, nested counting invariants, and accepted/rejected paths.
+      difficulty: H4
+    - id: C08
+      name: Free-list memory-pool invariant preservation
+      construction: A pool state partitions all blocks between an ordered free list and an owned set.
+      merlin: Verify allocation and release while preserving range, uniqueness, and partition invariants.
+      focus: Free-list state, set/sequence reasoning, and ownership invariants.
+      difficulty: H4
+  - id: T3.3
+    runtime_id: t3.drat_bounded_hardware_safety
+    name: DRAT-Certified Bounded Hardware Safety
+    description: Each case publishes sequential ASCII AIGER and a fixed DIMACS bounded miter. Merlin submits
+      a standard DRAT UNSAT proof, which Arthur checks with pinned drat-trim.
+    implementation:
+      status: implemented; pinned AIGER/CaDiCaL reference and drat-trim checker
+    cases:
+    - id: C01
+      name: FIFO occupancy safety
+      construction: A saturating FIFO occupancy controller is unrolled with a prefix-legality bad output.
+      merlin: Produce DRAT evidence that no illegal occupancy code is reachable through the public bound.
+      focus: Sequential unrolling and FIFO state invariants.
+      difficulty: H1
+    - id: C02
+      name: FIFO underflow safety
+      construction: The controller only fires a pop when a valid item is present; the bounded miter asserts
+        an illegal fire.
+      merlin: Refute the exact DIMACS bad-state formula with a standard DRAT proof.
+      focus: Controller guards and SAT proof production.
+      difficulty: H1
+    - id: C03
+      name: Round-robin mutual exclusion
+      construction: A one-hot rotating token gates arbitrary client requests and the miter asserts two
+        simultaneous grants.
+      merlin: Prove the bounded mutual-exclusion miter UNSAT.
+      focus: One-hot reachability and proof logging.
+      difficulty: H2
+    - id: C04
+      name: Round-robin bounded fairness
+      construction: A wait monitor tracks a continuously requesting client across nondeterministic hold/advance
+        token transitions.
+      merlin: Prove that the published finite-window fairness violation is unreachable.
+      focus: Temporal monitor unrolling and bounded liveness-to-safety reduction.
+      difficulty: H3
+    - id: C05
+      name: Credit-router conservation
+      construction: Unary credit and in-flight counters evolve together under send/return handshakes.
+      merlin: Refute every bounded state violating total-credit conservation.
+      focus: Coupled state invariants and larger DRAT artifacts.
+      difficulty: H3
+    - id: C06
+      name: Credit-router forwarding safety
+      construction: Independent actual and scheduler-shadow unary credit trackers evolve under the same
+        handshakes; forwarding uses the shadow tracker.
+      merlin: Prove no forward event occurs without available credit through the bound.
+      focus: Router-control guards and proof generation.
+      difficulty: H3
+    - id: C07
+      name: Pipeline flush-stall safety
+      construction: A drain monitor counts only non-stall advances after flush while issue is suppressed;
+        the pipeline must be empty after one full depth of progress.
+      merlin: Refute a fully advanced post-flush state retaining any valid pipeline stage.
+      focus: Control hazards and sequential SAT unrolling.
+      difficulty: H4
+    - id: C08
+      name: Pipeline writeback consistency
+      construction: Valid bits and two independently represented tag paths traverse issue/stall/flush
+        control.
+      merlin: Prove a valid writeback can never disagree with its shadow tag at any bounded frame.
+      focus: Datapath/control consistency and proof-size management.
+      difficulty: H4

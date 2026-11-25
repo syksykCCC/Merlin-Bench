@@ -1,0 +1,14 @@
+id: c06
+title: Column-mixed Boolean-cube code lattice
+difficulty: H2
+parameters:
+  cube_dimension: 8
+  degree: 3
+  modulus: 257
+  num_errors: 15
+  denominator: 13
+  clean_offset: 1
+  error_offset: -7
+  coefficient_magnitude: 7
+  kernel_shear_layers: 28
+  kernel_injections_per_code_column: 8

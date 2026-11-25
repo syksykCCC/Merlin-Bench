@@ -1,0 +1,6 @@
+id: c07
+title: Anonymous modular subset certificate
+difficulty: H4
+parameters:
+  num_items: 256
+  word_bits: 32

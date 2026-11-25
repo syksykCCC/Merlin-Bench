@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "aipbench://t3.machine_checked_mathematics/public-instance/v1",
+  "type": "object",
+  "required": [
+    "format_version",
+    "toolchain",
+    "target_name",
+    "proof_name",
+    "prelude_sha256",
+    "challenge_sha256",
+    "prelude_source",
+    "challenge_source",
+    "problem",
+    "public_features",
+    "instance_sha256"
+  ],
+  "properties": {
+    "format_version": {"const": "aip-lean-proof-instance/1"},
+    "toolchain": {"const": "leanprover/lean4:v4.19.0"},
+    "target_name": {"const": "Challenge.Target"},
+    "proof_name": {"const": "AMBenchSolution.proof"},
+    "prelude_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "challenge_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "prelude_source": {"type": "string", "minLength": 1, "maxLength": 65536},
+    "challenge_source": {"type": "string", "minLength": 1, "maxLength": 65536},
+    "problem": {"type": "object"},
+    "public_features": {
+      "type": "object",
+      "maxProperties": 2,
+      "additionalProperties": {"type": ["integer", "string"]}
+    },
+    "instance_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+  },
+  "additionalProperties": false
+}

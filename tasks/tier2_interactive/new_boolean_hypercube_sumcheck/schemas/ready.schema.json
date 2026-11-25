@@ -1,0 +1,11 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "aipbench://t2.new_boolean_hypercube_sumcheck/sumcheck.ready/1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["num_rounds", "degree_bound"],
+  "properties": {
+    "num_rounds": {"type": "integer", "minimum": 1, "maximum": 400},
+    "degree_bound": {"const": 5}
+  }
+}

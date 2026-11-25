@@ -1,0 +1,9 @@
+id: c03
+title: Hidden bounded-width Boolean path
+difficulty: H2
+parameters:
+  num_blocks: 42
+  block_width: 12
+  local_clauses: 20
+  boundary_clauses: 24
+  weight_base: 10000

@@ -1,0 +1,18 @@
+{
+  "challenge_sha256": "82a08f2afa6072dceb6aa9b530a49cd03d3a7ffde085b14c364dfe33d0509078",
+  "challenge_source": "import Init\nnamespace Challenge\n\ninductive Term where\n  | var : Nat → Term\n  | num : Nat → Term\n  | lam : Term → Term\n  | app : Term → Term → Term\n\ninductive Val where\n  | num : Nat → Val\n  | clo : Term → List Val → Val\n\nabbrev Env := List Val\n\ninductive Eval : Env → Term → Val → Prop where\n  | var {ρ n v} : ρ[n]? = some v → Eval ρ (.var n) v\n  | num {ρ n} : Eval ρ (.num n) (.num n)\n  | lam {ρ body} : Eval ρ (.lam body) (.clo body ρ)\n  | app {ρ f a body saved v result} :\n      Eval ρ f (.clo body saved) → Eval ρ a v → Eval (v :: saved) body result →\n      Eval ρ (.app f a) result\n\ndef evaluate : Nat → Env → Term → Option Val\n  | 0, _, _ => none\n  | fuel+1, ρ, .var n => ρ[n]?\n  | fuel+1, _, .num n => some (.num n)\n  | fuel+1, ρ, .lam body => some (.clo body ρ)\n  | fuel+1, ρ, .app f a =>\n    match evaluate fuel ρ f with\n    | some (.clo body saved) =>\n      match evaluate fuel ρ a with\n      | some v => evaluate fuel (v :: saved) body\n      | none => none\n    | _ => none\n\ndef Target : Prop :=\n  (∀ fuel ρ t v, evaluate fuel ρ t = some v → Eval ρ t v) ∧\n  (∀ ρ t v, Eval ρ t v → ∃ bound, ∀ fuel, bound ≤ fuel → evaluate fuel ρ t = some v) ∧\n  (∀ fuel more ρ t v, fuel ≤ more → evaluate fuel ρ t = some v → evaluate more ρ t = some v)\nend Challenge\n",
+  "format_version": "aip-lean-proof-instance/1",
+  "instance_sha256": "2c5d6aaead4137f276e90baa7a5a5fd219fb5f0a0d8c1a71a1ef1a53709b9419",
+  "prelude_sha256": "ad7365ced9cc452bc7e2124a0cd3f974cf2aecd48d056518969380b6c9abe025",
+  "prelude_source": "import Init\n\nnamespace AMBenchPrelude\n\ndef powMod (base exponent modulus : Nat) : Nat :=\n  match exponent with\n  | 0 => 1 % modulus\n  | n + 1 => (powMod base n modulus * (base % modulus)) % modulus\n\ndef evalPolyMod (coefficients : List Nat) (x modulus : Nat) : Nat :=\n  match coefficients with\n  | [] => 0\n  | coefficient :: rest =>\n      (coefficient + x * evalPolyMod rest x modulus) % modulus\n\ndef absDiff (a b : Nat) : Nat :=\n  if a <= b then b - a else a - b\n\nend AMBenchPrelude\n",
+  "problem": {
+    "family": "fuelled_closure_evaluator",
+    "revision": "v001"
+  },
+  "proof_name": "AMBenchSolution.proof",
+  "public_features": {
+    "proof_task": "fuelled_closure_evaluator"
+  },
+  "target_name": "Challenge.Target",
+  "toolchain": "leanprover/lean4:v4.19.0"
+}
